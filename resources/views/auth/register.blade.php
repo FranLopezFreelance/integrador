@@ -109,8 +109,13 @@ $citys = [
                                 <select class="form-control" id="city_id" name="city_id">
                                     <option value="0">Seleccionar... </option>
 
-                                    @foreach($citys as $city)
-                                        <option  value="{{ old('city_id') }}">
+                                    @foreach($citys as $id => $city)
+                                        <option  value="{{ $id }}"
+
+                                            @if($id == old('city_id'))
+                                                selected
+                                            @endif
+                                        >
                                             {{ $city }}
                                         </option>
                                     @endforeach

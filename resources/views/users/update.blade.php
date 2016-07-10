@@ -87,7 +87,7 @@ $citys = [
                                         <option  value="{{ $id }}"
 
                                             @if($id == old('city_id') || $id == $user->city_id)
-                                                selected:selected
+                                                selected
                                             @endif
                                         >
                                             {{ $city }}
