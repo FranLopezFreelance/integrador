@@ -15,6 +15,14 @@ Route::get('/', function () {
 		return view('welcome');
 	});
 
+Route::group(['prefix' => 'users'], function () {
+		//GET METHOD
+		Route::get('update/{user}', 'UsersController@update');
+
+		//PATCH METHOD
+		Route::patch('update', 'UsersController@save');
+	});
+
 Route::group(['prefix' => 'products'], function () {
 		//GET METHOD
 		Route::get('create', 'PostController@create');
