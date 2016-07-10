@@ -9,11 +9,23 @@
 | It's a breeze. Simply tell Laravel the URIs it should respond to
 | and give it the controller to call when that URI is requested.
 |
-*/
+ */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+		return view('welcome');
+	});
+
+Route::group(['prefix' => 'products'], function () {
+		//GET METHOD
+		Route::get('create', 'PostController@create');
+		Route::get('/', 'ProductsController@get');
+		Route::get('list/user/{user}', 'ProductsController@listByUser');
+		Route::get('list/branch/{branch}', 'ProductsController@listByBranch');
+		Route::get('update', 'DashboardController@update');
+
+		//POST METHOD
+		Route::post('list/search/', 'ProductsController@listByParameter');
+	});
 
 Route::auth();
 
