@@ -2,29 +2,29 @@
 
 namespace App\Http\Controllers;
 
+use App\City;
+use App\Type;
 use App\User;
-
 use Illuminate\Http\Request;
 
 class UsersController extends Controller {
 
-	public function update(User $user) {
+	public function view($id) {
 
-		return view('users.update', compact('user'));
+		$user = User::find($id);
+		return view('users.profile', compact('user'));
 	}
 
-	public function save(Request $request) {
+	public function update(User $user) {
 
-		$user = new User($request->all());
+		$types  = Type::all();
+		$cities = City::all();
+		return view('users.update', compact('user', 'types', 'cities'));
+	}
 
-		$user::where('id', $user->id)->update([
-				'name'     => $user->name,
-				'lastname' => $user->lastname,
-				'email'    => $user->email,
-				'city_id'  => $user->city_id,
-				'avatar'   => $user->avatar
-			]);
+	public function save(Request $request, User $user) {
 
-		return view('users.update', compact('user'));
+		$user->update($request->all());
+		return back();
 	}
 }

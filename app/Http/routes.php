@@ -17,10 +17,11 @@ Route::get('/', function () {
 
 Route::group(['prefix' => 'users'], function () {
 		//GET METHOD
+		Route::get('profile/{user}', 'UsersController@view');
 		Route::get('update/{user}', 'UsersController@update');
 
 		//PATCH METHOD
-		Route::patch('update', 'UsersController@save');
+		Route::patch('update/{user}', 'UsersController@save');
 	});
 
 Route::group(['prefix' => 'products'], function () {

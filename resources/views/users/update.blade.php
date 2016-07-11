@@ -1,21 +1,3 @@
-<?php
-
-$citys = [
-	1 => 'Almagro',
-	2 => 'Balvanera',
-	3 => 'Belgrano',
-	4 => 'Caballito',
-	5 => 'Esteban Echeverría',
-	6 => 'Monserrat',
-	7 => 'Nuñez',
-	8 => 'Palermo',
-	9 => 'Recoleta',
-	10=> 'San Telmo',
-	11=> 'Villa Crespo',
-	12=> 'Villa Urquiza'
-];
-
-?>
 @extends('layouts.app')
 
 @section('content')
@@ -25,10 +7,10 @@ $citys = [
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
 
-                <div class="panel-heading">Editar datos de Usuario</div>
+                <div class="panel-heading">Editar datos de Usuario [{{ $user->type->name }}] </div>
 
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/users/update') }}">
+                    <form class="form-horizontal" role="form" method="POST" action="/users/update/{{ $user->id }}">
                         {{ csrf_field() }}
                         {{ method_field('PATCH') }}
 
@@ -83,14 +65,14 @@ $citys = [
                                 <select class="form-control" id="city_id" name="city_id">
                                     <option value="0">Seleccionar... </option>
 
-                                    @foreach($citys as $id => $city)
-                                        <option  value="{{ $id }}"
+                                    @foreach($cities as $city)
+                                        <option  value="{{ $city->id }}"
 
-                                            @if($id == old('city_id') || $id == $user->city_id)
+                                            @if($city->id == old('city_id') || $city->id == $user->city_id)
                                                 selected
                                             @endif
                                         >
-                                            {{ $city }}
+                                            {{ $city->name }}
                                         </option>
                                     @endforeach
                                 </select>
@@ -98,6 +80,33 @@ $citys = [
                                 @if ($errors->has('city_id'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('city_id') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('type_id') ? ' has-error' : '' }}">
+                            <label for="type_id" class="col-md-4 control-label">Tipo Usuario</label>
+
+                            <div class="col-md-6">
+                                <select class="form-control" id="type_id" name="type_id">
+                                    <option value="0">Seleccionar... </option>
+
+                                    @foreach($types as $type)
+                                        <option  value="{{ $type->id }}"
+
+                                            @if($type->id == old('type_id') || $type->id == $user->type_id)
+                                                selected
+                                            @endif
+                                        >
+                                            {{ $type->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+
+                                @if ($errors->has('type_id'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('type_id') }}</strong>
                                     </span>
                                 @endif
                             </div>

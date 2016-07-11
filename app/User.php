@@ -2,6 +2,9 @@
 
 namespace App;
 
+use App\City;
+use App\Product;
+use App\Type;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable {
@@ -11,7 +14,7 @@ class User extends Authenticatable {
 	 * @var array
 	 */
 	protected $fillable = [
-		'name', 'lastname', 'email', 'password', 'typey_id', 'city_id', 'avatar'
+		'name', 'lastname', 'email', 'password', 'type_id', 'city_id', 'avatar'
 	];
 
 	/**
