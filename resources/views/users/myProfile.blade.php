@@ -20,6 +20,7 @@
                         <p><b>Barrio:</b> {{  $user->city->name  }}</p>
                         <p><b>Perfil:</b> {{  $user->type->name  }}</p>
 
+                        <p><a class="btn btn-primary" href="/users/update/{{ $user->id }}">Editar</a></p>
                     </div>
                 </div>
 

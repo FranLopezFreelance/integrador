@@ -49,7 +49,7 @@
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/products') }}">Productos</a></li>
+                    <li><a href="{{ url('/products/list') }}">Productos</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
@@ -65,11 +65,12 @@
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
+                                <li><a href="/users/myProfile"><i class="fa fa-btn fa-user"></i>Mi Perfil</a></li>
                                 <!-- Customer Links -->
                                 @if (Auth::user()->type_id == 2)
-                                    <li><a href="/users/profile/{{ Auth::user()->id }}"><i class="fa fa-btn fa-pencil"></i>Mis Productos</a></li>
+                                    <li><a href="/products/myList"><i class="fa fa-btn fa-align-justify"></i>Mis Productos</a></li>
                                 @endif
-                                <li><a href="/users/profile/{{ Auth::user()->id }}"><i class="fa fa-btn fa-pencil"></i>Perfil</a></li>
+
                                 <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
                             </ul>
                         </li>

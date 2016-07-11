@@ -17,6 +17,7 @@ Route::get('/', function () {
 
 Route::group(['prefix' => 'users'], function () {
 		//GET METHOD
+		Route::get('myProfile', 'UsersController@viewMy');
 		Route::get('profile/{user}', 'UsersController@view');
 		Route::get('update/{user}', 'UsersController@update');
 
@@ -26,14 +27,22 @@ Route::group(['prefix' => 'users'], function () {
 
 Route::group(['prefix' => 'products'], function () {
 		//GET METHOD
-		Route::get('create', 'PostController@create');
-		Route::get('/', 'ProductsController@get');
+		Route::get('create', 'PostController@new');
+		Route::get('list', 'ProductsController@getAll');
+		Route::get('myList', 'ProductsController@getAllMy');
 		Route::get('list/user/{user}', 'ProductsController@listByUser');
+		Route::get('list/section/{section}', 'ProductsController@listBySection');
 		Route::get('list/branch/{branch}', 'ProductsController@listByBranch');
+		Route::get('detail/{product}', 'ProductsController@detail');
 		Route::get('update', 'DashboardController@update');
 
 		//POST METHOD
-		Route::post('list/search/', 'ProductsController@listByParameter');
+		Route::post('list/search', 'ProductsController@listByParameter');
+		Route::post('create', 'PostController@create');
+
+		//PATCH METHOD
+		Route::patch('update/{product}', 'PostController@create');
+
 	});
 
 Route::auth();

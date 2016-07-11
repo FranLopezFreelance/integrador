@@ -10,6 +10,13 @@
                 <div class="panel-heading">Editar datos de Usuario [{{ $user->type->name }}] </div>
 
                 <div class="panel-body">
+
+                    @if (Session::get('msg'))
+                        <div class="alert alert-success" role="alert">
+                            {{ Session::get('msg') }}
+                        </div>
+                    @endif
+
                     <form class="form-horizontal" role="form" method="POST" action="/users/update/{{ $user->id }}">
                         {{ csrf_field() }}
                         {{ method_field('PATCH') }}

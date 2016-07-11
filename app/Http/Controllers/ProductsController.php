@@ -2,15 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Branch;
-
+use App\Brand;
 use App\Product;
-
 use App\Section;
-
 use App\User;
-
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProductsController extends Controller {
 
@@ -18,9 +15,15 @@ class ProductsController extends Controller {
 		return view('products.create');
 	}
 
-	public function get() {
+	public function getAll() {
 		$products = Product::all();
 		return view('products.list', compact('products'));
+	}
+
+	public function getAllMy() {
+		$user_id  = Auth::user()->id;
+		$products = Product::where('user_id', $user_id)->get();
+		return view('products.myList', compact('products'));
 	}
 
 	public function listByParameter(Request $request) {
@@ -33,8 +36,8 @@ class ProductsController extends Controller {
 		return view('products.list', compact('products'));
 	}
 
-	public function listByBranch(Branch $branch) {
-		$products = Product::find($barnch->id);
+	public function listByBranch(Brand $brand) {
+		$products = Product::find($brand->id);
 		return view('products.list', compact('products'));
 	}
 
@@ -47,15 +50,23 @@ class ProductsController extends Controller {
 		//
 	}
 
-	public function show(Product $product) {
-		return view('products.show', $product);
+	public function detail(Product $product) {
+		return view('products.detail', compact('product'));
 	}
 
 	public function update(Product $product) {
-		return view('products.update', $product);
+
+		$sections = Section::all();
+		$branchs  = Branch::all();
+		return view('users.update', compact('product', 'sections', 'branchs'));
 	}
 
-	public function save(Product $product) {
-		$product->save();
+	public function save(Request $request, Product $product) {
+
+		$product->update($request->all());
+		return back()->with('msg', 'Los datos se modificaron correctamente.');
 	}
+
+	//
+
 }

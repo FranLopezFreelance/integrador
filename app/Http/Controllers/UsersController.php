@@ -6,12 +6,17 @@ use App\City;
 use App\Type;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UsersController extends Controller {
 
-	public function view($id) {
+	public function viewMy() {
+		$user = Auth::user();
+		return view('users.myProfile', compact('user'));
+	}
 
-		$user = User::find($id);
+	public function view(User $user) {
+
 		return view('users.profile', compact('user'));
 	}
 
@@ -25,6 +30,6 @@ class UsersController extends Controller {
 	public function save(Request $request, User $user) {
 
 		$user->update($request->all());
-		return back();
+		return back()->with('msg', 'Los datos se modificaron correctamente.');
 	}
 }
