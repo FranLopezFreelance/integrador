@@ -27,20 +27,23 @@ class User extends Authenticatable {
 	];
 
 	public function type() {
-
 		return $this->belongsTo(Type::class );
-
 	}
 
 	public function products() {
-
 		return $this->hasMany(Product::class );
-
 	}
 
 	public function city() {
-
 		return $this->belongsTo(City::class );
-
 	}
+
+	public function following() {
+		return $this->belongsToMany(User::class , 'followings', 'user_id', 'following_id');
+	}
+
+	public function followers() {
+		return $this->belongsToMany(User::class , 'followings', 'following_id', 'user_id');
+	}
+
 }

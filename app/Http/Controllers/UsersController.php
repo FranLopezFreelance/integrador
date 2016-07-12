@@ -10,13 +10,12 @@ use Illuminate\Support\Facades\Auth;
 
 class UsersController extends Controller {
 
-	public function viewMy() {
+	public function myProfile() {
 		$user = Auth::user();
 		return view('users.myProfile', compact('user'));
 	}
 
-	public function view(User $user) {
-
+	public function profile(User $user) {
 		return view('users.profile', compact('user'));
 	}
 
@@ -28,8 +27,42 @@ class UsersController extends Controller {
 	}
 
 	public function save(Request $request, User $user) {
-
 		$user->update($request->all());
 		return back()->with('msg', 'Los datos se modificaron correctamente.');
 	}
+
+	public function sellersList() {
+		$users     = User::where('type_id', 2)->get();
+		$following = Auth::user()->following;
+		return view('users.sellersList', compact('users', 'following'));
+	}
+
+	public function follow($id) {
+		Auth::user()->following()->attach([
+				'user_id'      => Auth::user()->id,
+				'following_id' => $id]
+			//'active'       => 1]
+		);
+		return back();
+	}
+
+	public function unFollow($id) {
+		Auth::user()->following()->detach([
+				'user_id'      => Auth::user()->id,
+				'following_id' => $id]
+			//'active'       => 1]
+		);
+		return back();
+	}
+
+	public function followingList() {
+		$users = Auth::user()->following;
+		return view('users.followingList', compact('users'));
+	}
+
+	public function followersList() {
+		$users = Auth::user()->followers;
+		return view('users.followersList', compact('users'));
+	}
+
 }

@@ -50,6 +50,11 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('/products/list') }}">Productos</a></li>
+                    @if (!Auth::guest())
+                        <li><a href="{{ url('/users/sellersList') }}">Vendedores</a></li>
+                        <li><a href="{{ url('/users/followingList') }}">Siguiendo</a></li>
+                        <li><a href="{{ url('/users/followersList') }}">Te siguen</a></li>
+                    @endif
                 </ul>
 
                 <!-- Right Side Of Navbar -->

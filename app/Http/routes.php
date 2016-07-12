@@ -17,9 +17,13 @@ Route::get('/', function () {
 
 Route::group(['prefix' => 'users'], function () {
 		//GET METHOD
-		Route::get('myProfile', 'UsersController@viewMy');
-		Route::get('profile/{user}', 'UsersController@view');
+		Route::get('myProfile', 'UsersController@myProfile');
+		Route::get('profile/{user}', 'UsersController@profile');
 		Route::get('update', 'UsersController@update');
+		Route::get('sellersList', 'UsersController@sellersList');
+		Route::get('follow/{id}', 'UsersController@follow');
+		Route::get('followingList', 'UsersController@followingList');
+		Route::get('followersList', 'UsersController@followersList');
 
 		//PATCH METHOD
 		Route::patch('update/{user}', 'UsersController@save');
