@@ -20,8 +20,8 @@ class UsersController extends Controller {
 		return view('users.profile', compact('user'));
 	}
 
-	public function update(User $user) {
-
+	public function update() {
+		$user   = Auth::user();
 		$types  = Type::all();
 		$cities = City::all();
 		return view('users.update', compact('user', 'types', 'cities'));

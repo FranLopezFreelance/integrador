@@ -11,8 +11,28 @@ use Illuminate\Support\Facades\Auth;
 
 class ProductsController extends Controller {
 
-	public function create() {
-		return view('products.create');
+	protected function validator(array $data) {
+		return Validator::make($data, [
+				'name'        => 'required|max:255',
+				'description' => 'required|max:255',
+				'brand_id'    => 'required',
+				'section_id'  => 'required',
+				'quantity'    => 'required',
+				'price'       => 'required',
+			]);
+	}
+
+	protected function create(Request $request) {
+		$product = Product::create($request->all());
+		$product->setUserId(Auth::user()->id);
+		$product->save();
+		return redirect("products/detail/$product->id")->with('msg', 'El Producto se creó correctamente.');
+	}
+
+	public function store() {
+		$brands   = Brand::all();
+		$sections = Section::all();
+		return view('products.create', compact('brands', 'sections'));
 	}
 
 	public function getAll() {
@@ -21,8 +41,7 @@ class ProductsController extends Controller {
 	}
 
 	public function getAllMy() {
-		$user_id  = Auth::user()->id;
-		$products = Product::where('user_id', $user_id)->get();
+		$products = Product::where('user_id', Auth::user()->id)->get();
 		return view('products.myList', compact('products'));
 	}
 
@@ -32,17 +51,17 @@ class ProductsController extends Controller {
 	}
 
 	public function listByUser(User $user) {
-		$products = Product::find($user->id);
-		return view('products.list', compact('products'));
-	}
-
-	public function listByBranch(Brand $brand) {
-		$products = Product::find($brand->id);
+		$products = Product::where('user_id', $user->id)->get();
 		return view('products.list', compact('products'));
 	}
 
 	public function listBySections(Section $section) {
-		$products = Product::find($section->id);
+		$products = Product::where('section_id', $section->id)->get();
+		return view('products.list', compact('products'));
+	}
+
+	public function listByBrand(Brand $brand) {
+		$products = Product::where('brand_id', $brand->id)->get();
 		return view('products.list', compact('products'));
 	}
 
@@ -55,18 +74,13 @@ class ProductsController extends Controller {
 	}
 
 	public function update(Product $product) {
-
 		$sections = Section::all();
-		$branchs  = Branch::all();
-		return view('users.update', compact('product', 'sections', 'branchs'));
+		$brands   = Brand::all();
+		return view('products.update', compact('product', 'sections', 'brands'));
 	}
 
 	public function save(Request $request, Product $product) {
-
 		$product->update($request->all());
 		return back()->with('msg', 'Los datos se modificaron correctamente.');
 	}
-
-	//
-
 }

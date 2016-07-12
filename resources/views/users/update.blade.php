@@ -21,7 +21,13 @@
                         {{ csrf_field() }}
                         {{ method_field('PATCH') }}
 
-                        <input type="hidden" name="type_id" value="1" />
+                        <div class="row">
+                            <div class="col-md-4 col-md-offset-4">
+                                <img class="img-circle" width="100" src="/{{ $user->avatar }}" />
+                            </div>
+                        </div>
+
+                        <hr />
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             <label for="name" class="col-md-4 control-label">Nombre</label>

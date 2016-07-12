@@ -6,7 +6,7 @@
         <div class="col-md-12">
 			<h1>Mis Productos</h1>
 			<hr />
-				<a href="" class="btn btn-large btn-primary">Crear un Nuevo Producto</a>
+				<a href="/products/create" class="btn btn-large btn-primary">Crear un Nuevo Producto</a>
 			<hr />
 			@forelse($products as $product)
 				<div class="col-md-3	">
@@ -14,13 +14,12 @@
 					<h4><a href="/products/detail/{{ $product->id }}">{{ $product->name }}</a></h4>
 					<p>{{ $product->description }} </p>
 					<h4>${{ $product->price }} </h4>
+					<h4><a class="btn btn-primary" href="/products/update/{{ $product->id }}">Editar</a></h4>
 					<hr />
-					<h4><a href="">Editar</a></h4>
 				</div>
 			@empty
 				<h3>Aún no tienes productos cargados.</h3>
 			@endforelse
-
 		</div>
 	</div>
 </div>
