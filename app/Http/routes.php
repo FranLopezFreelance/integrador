@@ -36,14 +36,14 @@ Route::group(['prefix' => 'products'], function () {
 		Route::get('list', 'ProductsController@getAll');
 		Route::get('myList', 'ProductsController@getAllMyProducts');
 		Route::get('list/user/{user}', 'ProductsController@listByUser');
-		Route::post('list/section', 'ProductsController@listBySection');
-		Route::post('list/brand', 'ProductsController@listByBrand');
-		Route::post('list/city', 'ProductsController@listByCity');
 		Route::get('detail/{product}', 'ProductsController@detail');
 		Route::get('update/{product}', 'ProductsController@update');
 
 		//POST METHOD
 		Route::post('list/search', 'ProductsController@listByParameter');
+		Route::post('list/section', 'ProductsController@listBySection');
+		Route::post('list/brand', 'ProductsController@listByBrand');
+		Route::post('list/city', 'ProductsController@listByCity');
 		Route::post('create', 'ProductsController@create');
 
 		//PATCH METHOD

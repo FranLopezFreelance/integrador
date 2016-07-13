@@ -8,18 +8,18 @@
 			<div class="panel panel-default">
 
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/products/list/search') }}">
                         {{ csrf_field() }}
 
-                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Búsqueda rápida</label>
+                        <div class="form-group{{ $errors->has('parameter') ? ' has-error' : '' }}">
+                            <label for="parameter" class="col-md-4 control-label">Búsqueda rápida</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}">
+                                <input id="parameter" type="text" class="form-control" name="parameter" value="{{ old('parameter') }}">
 
-                                @if ($errors->has('name'))
+                                @if ($errors->has('parameter'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
+                                        <strong>{{ $errors->first('parameter') }}</strong>
                                     </span>
                                 @endif
                             </div>

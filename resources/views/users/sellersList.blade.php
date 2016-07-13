@@ -12,9 +12,9 @@
 						<img width="100" class="img-circle" src="/{{ $user->avatar }}" />
 						<h4><a href="/users/profile/{{ $user->id }}">{{ $user->name }}</a></h4>
 						<p>Localidad: {{ $user->city->name }} </p>
+						<p>Seguidores: {{ $user->followers->count() }}</p>
 							@if($following->contains($user->id))
-								<h4>Siguiendo</h4>
-								<a href="/users/unfollow/{{ $user->id }}">Dejar de seguir</a>
+								<h4><a class="btn btn-warning" href="/users/unfollow/{{ $user->id }}">Dejar de seguir</a></h4>
 							@else
 								<h4><a class="btn btn-primary" href="/users/follow/{{ $user->id }}">Seguir</a></h4>
 							@endif

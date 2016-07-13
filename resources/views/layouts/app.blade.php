@@ -52,9 +52,9 @@
                     <li><a href="{{ url('/products/list') }}">Productos</a></li>
                     @if (!Auth::guest())
                         <li><a href="{{ url('/users/sellersList') }}">Vendedores</a></li>
-                        <li><a href="{{ url('/users/followingList') }}">Siguiendo</a></li>
+                        <li><a href="{{ url('/users/followingList') }}">Siguiendo ({{ Auth::user()->following->count() }})</a></li>
                         @if (Auth::user()->type_id == 2)
-                            <li><a href="{{ url('/users/followersList') }}">Te siguen</a></li>
+                            <li><a href="{{ url('/users/followersList') }}">Te siguen ({{ Auth::user()->followers->count() }})</a></li>
                         @endif
                     @endif
                 </ul>

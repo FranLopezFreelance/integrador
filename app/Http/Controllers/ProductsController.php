@@ -50,8 +50,11 @@ class ProductsController extends Controller {
 	}
 
 	public function listByParameter(Request $request) {
-		$products = Product::where('');
-		return view('products.search', compact('products'));
+		$parameter = $request->input('parameter');
+		$products  = Product::where('name', 'LIKE', "%$parameter%")
+			->orWhere('description', 'LIKE', "%$parameter%")
+			->get();
+		return view('products.search', compact('products', 'parameter'));
 	}
 
 	public function listByUser(User $user) {
@@ -88,10 +91,6 @@ class ProductsController extends Controller {
 			$products[] = $user->products;
 		}
 		return view('products.list', compact('products', 'c', 'sections', 'brands', 'cities'));
-	}
-
-	public function listByLikeUsers(User $user) {
-		//
 	}
 
 	public function detail(Product $product) {
