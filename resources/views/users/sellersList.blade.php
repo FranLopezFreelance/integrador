@@ -14,6 +14,7 @@
 						<p>Localidad: {{ $user->city->name }} </p>
 							@if($following->contains($user->id))
 								<h4>Siguiendo</h4>
+								<a href="/users/unfollow/{{ $user->id }}">Dejar de seguir</a>
 							@else
 								<h4><a class="btn btn-primary" href="/users/follow/{{ $user->id }}">Seguir</a></h4>
 							@endif

@@ -22,6 +22,7 @@ Route::group(['prefix' => 'users'], function () {
 		Route::get('update', 'UsersController@update');
 		Route::get('sellersList', 'UsersController@sellersList');
 		Route::get('follow/{id}', 'UsersController@follow');
+		Route::get('unfollow/{id}', 'UsersController@unfollow');
 		Route::get('followingList', 'UsersController@followingList');
 		Route::get('followersList', 'UsersController@followersList');
 
@@ -33,10 +34,11 @@ Route::group(['prefix' => 'products'], function () {
 		//GET METHOD
 		Route::get('create', 'ProductsController@store');
 		Route::get('list', 'ProductsController@getAll');
-		Route::get('myList', 'ProductsController@getAllMy');
+		Route::get('myList', 'ProductsController@getAllMyProducts');
 		Route::get('list/user/{user}', 'ProductsController@listByUser');
-		Route::get('list/section/{section}', 'ProductsController@listBySection');
-		Route::get('list/branch/{branch}', 'ProductsController@listByBranch');
+		Route::post('list/section', 'ProductsController@listBySection');
+		Route::post('list/brand', 'ProductsController@listByBrand');
+		Route::post('list/city', 'ProductsController@listByCity');
 		Route::get('detail/{product}', 'ProductsController@detail');
 		Route::get('update/{product}', 'ProductsController@update');
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Brand;
+use App\City;
 use App\Product;
 use App\Section;
 use App\User;
@@ -36,17 +37,20 @@ class ProductsController extends Controller {
 	}
 
 	public function getAll() {
+		$sections = Section::All();
+		$brands   = Brand::All();
+		$cities   = City::All();
 		$products = Product::all();
-		return view('products.list', compact('products'));
+		return view('products.list', compact('products', 'sections', 'brands', 'cities'));
 	}
 
-	public function getAllMy() {
+	public function getAllMyProducts() {
 		$products = Product::where('user_id', Auth::user()->id)->get();
 		return view('products.myList', compact('products'));
 	}
 
 	public function listByParameter(Request $request) {
-		$products = Product::where();
+		$products = Product::where('');
 		return view('products.search', compact('products'));
 	}
 
@@ -55,14 +59,35 @@ class ProductsController extends Controller {
 		return view('products.list', compact('products'));
 	}
 
-	public function listBySections(Section $section) {
-		$products = Product::where('section_id', $section->id)->get();
-		return view('products.list', compact('products'));
+	public function listBySection(Request $request) {
+		$sections = Section::All();
+		$brands   = Brand::All();
+		$cities   = City::All();
+		$s        = Section::find($request->input('id'));
+		$products = $s->products;
+		return view('products.list', compact('products', 's', 'sections', 'brands', 'cities'));
 	}
 
-	public function listByBrand(Brand $brand) {
-		$products = Product::where('brand_id', $brand->id)->get();
-		return view('products.list', compact('products'));
+	public function listByBrand(Request $request) {
+		$sections = Section::All();
+		$brands   = Brand::All();
+		$cities   = City::All();
+		$b        = Brand::find($request->input('id'));
+		$products = $b->products;
+		return view('products.list', compact('products', 'b', 'sections', 'brands', 'cities'));
+	}
+
+	public function listByCity(Request $request) {
+		$products = [];
+		$sections = Section::All();
+		$brands   = Brand::All();
+		$cities   = City::All();
+		$c        = City::find($request->input('id'));
+		$users    = $c->users;
+		foreach ($users as $user) {
+			$products[] = $user->products;
+		}
+		return view('products.list', compact('products', 'c', 'sections', 'brands', 'cities'));
 	}
 
 	public function listByLikeUsers(User $user) {
@@ -74,8 +99,8 @@ class ProductsController extends Controller {
 	}
 
 	public function update(Product $product) {
-		$sections = Section::all();
-		$brands   = Brand::all();
+		$sections = Section::All();
+		$brands   = Brand::All();
 		return view('products.update', compact('product', 'sections', 'brands'));
 	}
 

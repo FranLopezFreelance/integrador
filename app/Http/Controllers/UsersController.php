@@ -38,20 +38,12 @@ class UsersController extends Controller {
 	}
 
 	public function follow($id) {
-		Auth::user()->following()->attach([
-				'user_id'      => Auth::user()->id,
-				'following_id' => $id]
-			//'active'       => 1]
-		);
+		Auth::user()->following()->attach(['following_id' => $id]);
 		return back();
 	}
 
 	public function unFollow($id) {
-		Auth::user()->following()->detach([
-				'user_id'      => Auth::user()->id,
-				'following_id' => $id]
-			//'active'       => 1]
-		);
+		Auth::user()->following()->detach(['following_id' => $id]);
 		return back();
 	}
 
