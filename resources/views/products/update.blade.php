@@ -57,16 +57,16 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('section') ? ' has-error' : '' }}">
-                            <label for="section" class="col-md-4 control-label">Sección</label>
+                            <label for="section_id" class="col-md-4 control-label">Sección</label>
 
                             <div class="col-md-6">
-                                <select class="form-control" id="section" name="section">
+                                <select class="form-control" id="section_id" name="section_id">
                                     <option value="0">Seleccionar... </option>
 
                                     @foreach($sections as $section)
                                         <option  value="{{ $section->id }}"
 
-                                            @if($section->id == old('section') OR $section->id == $product->section_id)
+                                            @if($section->id == old('section_id') OR $section->id == $product->section_id)
                                                 selected
                                             @endif
                                         >
@@ -75,25 +75,25 @@
                                     @endforeach
                                 </select>
 
-                                @if ($errors->has('section'))
+                                @if ($errors->has('section_id'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('section') }}</strong>
+                                        <strong>{{ $errors->first('section_id') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
 
                         <div class="form-group{{ $errors->has('section') ? ' has-error' : '' }}">
-                            <label for="brand" class="col-md-4 control-label">Marca</label>
+                            <label for="brand_id" class="col-md-4 control-label">Marca</label>
 
                             <div class="col-md-6">
-                                <select class="form-control" id="brand" name="brand">
+                                <select class="form-control" id="brand_id" name="brand_id">
                                     <option value="0">Seleccionar... </option>
 
                                     @foreach($brands as $brand)
                                         <option  value="{{ $brand->id }}"
 
-                                            @if($brand->id == old('brand') OR $brand->id == $product->brand_id)
+                                            @if($brand->id == old('brand_id') OR $brand->id == $product->brand_id)
                                                 selected
                                             @endif
                                         >
@@ -102,9 +102,9 @@
                                     @endforeach
                                 </select>
 
-                                @if ($errors->has('brand'))
+                                @if ($errors->has('brand_id'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('brand') }}</strong>
+                                        <strong>{{ $errors->first('brand_id') }}</strong>
                                     </span>
                                 @endif
                             </div>
