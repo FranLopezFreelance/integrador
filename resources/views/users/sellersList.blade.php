@@ -22,7 +22,7 @@
 					</div>
 				@endif
 			@empty
-				<h3>Aún no sigues a ningún Usario</h3>
+				<h3>No hay Vendedores registrados.</h3>
 			@endforelse
 		</div>
 	</div>
