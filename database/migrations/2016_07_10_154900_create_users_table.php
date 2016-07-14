@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration {
 				$table->string('password');
 				$table->integer('type_id');
 				$table->integer('city_id')->unsigned();
-				$table->foreign('city_id')->references('id')->on('cities');
+				$table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade');
 				$table->string('avatar');
 				$table->rememberToken();
 				$table->timestamps();

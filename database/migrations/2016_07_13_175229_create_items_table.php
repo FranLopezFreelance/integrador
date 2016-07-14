@@ -13,9 +13,9 @@ class CreateItemsTable extends Migration {
 		Schema::create('items', function (Blueprint $table) {
 				$table->increments('id');
 				$table->integer('order_id')->unsigned();
-				$table->foreign('order_id')->references('id')->on('orders');
+				$table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
 				$table->integer('product_id')->unsigned();
-				$table->foreign('product_id')->references('id')->on('products');
+				$table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
 				$table->integer('quantity');
 				$table->float('price');
 				$table->float('subtotal');
