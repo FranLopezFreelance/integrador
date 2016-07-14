@@ -17,7 +17,8 @@ class CreateUsersTable extends Migration {
 				$table->string('email')->unique();
 				$table->string('password');
 				$table->integer('type_id');
-				$table->integer('city_id');
+				$table->integer('city_id')->unsigned();
+				$table->foreign('city_id')->references('id')->on('cities');
 				$table->string('avatar');
 				$table->rememberToken();
 				$table->timestamps();

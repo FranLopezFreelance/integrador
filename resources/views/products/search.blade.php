@@ -39,7 +39,6 @@
 					<h4><a href="/products/detail/{{ $product->id }}">{{ $product->name }}</a></h4>
 					<p>{{ $product->description }} </p>
 					<h4>${{ $product->price }} </h4>
-					<h4><a class="btn btn-primary" href="/products/update/{{ $product->id }}">Editar</a></h4>
 					<hr />
 				</div>
 			@empty

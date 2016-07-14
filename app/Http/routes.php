@@ -19,7 +19,7 @@ Route::group(['prefix' => 'users'], function () {
 		//GET METHOD
 		Route::get('myProfile', 'UsersController@myProfile');
 		Route::get('profile/{user}', 'UsersController@profile');
-		Route::get('update', 'UsersController@update');
+		Route::get('update', 'UsersController@update')->middleware('web');
 		Route::get('sellersList', 'UsersController@sellersList');
 		Route::get('follow/{id}', 'UsersController@follow');
 		Route::get('unfollow/{id}', 'UsersController@unfollow');

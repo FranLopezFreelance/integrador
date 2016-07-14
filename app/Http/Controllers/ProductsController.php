@@ -12,6 +12,10 @@ use Illuminate\Support\Facades\Auth;
 
 class ProductsController extends Controller {
 
+	/*public function __construct() {
+	$this->middleware('auth');
+	}*/
+
 	protected function validator(array $data) {
 		return Validator::make($data, [
 				'name'        => 'required|max:255',
@@ -98,6 +102,10 @@ class ProductsController extends Controller {
 	}
 
 	public function update(Product $product) {
+		if (Auth::guest()) {
+			return redirect('/');
+		}
+
 		$sections = Section::All();
 		$brands   = Brand::All();
 		return view('products.update', compact('product', 'sections', 'brands'));
