@@ -73,8 +73,11 @@
 
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="/users/myProfile"><i class="fa fa-btn fa-user"></i>Mi Perfil</a></li>
+                                <li><a href="/orders/purchases"><i class="fa fa-btn fa-shopping-cart"></i>Mis Compras</a></li>
+
                                 <!-- Customer Links -->
                                 @if (Auth::user()->type_id == 2)
+                                <li><a href="/orders/sales"><i class="fa fa-btn fa-signal"></i>Mis Ventas</a></li>
                                     <li><a href="/products/myList"><i class="fa fa-btn fa-align-justify"></i>Mis Productos</a></li>
                                 @endif
 

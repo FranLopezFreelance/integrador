@@ -38,6 +38,7 @@ Route::group(['prefix' => 'products'], function () {
 		Route::get('list/user/{user}', 'ProductsController@listByUser');
 		Route::get('detail/{product}', 'ProductsController@detail');
 		Route::get('update/{product}', 'ProductsController@update');
+		Route::get('buy/{product}', 'ProductsController@buy');
 
 		//POST METHOD
 		Route::post('list/search', 'ProductsController@listByParameter');
@@ -48,6 +49,20 @@ Route::group(['prefix' => 'products'], function () {
 
 		//PATCH METHOD
 		Route::patch('update/{product}', 'ProductsController@save');
+
+	});
+
+Route::group(['prefix' => 'orders'], function () {
+		//GET METHOD
+		Route::get('purchases', 'OrdersController@purchasesList');
+		Route::get('sales', 'OrdersController@salesList');
+		Route::get('update/{order}', 'OrdersController@update');
+
+		//POST METHOD
+		Route::post('create/{product}', 'OrdersController@create');
+
+		//PATCH METHOD
+		Route::patch('update/{order}', 'OrdersController@save');
 
 	});
 

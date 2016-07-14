@@ -3,6 +3,7 @@
 namespace App;
 
 use App\City;
+
 use App\Product;
 use App\Type;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -44,6 +45,14 @@ class User extends Authenticatable {
 
 	public function followers() {
 		return $this->belongsToMany(User::class , 'followings', 'following_id', 'user_id');
+	}
+
+	public function purchases() {
+		return $this->belongsToMany(User::class , 'orders', 'id', 'seller_id');
+	}
+
+	public function sales() {
+		return $this->belongsToMany(User::class , 'orders', 'id', 'seller_id');
 	}
 
 }

@@ -99,12 +99,20 @@ class ProductsController extends Controller {
 
 	public function update(Product $product) {
 		if (Auth::guest()) {
-			return redirect('/');
+			return redirect('/login');
 		}
 
 		$sections = Section::All();
 		$brands   = Brand::All();
 		return view('products.update', compact('product', 'sections', 'brands'));
+	}
+
+	public function buy(Product $product) {
+		if (Auth::guest()) {
+			return redirect('/login');
+		}
+
+		return view('products.buy', compact('product'));
 	}
 
 	public function save(Request $request, Product $product) {

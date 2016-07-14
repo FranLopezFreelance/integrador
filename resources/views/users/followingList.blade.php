@@ -12,6 +12,7 @@
 						<img width="100" class="img-circle" src="/{{ $user->avatar }}" />
 						<h4><a href="/users/profile/{{ $user->id }}">{{ $user->name }}</a></h4>
 						<p>Localidad: {{ $user->city->name }} </p>
+						<h4><a class="btn btn-warning" href="/users/unfollow/{{ $user->id }}">Dejar de seguir</a></h4>
 						<hr />
 					</div>
 				@endif
