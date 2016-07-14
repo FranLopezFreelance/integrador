@@ -1,24 +1,8 @@
-<?php
-
-$citys = [
-	1 => 'Almagro',
-	2 => 'Balvanera',
-	3 => 'Belgrano',
-	4 => 'Caballito',
-	5 => 'Esteban Echeverría',
-	6 => 'Monserrat',
-	7 => 'Nuñez',
-	8 => 'Palermo',
-	9 => 'Recoleta',
-	10=> 'San Telmo',
-	11=> 'Villa Crespo',
-	12=> 'Villa Urquiza'
-];
-
-?>
 @extends('layouts.app')
 
 @section('content')
+
+<?php $cities = App\City::all()?>
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
@@ -109,14 +93,14 @@ $citys = [
                                 <select class="form-control" id="city_id" name="city_id">
                                     <option value="0">Seleccionar... </option>
 
-                                    @foreach($citys as $id => $city)
-                                        <option  value="{{ $id }}"
+                                    @foreach($cities as $city)
+                                        <option  value="{{ $city->id }}"
 
-                                            @if($id == old('city_id'))
+                                            @if($city->id == old('city_id'))
                                                 selected
                                             @endif
                                         >
-                                            {{ $city }}
+                                            {{ $city->name }}
                                         </option>
                                     @endforeach
                                 </select>
