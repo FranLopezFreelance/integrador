@@ -26,8 +26,8 @@ class Product extends Model {
 		return $this->hasMany(Item::class );
 	}
 
-	public function comments() {
-		return $this->hasMany(Comment::class );
+	public function qualifications() {
+		return $this->hasMany(Qualifyproduct::class );
 	}
 
 	public function setUserId($id) {

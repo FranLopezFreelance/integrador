@@ -16,11 +16,14 @@
                     Productos:
                     <ul>
                         @foreach($order->items as $item)
-                            <li>{{ $item->product->name }}
+                            <li><h4>{{ $item->product->name }}
                             ${{ $item->product->price }}
                             x {{ $item->quantity }}
                             - Sub Total: ${{ $item->subtotal }}
-                            </li>
+                            @if($order->customer_ok == 1)
+                                <a class="btn btn-xs btn-success" href="/qualifications/product/{{ $order->id }}">Calificar Producto</a>
+                            @endif
+                            </h4></li>
                         @endforeach
                     </ul>
                     <h4>Total: {{ $order->total }}</h4>
@@ -28,10 +31,10 @@
                     <p>Contacto: {{ $order->seller->email }}</p>
 
                     @if($order->customer_ok == 0)
-                        <p><a class="btn btn-xs btn-warning" href="/orders/purchaseDelivered/{{ $order->id }}">Confirmar Entrega</a></p>
+                        <p><a class="btn btn-xs btn-warning" href="/orders/customerOK/{{ $order->id }}">Confirmar Entrega</a></p>
                     @else
                         <p>Compra recibida.</p>
-                        <p><a class="btn btn-xs btn-success" href="/orders/comment/{{ $order->id }}">Comentar</a></p>
+                        <p><a class="btn btn-xs btn-success" href="/qualifications/seller/{{ $order->id }}">Calificar Vendedor</a></p>
                     @endif
 
 

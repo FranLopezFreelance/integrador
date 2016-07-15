@@ -26,7 +26,13 @@
                     <h4>Total: {{ $order->total }}</h4>
                     <p>Comprador: <a href="/users/profile/{{ $order->customer->id }}">{{ $order->customer->name }}</a></p>
                     <p>Contacto: {{ $order->customer->email }}</p>
-                    <p><a class="btn btn-xs btn-warning" href="/orders/purchaseDelivered/{{ $order->id }}">Confirmar Entrega</a></p>
+
+                    @if($order->seller_ok == 0)
+                        <p><a class="btn btn-xs btn-warning" href="/orders/sellerOK/{{ $order->id }}">Confirmar Entrega</a></p>
+                    @else
+                        <p>Compra Entregada.</p>
+                        <p><a class="btn btn-xs btn-success" href="/qualifications/customer/{{ $order->id }}">Calificar Comprador</a></p>
+                    @endif
 
                 <hr />
             @empty

@@ -26,6 +26,10 @@ class Order extends Model {
 		return $this->hasMany(Item::class );
 	}
 
+	public function comments() {
+		return $this->hasMany(Comment::class );
+	}
+
 	public function setCustomerId($id) {
 		$this->customer_id = $id;
 	}
@@ -40,6 +44,14 @@ class Order extends Model {
 
 	public function setTotal($total) {
 		$this->total = $total;
+	}
+
+	public function setCustomerOK($value) {
+		$this->customer_ok = $value;
+	}
+
+	public function setSellerOK($value) {
+		$this->seller_ok = $value;
 	}
 
 	public function addItem(Order $order, Product $product, $q) {

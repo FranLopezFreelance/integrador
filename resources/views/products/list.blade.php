@@ -70,9 +70,9 @@
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('parameter') ? ' has-error' : '' }}">
-                            <label for="parameter" class="col-md-4 control-label">Búsqueda rápida</label>
+                            <label for="parameter" class="col-md-2 control-label">Búsqueda rápida</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-10">
                                 <input id="parameter" type="text" class="form-control" name="parameter" value="{{ old('parameter') }}">
 
                                 @if ($errors->has('parameter'))
@@ -84,7 +84,7 @@
                         </div>
 
                         <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
+                            <div class="col-md-10 col-md-offset-2">
                                 <button type="submit" class="btn btn-primary">
                                     <i class="fa fa-btn fa-search"></i> Buscar
                                 </button>
@@ -101,8 +101,7 @@
 							<h4><a href="/products/detail/{{ $subProduct->id }}">{{ $subProduct->name }}</a></h4>
 							<p>{{ $subProduct->description }} </p>
 							<h4>${{ $subProduct->price }} </h4>
-							<p>Ventas: {{ $product->sales()->count() }}</p>
-							<p>Comentarios: {{ $product->comments()->count() }}</p>
+							<p>Ventas: {{ $subProduct->sales()->count() }} | Calificaciones: {{ $subProduct->qualifications()->count() }}</p>
 							<hr />
 						</div>
 					@endforeach
@@ -112,8 +111,7 @@
 						<h4><a href="/products/detail/{{ $product->id }}">{{ $product->name }}</a></h4>
 						<p>{{ $product->description }} </p>
 						<h4>${{ $product->price }} </h4>
-						<p>Ventas: {{ $product->sales()->count() }}</p>
-						<p>Comentarios: {{ $product->comments()->count() }}</p>
+						<p>Ventas: {{ $product->sales()->count() }} | Calificaciones: {{ $product->qualifications()->count() }}</p>
 						<hr />
 					</div>
 				@endif
