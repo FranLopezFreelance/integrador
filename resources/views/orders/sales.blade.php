@@ -11,9 +11,25 @@
                 </div>
             @endif
 
-            @foreach($sales as $order)
-				<li> {{ $order->id }} </li>
-            @endforeach
+            @forelse($sales as $order)
+				<h4> ID Pedido: {{ $order->id }} </h4>
+                    Productos:
+                    <ul>
+                        @foreach($order->items as $item)
+                            <li>{{ $item->product->name }}
+                            ${{ $item->product->price }}
+                            x {{ $item->quantity }}
+                            - Sub Total: ${{ $item->subtotal }}
+                            </li>
+                        @endforeach
+                    </ul>
+
+                    <p>Comprador: <a href="/users/profile/{{ $order->customer->id }}">{{ $order->customer->name }}</a></p>
+
+                <hr />
+            @empty
+                <h4>No has realizado ventas.</h4>
+            @endforelse
 
 		</div>
 	</div>

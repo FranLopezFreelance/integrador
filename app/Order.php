@@ -14,8 +14,12 @@ class Order extends Model {
 		'customer_id', 'seller_id', 'state', 'total'
 	];
 
-	public function user() {
-		return $this->belongsTo(User::class );
+	public function customer() {
+		return $this->belongsTo(User::class , 'customer_id');
+	}
+
+	public function seller() {
+		return $this->belongsTo(User::class , 'seller_id');
 	}
 
 	public function items() {

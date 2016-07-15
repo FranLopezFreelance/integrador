@@ -22,7 +22,12 @@ class Product extends Model {
 		return $this->belongsTo(Section::class );
 	}
 
+	public function sales() {
+		return $this->hasMany(Item::class , 'product_id');
+	}
+
 	public function setUserId($id) {
 		$this->user_id = $id;
 	}
+
 }

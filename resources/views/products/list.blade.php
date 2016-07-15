@@ -110,6 +110,7 @@
 						<h4><a href="/products/detail/{{ $product->id }}">{{ $product->name }}</a></h4>
 						<p>{{ $product->description }} </p>
 						<h4>${{ $product->price }} </h4>
+						<p>Ventas: {{ $product->sales()->count() }}</p>
 						<hr />
 					</div>
 				@endif
