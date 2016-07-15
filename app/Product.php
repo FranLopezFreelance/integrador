@@ -23,7 +23,11 @@ class Product extends Model {
 	}
 
 	public function sales() {
-		return $this->hasMany(Item::class , 'product_id');
+		return $this->hasMany(Item::class );
+	}
+
+	public function comments() {
+		return $this->hasMany(Comment::class );
 	}
 
 	public function setUserId($id) {

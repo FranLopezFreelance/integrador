@@ -24,7 +24,7 @@
 				<p>Vendedor:
 				@if(!Auth::guest())
 					@if($product->user->id == Auth::user()->id)
-						<p>Vendedor: Tú</p>
+						Tú</p>
 					@else
 						<a href="/users/profile/{{ $product->user_id }}">{{ $product->user->name }}</a> </p>
 					@endif
@@ -37,6 +37,28 @@
 					<a href="/users/profile/{{ $product->user_id }}">{{ $product->user->name }}</a> </p>
 					<p><a class="btn btn-success" href="/products/buy/{{ $product->id }}">Comprar</a></p>
 				@endif
+
+				<hr />
+
+				<h3>Comentarios:</h3>
+
+				<hr />
+				<ul>
+				@forelse($product->comments as $comment)
+					<div class="row">
+						<div class="col-md-1">
+							<img width="60" class="img-circle" src="/{{ $comment->user->avatar }}" />
+						</div>
+						<div class="col-md-11">
+							<h4>{{ $comment->body }}</h4>
+							<p>Por <b><a href="/users/profile/{{ $comment->user->id }}">{{ $comment->user->name }}</a></b> - {{ $comment->created_at }}</p>
+						</div>
+					</div>
+					<hr />
+				@empty
+					<h4>Este producto aún no tiene comentarios.</h4>
+				@endforelse
+				</ul>
 		</div>
 
 		</div>

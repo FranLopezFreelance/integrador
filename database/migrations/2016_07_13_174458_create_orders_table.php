@@ -16,7 +16,8 @@ class CreateOrdersTable extends Migration {
 				$table->foreign('customer_id')->references('id')->on('users')->onDelete('cascade');
 				$table->integer('seller_id')->unsigned();
 				$table->foreign('seller_id')->references('id')->on('users')->onDelete('cascade');
-				$table->integer('state');
+				$table->integer('customer_ok');
+				$table->integer('seller_ok');
 				$table->float('total');
 				$table->timestamps();
 			});
