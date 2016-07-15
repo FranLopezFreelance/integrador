@@ -16,7 +16,6 @@ class OrdersController extends Controller {
 		$order = new Order;
 		$order->setCustomerId(Auth::user()->id);
 		$order->setSellerId($product->user_id);
-		$order->setState(1);
 		$order->setTotal($total);
 		$order->save();
 		$order->addItem($order, $product, $q);

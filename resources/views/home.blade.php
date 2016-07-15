@@ -11,6 +11,7 @@
                             <h4><a href="/products/detail/{{ $product->id }}">{{ $product->name }}</a></h4>
                             <p>{{ $product->description }} </p>
                             <h4>${{ $product->price }} </h4>
+                            <p>Ventas: {{ $product->sales()->count() }}</p>
                             <hr />
                         </div>
                     @endforeach
@@ -28,6 +29,7 @@
                                 <p>{{ $product->description }} </p>
                                 <h4>${{ $product->price }} </h4>
                                 <h5><a href="/users/profile/{{ $product->user_id }}">{{ $product->user->name }}</a></h5>
+                                <p>Ventas: {{ $product->sales()->count() }}</p>
                                 <hr />
                             </div>
                         @endif

@@ -3,12 +3,17 @@
 namespace App;
 
 use App\Order;
+use App\Product;
 use Illuminate\Database\Eloquent\Model;
 
 class Item extends Model {
 
-	public function products() {
+	public function order() {
 		return $this->hasOne(Order::class );
+	}
+
+	public function product() {
+		return $this->belongsTo(Product::class );
 	}
 
 	public function setOrderId($id) {

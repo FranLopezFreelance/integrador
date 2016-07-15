@@ -101,6 +101,8 @@
 							<h4><a href="/products/detail/{{ $subProduct->id }}">{{ $subProduct->name }}</a></h4>
 							<p>{{ $subProduct->description }} </p>
 							<h4>${{ $subProduct->price }} </h4>
+							<p>Ventas: {{ $product->sales()->count() }}</p>
+							<p>Comentarios: {{ $product->comments()->count() }}</p>
 							<hr />
 						</div>
 					@endforeach
@@ -110,6 +112,8 @@
 						<h4><a href="/products/detail/{{ $product->id }}">{{ $product->name }}</a></h4>
 						<p>{{ $product->description }} </p>
 						<h4>${{ $product->price }} </h4>
+						<p>Ventas: {{ $product->sales()->count() }}</p>
+						<p>Comentarios: {{ $product->comments()->count() }}</p>
 						<hr />
 					</div>
 				@endif

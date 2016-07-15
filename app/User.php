@@ -48,11 +48,11 @@ class User extends Authenticatable {
 	}
 
 	public function purchases() {
-		return $this->belongsToMany(User::class , 'orders', 'id', 'seller_id');
+		return $this->hasMany(Order::class , 'customer_id');
 	}
 
 	public function sales() {
-		return $this->belongsToMany(User::class , 'orders', 'id', 'seller_id');
+		return $this->hasMany(Order::class , 'seller_id');
 	}
 
 }
