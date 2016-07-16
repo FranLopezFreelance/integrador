@@ -45,7 +45,7 @@
 	    	@endif
 
     		<hr />
-
+			<!--
     		@if(isset($c))
 				<h4>Barrio: {{ $c->name }} <a href="/products/list" class="btn btn-xs btn-warning pull-right">Quitar</a></h4>
 			@else
@@ -62,7 +62,10 @@
 	    			<button class="btn btn-primary" type="submit">Ir</button>
 	    		</form>
 	    	@endif
+
     		<hr />
+
+    		-->
     	</div>
         <div class="col-md-9">
 
@@ -116,6 +119,13 @@
 					</div>
 				@endif
 			@endforeach
+
+
+			<div class="row">
+				<div class="col-md-12">
+					{!! $products->render() !!}
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

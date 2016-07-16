@@ -14,7 +14,7 @@
 					<h4><a href="/products/detail/{{ $product->id }}">{{ $product->name }}</a></h4>
 					<p>{{ $product->description }} </p>
 					<h4>${{ $product->price }} </h4>
-					<p>Comentarios: {{ $product->comments()->count() }} </p>
+					<p>Ventas: {{ $product->sales()->count() }} | Calificaiones: {{ $product->qualifications()->count() }} </p>
 					<h4><a class="btn btn-primary" href="/products/update/{{ $product->id }}">Editar</a></h4>
 					<hr />
 				</div>

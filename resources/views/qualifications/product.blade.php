@@ -12,6 +12,10 @@
 
 	                <h4>¿Qué te pereció el Producto?</h4>
 
+	                <form method="post" action="/qualifications/product/{{ $order->id }}">
+
+						{{ csrf_field() }}
+
 	                	@foreach($qualities as $quality)
 	                		<div class="radio">
 							  <label>
@@ -27,6 +31,8 @@
 
 	                <textarea class="form-control" name="comment" rows="3"></textarea>
 
+	                <input type="hidden" name="product_id" value="" />
+
 	                <hr />
 
 					<div class="form-group">
@@ -35,6 +41,8 @@
                                 Calificar
                             </button>
                     </div>
+
+                    </form>
 
 				</div>
             </div>

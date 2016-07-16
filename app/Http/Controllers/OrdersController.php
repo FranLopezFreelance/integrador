@@ -37,12 +37,12 @@ class OrdersController extends Controller {
 	public function customerOK(Order $order) {
 		$order->setCustomerOK(1);
 		$order->save();
-		return back();
+		return back()->with('msg', 'Entrega confirmada. No te olvides de calificar al Vendedor y los Productos.');
 	}
 
 	public function sellerOK(Order $order) {
 		$order->setSellerOK(1);
 		$order->save();
-		return back();
+		return back()->with('msg', 'Entrega confirmada. No te olvides de calificar al Comprador.');
 	}
 }

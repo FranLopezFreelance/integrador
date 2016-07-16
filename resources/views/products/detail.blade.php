@@ -45,6 +45,7 @@
 
 				<hr />
 				<ul>
+
 				@forelse($product->qualifications as $qualification)
 					<div class="row">
 						<div class="col-md-1">

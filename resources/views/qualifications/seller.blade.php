@@ -12,6 +12,10 @@
 
 	                <h4>¿Qué te pereció el Vendedor?</h4>
 
+	                <form method="post" action="/qualifications/seller/{{ $order->id }}">
+
+	                	{{ csrf_field() }}
+
 	                	@foreach($qualities as $quality)
 	                		<div class="radio">
 							  <label>

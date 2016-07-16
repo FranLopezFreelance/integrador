@@ -31,7 +31,11 @@
                         <p><a class="btn btn-xs btn-warning" href="/orders/sellerOK/{{ $order->id }}">Confirmar Entrega</a></p>
                     @else
                         <p>Compra Entregada.</p>
-                        <p><a class="btn btn-xs btn-success" href="/qualifications/customer/{{ $order->id }}">Calificar Comprador</a></p>
+                        @if(isset($order->qualifyCustomer) && $order->qualifyCustomer->user_id == Auth::user()->id )
+                            <p>Ya calificaste al comprador</p>
+                        @else
+                            <p><a class="btn btn-xs btn-success" href="/qualifications/customer/{{ $order->id }}">Calificar Comprador</a></p>
+                        @endif
                     @endif
 
                 <hr />

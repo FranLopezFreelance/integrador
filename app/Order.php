@@ -26,8 +26,16 @@ class Order extends Model {
 		return $this->hasMany(Item::class );
 	}
 
-	public function comments() {
-		return $this->hasMany(Comment::class );
+	public function qualifyProducts() {
+		return $this->hasMany(Qualifyproduct::class );
+	}
+
+	public function qualifySeller() {
+		return $this->hasOne(Qualifyseller::class );
+	}
+
+	public function qualifyCustomer() {
+		return $this->hasOne(Qualifycustomer::class );
 	}
 
 	public function setCustomerId($id) {
@@ -54,11 +62,11 @@ class Order extends Model {
 		$this->seller_ok = $value;
 	}
 
-	public function addItem(Order $order, Product $product, $q) {
+	public function addItem(Order $order, Product $product, $quantity) {
 		$item = new Item();
 		$item->setOrderId($order->id);
 		$item->setProductId($product->id);
-		$item->setQuantity($q);
+		$item->setQuantity($quantity);
 		$item->setPrice($product->price);
 		$item->save();
 	}
