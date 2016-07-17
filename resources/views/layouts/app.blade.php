@@ -49,13 +49,25 @@
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
+
                     <li><a href="{{ url('/products/list') }}">Productos</a></li>
+
+                    <!-- Si estás logueado podés ver a los vendedores, seguidores y notificaciones -->
                     @if (!Auth::guest())
                         <li><a href="{{ url('/users/sellersList') }}">Vendedores</a></li>
-                        <li><a href="{{ url('/users/followingList') }}">Siguiendo ({{ Auth::user()->following->count() }})</a></li>
-                        @if (Auth::user()->type_id == 2)
-                            <li><a href="{{ url('/users/followersList') }}">Te siguen ({{ Auth::user()->followers->count() }})</a></li>
-                        @endif
+
+                    <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                Seguidores <span class="caret"></span>
+                            </a>
+                        <ul class="dropdown-menu" role="menu">
+                                <li><a href="{{ url('/users/followingList') }}">Tú sigues ({{ Auth::user()->following->count() }})</a></li>
+                                <li><a href="{{ url('/users/followersList') }}">Te siguen ({{ Auth::user()->followers->count() }})</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="{{ url('/notifications/list') }}">Notificaciones</a></li>
+
                     @endif
                 </ul>
 

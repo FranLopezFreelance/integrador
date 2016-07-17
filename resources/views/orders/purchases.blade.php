@@ -12,15 +12,24 @@
             @endif
 
             @forelse($purchases as $order)
+
 				<p> ID Pedido: {{ $order->id }} </p>
                     Productos:
                     <ul>
                         @foreach($order->items as $item)
-                            <li>{{ $item->product->name }}
+                            <li><h4><a href="/products/detail/{{ $item->product->id }}">{{ $item->product->name }}</a>
                             ${{ $item->product->price }}
                             x {{ $item->quantity }}
                             - Sub Total: ${{ $item->subtotal }}
-                            </li>
+                            @if($order->customer_ok == 1)
+                                @if(isset($order->qualifyProducts()->first()->product_id) &&
+                                $order->qualifyProducts()->first()->product_id == $item->product->id)
+                                    (Ya calificaste)
+                                @else
+                                    <a class="btn btn-xs btn-success" href="/qualifications/product/{{ $order->id }}">Calificar Producto</a>
+                                @endif
+                            @endif
+                            </h4></li>
                         @endforeach
                     </ul>
                     <h4>Total: {{ $order->total }}</h4>
@@ -28,10 +37,15 @@
                     <p>Contacto: {{ $order->seller->email }}</p>
 
                     @if($order->customer_ok == 0)
-                        <p><a class="btn btn-xs btn-warning" href="/orders/purchaseDelivered/{{ $order->id }}">Confirmar Entrega</a></p>
+                        <p><a class="btn btn-xs btn-warning" href="/orders/customerOK/{{ $order->id }}">Confirmar Entrega</a></p>
                     @else
                         <p>Compra recibida.</p>
-                        <p><a class="btn btn-xs btn-success" href="/orders/comment/{{ $order->id }}">Comentar</a></p>
+
+                        @if(isset($order->qualifySeller) && $order->qualifySeller->user_id == Auth::user()->id )
+                            <p>Ya calificaste al vendedor</p>
+                        @else
+                        <p><a class="btn btn-xs btn-success" href="/qualifications/seller/{{ $order->id }}">Calificar Vendedor</a></p>
+                        @endif
                     @endif
 
 

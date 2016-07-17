@@ -57,12 +57,36 @@ Route::group(['prefix' => 'orders'], function () {
 		Route::get('purchases', 'OrdersController@purchasesList');
 		Route::get('sales', 'OrdersController@salesList');
 		Route::get('update/{order}', 'OrdersController@update');
+		Route::get('customerOK/{order}', 'OrdersController@customerOK');
+		Route::get('sellerOK/{order}', 'OrdersController@sellerOK');
 
 		//POST METHOD
 		Route::post('create/{product}', 'OrdersController@create');
 
 		//PATCH METHOD
 		Route::patch('update/{order}', 'OrdersController@save');
+
+	});
+
+Route::group(['prefix' => 'qualifications'], function () {
+		//GET METHOD
+		Route::get('customer/{order}', 'QualificationsController@customer');
+		Route::get('seller/{order}', 'QualificationsController@seller');
+		Route::get('product/{order}', 'QualificationsController@product');
+
+		//POST METHOD
+		Route::post('customer/{order}', 'QualificationsController@qualifyCustomer');
+		Route::post('seller/{order}', 'QualificationsController@qualifySeller');
+		Route::post('product/{order}', 'QualificationsController@qualifyProduct');
+
+		//PATCH METHOD
+		Route::patch('update/{qualify}', 'OrdersController@save');
+
+	});
+
+Route::group(['prefix' => 'notifications'], function () {
+		//GET METHOD
+		Route::get('list', 'NotificationsController@listAll');
 
 	});
 

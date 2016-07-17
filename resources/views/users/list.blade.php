@@ -17,6 +17,10 @@
 			@empty
 				<h3>Aún no sigues a ningún Usario</h3>
 			@endforelse
+
+			<hr />
+
+			{{ !! $users->render() !! }}
 		</div>
 	</div>
 </div>

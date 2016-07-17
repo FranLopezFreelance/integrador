@@ -40,6 +40,15 @@ class DatabaseSeeder extends Seeder {
 				'name' => 'Colegiales',
 			]);
 		DB::table('cities')->insert([
+				'name' => 'Flores',
+			]);
+		DB::table('cities')->insert([
+				'name' => 'Floresta',
+			]);
+		DB::table('cities')->insert([
+				'name' => 'Liniers',
+			]);
+		DB::table('cities')->insert([
 				'name' => 'Palermo',
 			]);
 		DB::table('cities')->insert([
@@ -47,6 +56,9 @@ class DatabaseSeeder extends Seeder {
 			]);
 		DB::table('cities')->insert([
 				'name' => 'Parque Chaz',
+			]);
+		DB::table('cities')->insert([
+				'name' => 'Parque Saavedra',
 			]);
 		DB::table('cities')->insert([
 				'name' => 'Recoleta',
@@ -59,6 +71,12 @@ class DatabaseSeeder extends Seeder {
 			]);
 		DB::table('cities')->insert([
 				'name' => 'Villa Crespo',
+			]);
+		DB::table('cities')->insert([
+				'name' => 'Villa Luro',
+			]);
+		DB::table('cities')->insert([
+				'name' => 'Villa Ortuzar',
 			]);
 		DB::table('cities')->insert([
 				'name' => 'Villa Urquiza',
@@ -164,6 +182,48 @@ class DatabaseSeeder extends Seeder {
 			]);
 		DB::table('sections')->insert([
 				'name' => 'Infusiones',
+			]);
+		DB::table('sections')->insert([
+				'name' => 'Frutos Secos',
+			]);
+		DB::table('qualityproducts')->insert([
+				'name' => 'No me gustó',
+			]);
+		DB::table('qualityproducts')->insert([
+				'name' => 'Normal',
+			]);
+		DB::table('qualityproducts')->insert([
+				'name' => 'Buen Producto',
+			]);
+		DB::table('qualityproducts')->insert([
+				'name' => 'Muy buen Producto',
+			]);
+		DB::table('qualityproducts')->insert([
+				'name' => 'Excelente Producto',
+			]);
+		DB::table('qualitycustomers')->insert([
+				'name' => 'Nunca se comunicó',
+			]);
+		DB::table('qualitycustomers')->insert([
+				'name' => 'Neutral',
+			]);
+		DB::table('qualitycustomers')->insert([
+				'name' => 'Comprador Responsable',
+			]);
+		DB::table('qualitysellers')->insert([
+				'name' => 'Excelente Predisposición',
+			]);
+		DB::table('qualitysellers')->insert([
+				'name' => 'Nunca se comunicó',
+			]);
+		DB::table('qualitysellers')->insert([
+				'name' => 'Neutral',
+			]);
+		DB::table('qualitysellers')->insert([
+				'name' => 'Vendedor Responsable',
+			]);
+		DB::table('qualitysellers')->insert([
+				'name' => 'Excelente Atención',
 			]);
 	}
 }

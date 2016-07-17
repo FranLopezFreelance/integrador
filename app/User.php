@@ -55,4 +55,12 @@ class User extends Authenticatable {
 		return $this->hasMany(Order::class , 'seller_id');
 	}
 
+	public function qualifyCustomer() {
+		return $this->hasMany(Qualifycustomer::class , 'customer_id');
+	}
+
+	public function qualifySeller() {
+		return $this->hasMany(Qualifyseller::class , 'seller_id');
+	}
+
 }

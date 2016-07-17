@@ -20,6 +20,18 @@
                         <p><b>Barrio:</b> {{  $user->city->name  }}</p>
                         <p><b>Perfil:</b> {{  $user->type->name  }}</p>
 
+                        <hr />
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4><a href="">Calificaciones como Vendedor:
+                                {{ $user->qualifySeller()->count() }}</a></h4>
+                            </div>
+                            <div class="col-md-6">
+                                <h4><a href="">Calificaciones como Comprador:
+                                {{ $user->qualifyCustomer()->count() }}</a></h4>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
