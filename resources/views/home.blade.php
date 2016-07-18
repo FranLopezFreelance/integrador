@@ -8,11 +8,26 @@
             <hr />
                     @foreach($products as $product)
                         <div class="col-md-3">
-                            <img src="/{{ $product->image }}" />
-                            <h4><a href="/products/detail/{{ $product->id }}">{{ $product->name }}</a></h4>
-                            <p>{{ $product->description }} </p>
-                            <h4>${{ $product->price }} </h4>
-                            <p>Ventas: {{ $product->sales()->count() }} | Calificaciones: {{ $product->qualifications()->count() }}</p>
+                            <div class="thumbnail">
+                                <img src="/{{ $product->image }}">
+                                <div class="caption">
+                                    <h4 class="pull-right">${{ $product->price }}</h4>
+                                    <h4><a href="/products/detail/{{ $product->id }}">{{ $product->name }}</a>
+                                    </h4>
+                                    <p>{{ $product->description }}</p>
+                                </div>
+                                <div class="ratings">
+                                    <p style="color:green;">Ventas: {{ $product->sales()->count() }}</p>
+                                    <p class="pull-right">{{ $product->qualifications()->count() }} calificaciones</p>
+                                    <p>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     @endforeach
 

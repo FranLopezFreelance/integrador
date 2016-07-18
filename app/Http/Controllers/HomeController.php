@@ -14,7 +14,7 @@ class HomeController extends Controller {
 	 * @return void
 	 */
 	public function __construct() {
-		$this->middleware('auth');
+	$this->middleware('auth');
 	}
 
 	/**
@@ -22,15 +22,13 @@ class HomeController extends Controller {
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
+
 	public function index() {
 		$usersFollowing = Auth::user()->following;
 		$products       = Product::orderBy('id', 'DESC')->limit(4)->offset(0)->get();
 		return view('home', compact('usersFollowing', 'products'));
 	}
 
-	public function home()
-	{
-		return view('home');
-	}
+	
 }	
 

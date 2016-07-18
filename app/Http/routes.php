@@ -11,9 +11,7 @@
 |
  */
 
-Route::get('/', function () {
-		return view('welcome');
-	});
+Route::get('/', 'HomeController@index');
 
 Route::group(['prefix' => 'users'], function () {
 		//GET METHOD
@@ -91,5 +89,3 @@ Route::group(['prefix' => 'notifications'], function () {
 	});
 
 Route::auth();
-
-Route::get('/home', 'HomeController@index');
