@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    <title>@yield('titulo')</title>
 
     <!-- Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
@@ -14,9 +14,14 @@
     <link rel="stylesheet" href="/css/styles.css">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
-
+    <link href='/css/bootstrap.min.css' rel='stylesheet'>
+    <link href='/css/modern-business.css' rel='stylesheet'>
+    <link rel='stylesheet' type='text/css' href='css/styles.css'>
+    <link href='/css/shop-homepage.css' rel='stylesheet'>
+    <link href='/css/shop-item.css' rel='stylesheet'>
+    <link href="/css/bootstrap.css" rel="stylesheet">
     <style>
         body {
             font-family: 'Lato';
@@ -41,7 +46,7 @@
                 </button>
 
                 <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('/home') }}">
+                <a class="navbar-brand" href="{{ url('/') }}">
                     Natural Market
                 </a>
             </div>
@@ -49,12 +54,17 @@
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
-
+                    @if (!Auth::guest())
+                    <li><a href="{{ url('/home') }}">Home</a></li>
+                    @endif
+                    
                     <li><a href="{{ url('/products/list') }}">Productos</a></li>
 
                     <!-- Si estás logueado podés ver a los vendedores, seguidores y notificaciones -->
                     @if (!Auth::guest())
-                        <li><a href="{{ url('/users/sellersList') }}">Vendedores</a></li>
+                    
+
+                    <li><a href="{{ url('/users/sellersList') }}">Vendedores</a></li>
 
                     <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -105,8 +115,13 @@
     @yield('content')
 
     <!-- JavaScripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js" integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-    {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
+    <footer>
+        @yield('footer')
+        <script type="text/javascript" src="/js/jquery.js"></script>    
+        <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+        {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
+    </footer>
+    
+    
 </body>
 </html>

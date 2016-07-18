@@ -27,4 +27,10 @@ class HomeController extends Controller {
 		$products       = Product::orderBy('id', 'DESC')->limit(4)->offset(0)->get();
 		return view('home', compact('usersFollowing', 'products'));
 	}
-}
+
+	public function home()
+	{
+		return view('home');
+	}
+}	
+
