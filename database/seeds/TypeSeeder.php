@@ -14,14 +14,14 @@ class TypeSeeder extends Seeder
     public function run()
     {
         DB::table('types')->insert([
-				'name' => 'Comprador',
-                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-                'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
+				'name'          => 'Comprador',
+                'created_at'    => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at'    => Carbon::now()->format('Y-m-d H:i:s'),
 			]);
 		DB::table('types')->insert([
-				'name' => 'Vendedor',
-                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-                'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
+				'name'          => 'Vendedor',
+                'created_at'    => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at'    => Carbon::now()->format('Y-m-d H:i:s'),
 			]);
     }
 }

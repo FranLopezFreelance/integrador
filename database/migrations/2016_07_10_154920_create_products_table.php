@@ -23,6 +23,7 @@ class CreateProductsTable extends Migration {
 				$table->float('price');
 				$table->string('image');
 				$table->integer('quantity');
+				$table->rememberToken();
 				$table->timestamps();
 			});
 	}

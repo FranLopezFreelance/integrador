@@ -14,52 +14,20 @@ class DatabaseSeeder extends Seeder {
 
 		$this->call(BrandSeeder::class);
 
-		$this->call(UsuariosSeeder::class);
+		$this->call(TypeSeeder::class);
 
 		$this->call(SectionSeeder::class);
 
-		$this->call(TypeSeeder::class);
+		$this->call(UsuariosSeeder::class);
+
+		$this->call(ProductsSeeder::class);
 		
-		DB::table('qualityproducts')->insert([
-				'name' => 'No me gustó',
-			]);
-		DB::table('qualityproducts')->insert([
-				'name' => 'Normal',
-			]);
-		DB::table('qualityproducts')->insert([
-				'name' => 'Buen Producto',
-			]);
-		DB::table('qualityproducts')->insert([
-				'name' => 'Muy buen Producto',
-			]);
-		DB::table('qualityproducts')->insert([
-				'name' => 'Excelente Producto',
-			]);
-		DB::table('qualitycustomers')->insert([
-				'name' => 'Nunca se comunicó',
-			]);
-		DB::table('qualitycustomers')->insert([
-				'name' => 'Neutral',
-			]);
-		DB::table('qualitycustomers')->insert([
-				'name' => 'Comprador Responsable',
-			]);
-		DB::table('qualitysellers')->insert([
-				'name' => 'Excelente Predisposición',
-			]);
-		DB::table('qualitysellers')->insert([
-				'name' => 'Nunca se comunicó',
-			]);
-		DB::table('qualitysellers')->insert([
-				'name' => 'Neutral',
-			]);
-		DB::table('qualitysellers')->insert([
-				'name' => 'Vendedor Responsable',
-			]);
-		DB::table('qualitysellers')->insert([
-				'name' => 'Excelente Atención',
-			]);
-		
-		
+		$this->call(QualityProductsSeeder::class);
+
+		$this->call(QualityCostumersSeeder::class);
+
+		$this->call(QualitySellersSeeder::class);
+
+		//$this->call(FollowingSeeder::class);
 	}
 }
