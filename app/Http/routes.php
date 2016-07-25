@@ -11,7 +11,8 @@
 |
  */
 
-Route::get('/', 'HomeController@index');
+Route::get('/', 'HomeController@welcome');
+Route::get('/welcome', 'HomeController@welcome');
 
 Route::group(['prefix' => 'users'], function () {
 		//GET METHOD

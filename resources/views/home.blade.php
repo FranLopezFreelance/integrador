@@ -1,6 +1,11 @@
-@extends('layouts.app')
+@extends('layouts.master')
+
+@section('titulo')
+Home
+@endsection
 
 @section('content')
+
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -57,3 +62,4 @@
     </div>
 </div>
 @endsection
+
