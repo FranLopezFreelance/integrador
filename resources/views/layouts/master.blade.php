@@ -359,7 +359,7 @@
   </div>
 </header>
 
-                                  @yield('content')
+@yield('content')
 
 
   <footer class="js--page-footer">
