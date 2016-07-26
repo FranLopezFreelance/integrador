@@ -73,8 +73,6 @@
                         {{ csrf_field() }}
 
                         <div class="form-group {{ $errors->has('parameter') ? ' has-error' : '' }}">
-                            <label for="parameter" class="col-md-12 control-label"></label>
-
                             <div class="form-group">
                                 <input id="parameter" type="text" class="form-control input-lg" name="parameter" value="{{ old('parameter') }}">
 

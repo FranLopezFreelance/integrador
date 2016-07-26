@@ -27,7 +27,7 @@
       (function() {
         var wf = document.createElement('script');
         wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
-          '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+          '://ajax.googleapis.com/ajax/libs/webfont/5/webfont.js';
         wf.type = 'text/javascript';
         wf.async = 'true';
         var s = document.getElementsByTagName('script')[0];
@@ -73,11 +73,10 @@
             @endif
             <li class="dropdown  js--mobile-dropdown">
               <a class="dropdown-toggle" href="#">
-                English <span class="caret"></span>
+                Español <span class="caret"></span>
               </a>
               <ul class="dropdown-menu">
-                <li><a href="#">Deutsch</a></li>
-                <li><a href="#">Español</a></li>
+                <li><a href="#">English</a></li>
               </ul>
             </li>
           </ul>
@@ -88,6 +87,7 @@
 </div>
 
 <!-- Modal register-->
+<?php $cities = App\City::all()?>
 <div class="modal  fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content  center">
@@ -97,17 +97,81 @@
         <hr class="divider">
       </div>
       <div class="modal-body">
-        <form action="#" class="push-down-15">
-          <div class="form-group">
-            <input type="text" id="name" class="form-control  form-control--contact" placeholder="Username">
-          </div>
-          <div class="form-group">
-            <input type="text" id="email" class="form-control  form-control--contact" placeholder="Email">
-          </div>
-          <div class="form-group">
-            <input type="text" id="subject" class="form-control  form-control--contact" placeholder="Password">
-          </div>
-          <button type="submit" class="btn  btn-primary">REGISTRARME</button>
+        <form class="form-group" role="form" method="POST" action="{{ url('/register') }}">
+                        {{ csrf_field() }}
+          <input type="hidden" name="type_id" value="1" />
+
+            <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                <input type="text" name="name" value="{{ old('name') }}" class="form-control  form-control--contact" placeholder="Nombre">
+                @if ($errors->has('name'))
+                  <span class="help-block">
+                      <strong>{{ $errors->first('name') }}</strong>
+                  </span>
+                @endif   
+            </div>
+
+            <div class="form-group{{ $errors->has('lastname') ? ' has-error' : '' }}">
+                <input type="text" name="lastname" value="{{ old('lastname') }}" class="form-control  form-control--contact" placeholder="Apellido">
+                @if ($errors->has('lastname'))
+                  <span class="help-block">
+                      <strong>{{ $errors->first('lastname') }}</strong>
+                  </span>
+                @endif   
+            </div>
+
+            <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                <input type="email" class="form-control  form-control--contact" name="email" value="{{ old('email') }}" placeholder="Email" >
+                @if ($errors->has('email'))
+                  <span class="help-block">
+                      <strong>{{ $errors->first('email') }}</strong>
+                  </span>
+                @endif
+              </div>
+
+            <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                <input type="password" class="form-control  form-control--contact" name="password" placeholder="Password" >
+                @if ($errors->has('password'))
+                  <span class="help-block">
+                      <strong>{{ $errors->first('password') }}</strong>
+                  </span>
+                @endif
+            </div>
+            
+            <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
+                <input type="password" class="form-control  form-control--contact" name="password_confirmation" placeholder="Re-ingrese Password" >
+                @if ($errors->has('password'))
+                  <span class="help-block">
+                      <strong>{{ $errors->first('password') }}</strong>
+                  </span>
+                @endif
+            </div>
+
+            <div class="form-group{{ $errors->has('city_id') ? ' has-error' : '' }}">
+              <select class="form-control  form-control--contact" name="city_id">
+                  <option value="0">Barrio</option>
+
+                  @foreach($cities as $city)
+                      <option  value="{{ $city->id }}"
+
+                          @if($city->id == old('city_id'))
+                              selected
+                          @endif
+                      >
+                          {{ $city->name }}
+                      </option>
+                  @endforeach
+              </select>
+
+              @if ($errors->has('city_id'))
+                  <span class="help-block">
+                      <strong>{{ $errors->first('city_id') }}</strong>
+                  </span>
+              @endif
+            </div>
+
+            <input type="hidden" name="avatar" value="images/users/default.png">
+
+            <button type="submit" class="btn  btn-primary">REGISTRARME</button>
         </form>
         <a data-toggle="modal" role="button" href="#loginModal" data-dismiss="modal">Ya estas registrado?</a>
       </div>
@@ -125,14 +189,39 @@
         <hr class="divider">
       </div>
       <div class="modal-body">
-        <form action="#" class="push-down-15">
-          <div class="form-group">
-            <input type="text" id="name" class="form-control  form-control--contact" placeholder="Username">
+
+        <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">{{ csrf_field() }}
+          <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+            <input type="email" name="email" id="email" class="form-control  form-control--contact" placeholder="Email">
+            @if ($errors->has('email'))
+              <span class="help-block">
+                  <strong>{{ $errors->first('email') }}</strong>
+              </span>
+            @endif
           </div>
-          <div class="form-group">
-            <input type="text" id="subject" class="form-control  form-control--contact" placeholder="Password">
+
+          <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+            <input id="password" type="password" name="password" class="form-control  form-control--contact" placeholder="Password" >
+            @if ($errors->has('password'))
+              <span class="help-block">
+                  <strong>{{ $errors->first('password') }}</strong>
+              </span>
+            @endif
           </div>
+
           <button type="submit" class="btn  btn-primary">ENTRAR</button>
+
+          <div class="form-group">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="remember"> Recodarme
+                    </label>
+                </div>
+                <a data-toggle="modal" role="button" href="{{ url('/password/reset') }}" data-dismiss="modal">Olvidaste tu contraseña?</a>
+            </div>
+          </div>
+          
         </form>
       </div>
     </div>
@@ -177,9 +266,6 @@
           <li><a href="/products/list">Productos</a></li>
           <li><a href="shop-list-view.html">Marcas</a></li>
           <li><a href="single-product.html">Vendedores</a></li>
-          <li><a href="cart.html">Cart</a></li>
-          <li><a href="checkout.html">Checkout</a></li>
-          <li><a href="order-received.html">Order Received</a></li>
         </ul>
       </li>
       <li class="dropdown">
@@ -192,7 +278,7 @@
         </ul>
       </li>
       <li class="dropdown">
-        <a href="about-us.html" class="dropdown-toggle">PAGES<b class="caret"></b></a>
+        <a href="about-us.html" class="dropdown-toggle">SOBRE NOSOTROS <b class="caret"></b></a>
         <ul class="dropdown-menu">
           <li><a href="about-us.html">About us</a></li>
           <li><a href="pricing.html">Pricing Tables</a></li>
@@ -252,30 +338,41 @@
       </li>
     </ul>
     <!-- search for mobile devices -->
-    <form action="#" method="post" class="visible-xs  visible-sm  mobile-navbar-form" role="form">
-      <div class="input-group">
-        <input type="text" class="form-control" placeholder="Search">
+    <form action="{{ url('/products/list/search') }}" method="POST" class="visible-xs  visible-sm  mobile-navbar-form" role="form">{{ csrf_field() }}
+      <div class="form-group {{ $errors->has('parameter') ? ' has-error' : '' }}">
+        <div class="form-group">
+        <input type="text" class="form-control" placeholder="Search" name="parameter" value="{{ old('parameter') }}">
+        <div class="form-group">
+        @if ($errors->has('parameter'))
+            <span class="help-block">
+                <strong>{{ $errors->first('parameter') }}</strong>
+            </span>
+        @endif
         <span class="input-group-addon">
           <button type="submit" class="mobile-navbar-form__appended-btn"><span class="glyphicon  glyphicon-search  glyphicon-search--nav"></span></button>
         </span>
       </div>
     </form>
+    @if (!Auth::guest())
     <div class="mobile-cart  visible-xs  visible-sm  push-down-15">
         <span class="header-cart__text--price"><span class="header-cart__text">Carrito</span> $49.35</span>
       <a href="cart.html" class="header-cart__items">
         <span class="header-cart__items-num">3</span>
       </a>
     </div>
+    @endif
   </div><!-- /.navbar-collapse -->
 </nav>
       </div>
       <div class="col-xs-12  col-md-2  hidden-sm  hidden-xs">
         <!-- Cart in header -->
+@if (!Auth::guest())
 <div class="header-cart">
   <span class="header-cart__text--price"><span class="header-cart__text">Carrito</span> $49.35</span>
   <a href="#" class="header-cart__items">
     <span class="header-cart__items-num">3</span>
   </a>
+  @endif
   <!-- Open cart panel -->
   <div class="header-cart__open-cart">
   
@@ -344,9 +441,14 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-11">
-          <form class="search-panel__form" action="search-results.html">
+          <form class="search-panel__form" method="POST" role="form" action="{{ url('/products/list/search') }}">{{ csrf_field() }}
             <button type="submit"><span class="glyphicon  glyphicon-search"></span></button>
-            <input type="text" name="s" class="form-control" placeholder="Enter your search keyword">
+                  <input type="text" id="parameter" name="parameter" class="form-control {{ $errors->has('parameter') ? ' has-error' : '' }}" placeholder="Enter your search keyword" value="{{ old('parameter') }}">
+                  @if ($errors->has('parameter'))
+                      <span class="help-block">
+                          <strong>{{ $errors->first('parameter') }}</strong>
+                      </span>
+                  @endif
           </form>
         </div>
         <div class="col-sm-1">
