@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="ProteusNet">
-    <link rel="icon" type="image/ico" href="images/favicon.png">
+    <link rel="icon" type="image/ico" href="/images/favicon.png">
 
     <title>@yield ('titulo')</title>
 
     <!-- Custom styles for this template -->
-    <link rel="stylesheet" href="css/ed5eec95.main.css"/>
+    <link rel="stylesheet" href="/css/ed5eec95.main.css"/>
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -143,7 +143,7 @@
     <div class="row">
       <div class="col-xs-10  col-md-3">
         <div class="header-logo">
-          <a href="/"><img alt="Logo" src="images/logo.png" width="200" height="90"></a>
+          <a href="/"><img alt="Logo" src="/images/logo.png" width="200" height="90"></a>
         </div>
       </div>
       <div class="col-xs-2  visible-sm  visible-xs">
@@ -163,20 +163,20 @@
   <div class="collapse  navbar-collapse" id="collapsible-navbar">
     <ul class="nav  navbar-nav">
       <li class="dropdown">
-        <a href="index.html" class="dropdown-toggle">HOME<b class="caret"></b></a>
-        <ul class="dropdown-menu">
+        <a href="/" class="dropdown-toggle">HOME</a>
+        <!-- <ul class="dropdown-menu">
           <li><a href="index.html">Home (Shop)</a></li>
           <li><a href="home-business.html">Home (Business)</a></li>
           <li><a href="home-slider.html">Home (Slider)</a></li>
           <li><a href="home-slider-sticky-navbar.html">Home with Sticky Navbar</a></li>
-        </ul>
+        </ul> -->
       </li>
       <li class="dropdown">
         <a href="shop.html" class="dropdown-toggle">SHOP<b class="caret"></b></a>
         <ul class="dropdown-menu">
-          <li><a href="shop.html">Shop (Grid view)</a></li>
-          <li><a href="shop-list-view.html">Shop (List view)</a></li>
-          <li><a href="single-product.html">Single product</a></li>
+          <li><a href="/products/list">Productos</a></li>
+          <li><a href="shop-list-view.html">Marcas</a></li>
+          <li><a href="single-product.html">Vendedores</a></li>
           <li><a href="cart.html">Cart</a></li>
           <li><a href="checkout.html">Checkout</a></li>
           <li><a href="order-received.html">Order Received</a></li>
@@ -281,7 +281,7 @@
   
     <div class="header-cart__product  clearfix  js--cart-remove-target">
       <div class="header-cart__product-image">
-        <img alt="Product in the cart" src="images/dummy/product-cart.jpg" width="40" height="50">
+        <img alt="Product in the cart" src="/images/dummy/product-cart.jpg" width="40" height="50">
       </div>
       <div class="header-cart__product-image--hover">
         <a href="#" class="js--remove-item" data-target=".js--cart-remove-target"><span class="glyphicon  glyphicon-circle  glyphicon-remove"></span></a>
@@ -297,7 +297,7 @@
   
     <div class="header-cart__product  clearfix  js--cart-remove-target">
       <div class="header-cart__product-image">
-        <img alt="Product in the cart" src="images/dummy/product-cart.jpg" width="40" height="50">
+        <img alt="Product in the cart" src="/images/dummy/product-cart.jpg" width="40" height="50">
       </div>
       <div class="header-cart__product-image--hover">
         <a href="#" class="js--remove-item" data-target=".js--cart-remove-target"><span class="glyphicon  glyphicon-circle  glyphicon-remove"></span></a>
@@ -313,7 +313,7 @@
   
     <div class="header-cart__product  clearfix  js--cart-remove-target">
       <div class="header-cart__product-image">
-        <img alt="Product in the cart" src="images/dummy/product-cart.jpg" width="40" height="50">
+        <img alt="Product in the cart" src="/images/dummy/product-cart.jpg" width="40" height="50">
       </div>
       <div class="header-cart__product-image--hover">
         <a href="#" class="js--remove-item" data-target=".js--cart-remove-target"><span class="glyphicon  glyphicon-circle  glyphicon-remove"></span></a>
@@ -368,7 +368,7 @@
         <div class="row">
           <div class="col-xs-12  col-sm-3">
             <div class="footer-widgets__social">
-              <img class="push-down-10" alt="Footer Logo" src="images/logo-footer.png" width="139" height="35">
+              <img class="push-down-10" alt="Footer Logo" src="/images/logo-footer.png" width="139" height="35">
               <p class="push-down-15">Adipiscing elit. Ut ullamcorper consectetur, non lacinia turpis suscipit non. Estibulum nu nc lacus, tincidunt non odio eu, scelerisque tristique quam.</p>
               <a class="social-container" href="https://www.facebook.com/ProteusNet"><span class="zocial-facebook"></span></a>
               <a class="social-container" href="https://twitter.com/ProteusNetCom"><span class="zocial-twitter"></span></a>
@@ -438,7 +438,7 @@
     <script type="text/javascript">
       function downloadJSAtOnload() {
         var element = document.createElement("script");
-        element.src = "js/main.js";
+        element.src = "/js/main.js";
         document.body.appendChild(element);
       }
       if (window.addEventListener)
