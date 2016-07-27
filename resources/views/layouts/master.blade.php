@@ -272,36 +272,36 @@
         <a href="blog.html" class="dropdown-toggle">BLOG<b class="caret"></b></a>
         <ul class="dropdown-menu">
           <li><a href="blog-right-sidebar.html">Blog (Right sidebar)</a></li>
-          <li><a href="blog-left-sidebar.html">Blog (Left sidebar)</a></li>
+          <!-- <li><a href="blog-left-sidebar.html">Blog (Left sidebar)</a></li>
           <li><a href="blog.html">Blog (Alternative)</a></li>
-          <li><a href="single-post.html">Single Blogpost</a></li>
+          <li><a href="single-post.html">Single Blogpost</a></li> -->
         </ul>
       </li>
       <li class="dropdown">
         <a href="about-us.html" class="dropdown-toggle">SOBRE NOSOTROS <b class="caret"></b></a>
         <ul class="dropdown-menu">
           <li><a href="about-us.html">About us</a></li>
-          <li><a href="pricing.html">Pricing Tables</a></li>
+          <!-- <li><a href="pricing.html">Pricing Tables</a></li>
           <li><a href="contact.html">Contact 1</a></li>
           <li><a href="contact-2.html">Contact 2</a></li>
           <li><a href="search-results.html">Search Results</a></li>
           <li><a href="404.html">404 page</a></li>
           <li><a href="page-right.html">Page (Right sidebar)</a></li>
           <li><a href="page-left.html">Page (Left sidebar)</a></li>
-          <li><a href="page-full-width.html">Page (Full width)</a></li>
+          <li><a href="page-full-width.html">Page (Full width)</a></li> -->
         </ul>
       </li>
       <li class="dropdown">
         <a href="features.html" class="dropdown-toggle">FEATURES <b class="caret"></b></a>
         <ul class="dropdown-menu">
           <li><a href="features.html">Responsive design</a></li>
-          <li><a href="features.html">Retina ready</a></li>
+          <!-- <li><a href="features.html">Retina ready</a></li>
           <li><a href="features.html">Lightning fast</a></li>
           <li><a href="features.html">Search engine optimized</a></li>
           <li><a href="features.html">Layered PSDs included</a></li>
           <li><a href="features.html">Unlimited colors and layouts</a></li>
           <li><a href="features.html">290+ Glyphicons and Zocial icons</a></li>
-          <li><a href="features.html">Advance shop filters</a></li>
+          <li><a href="features.html">Advance shop filters</a></li> -->
           
           
           <li><a href="features.html">Awesome support</a></li>

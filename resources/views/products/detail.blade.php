@@ -10,7 +10,7 @@
             
             <li><a href="/">Home</a></li>
             
-            <li><a href="/list">Productos</a></li>
+            <li><a href="/products/list">Productos</a></li>
             
             <li class="active">{{ $product->name }}</li>
             

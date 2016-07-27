@@ -40,7 +40,7 @@ class ProductsController extends Controller {
 		$sections = Section::All();
 		$brands   = Brand::All();
 		$cities   = City::All();
-		$products = Product::paginate(6);
+		$products = Product::paginate(12);
 		return view('products.list', compact('products', 'sections', 'brands', 'cities'));
 	}
 

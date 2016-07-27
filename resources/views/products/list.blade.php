@@ -9,9 +9,9 @@
         <nav>
           <ol class="breadcrumb">
             
-            <li><a href="index.html">Home</a></li>
+            <li><a href="/">Home</a></li>
             
-            <li class="active">Shop</li>
+            <li class="active">Productos</li>
             
           </ol>
         </nav>
@@ -41,38 +41,56 @@
           <h5 class="sidebar__subtitle">Categoría</h5>
           <ul class="nav  nav--filter">
           
-            <li><a data-target=".js--cat-1" class="js--filter-selectable" href="#">Bars</a></li>
+            <li><a data-target=".js--cat-1" class="js--filter-selectable" href="#">Aceites</a></li>
           
-            <li><a data-target=".js--cat-2" class="js--filter-selectable" href="#">Powders</a></li>
+            <li><a data-target=".js--cat-2" class="js--filter-selectable" href="#">Alimentos</a></li>
           
-            <li><a data-target=".js--cat-3" class="js--filter-selectable" href="#">Bio</a></li>
+            <li><a data-target=".js--cat-3" class="js--filter-selectable" href="#">Bebidas</a></li>
           
-            <li><a data-target=".js--cat-4" class="js--filter-selectable" href="#">Seed</a></li>
+            <li><a data-target=".js--cat-4" class="js--filter-selectable" href="#">Cervezas</a></li>
           
-            <li><a data-target=".js--cat-5" class="js--filter-selectable" href="#">Muesli</a></li>
+            <li><a data-target=".js--cat-5" class="js--filter-selectable" href="#">Condimentos</a></li>
           
-            <li><a data-target=".js--cat-6" class="js--filter-selectable" href="#">Natural Proteins</a></li>
-          
-            <li><a data-target=".js--cat-7" class="js--filter-selectable" href="#">Other</a></li>
+            <li><a data-target=".js--cat-6" class="js--filter-selectable" href="#">Cremas</a></li>
+            
+            <li><a data-target=".js--cat-17" class="js--filter-selectable" href="#">Cuidado Personal</a></li>
+
+            <li><a data-target=".js--cat-7" class="js--filter-selectable" href="#">Dulces</a></li>
+
+            <li><a data-target=".js--cat-8" class="js--filter-selectable" href="#">Frutos Secos</a></li>
+
+            <li><a data-target=".js--cat-9" class="js--filter-selectable" href="#">Galletitas</a></li>
+
+            <li><a data-target=".js--cat-10" class="js--filter-selectable" href="#">Infusiones</a></li>
+
+            <li><a data-target=".js--cat-11" class="js--filter-selectable" href="#">Jugos</a></li>
+
+            <li><a data-target=".js--cat-12" class="js--filter-selectable" href="#">Legumbres</a></li>
+
+            <li><a data-target=".js--cat-13" class="js--filter-selectable" href="#">Licores</a></li>
+
+            <li><a data-target=".js--cat-14" class="js--filter-selectable" href="#">Semillas</a></li>
+
+            <li><a data-target=".js--cat-15" class="js--filter-selectable" href="#">Suplementos Dietarios</a></li>
+
+            <li><a data-target=".js--cat-16" class="js--filter-selectable" href="#">Vinos</a></li>
           
           </ul>
 
           <hr class="divider">
 
-          <h5 class="sidebar__subtitle">Price</h5>
+          <h5 class="sidebar__subtitle">Precio</h5>
           <div class="shop__filter__slider">
             <div class="js--jqueryui-price-filter"></div>
           </div>
 
           <hr class="divider">
           <nav>
-            <h5 class="sidebar__subtitle">Country</h5>
+            <h5 class="sidebar__subtitle">Barrio</h5>
             <ul class="nav  nav--filter">
-              <li><a href="#">Croatia</a></li>
-              <li><a href="#">Ireland</a></li>
-              <li><a href="#">Slovenia</a></li>
-              <li><a href="#">United Kingdom</a></li>
-              <li><a href="#">USA</a></li>
+              @foreach ($cities as $barrios)
+              <li><a href="#">{{ $barrios->name }} </a></li>
+              @endforeach
             </ul>
           </nav>
           <hr class="divider">
@@ -103,16 +121,41 @@
         <div class="row  js--isotope-container">
           
             
-            
-            
-              <div class="col-xs-6 col-sm-3  js--isotope-target  js--cat-1" data-price="8.25" data-rating="5">
+            @foreach($products as $product)
+              @if(isset($c))
+              @foreach($product as $subProduct)
+              <!-- <div class="thumbnail">
+                      <img src="/{{ $subProduct->image }}">
+                      <div class="caption">
+                          <h4 class="pull-right">${{ $subProduct->price }}</h4>
+                          <h4><a href="/products/detail/{{ $subProduct->id }}">{{ $subProduct->name }}</a>
+                          </h4>
+                          <p>{{ $subProduct->description }}</p>
+                      </div>
+                      <div class="ratings">
+                        <p style="color:green;">Ventas: {{ $subProduct->sales()->count() }}</p>
+                          <p class="pull-right">{{ $subProduct->qualifications()->count() }} calificaciones</p>
+                          <p>
+                              <span class="glyphicon glyphicon-star"></span>
+                              <span class="glyphicon glyphicon-star"></span>
+                              <span class="glyphicon glyphicon-star"></span>
+                              <span class="glyphicon glyphicon-star"></span>
+                              <span class="glyphicon glyphicon-star"></span>
+                          </p>
+                      </div>
+                </div> -->
+                
+              @endforeach
+            @else
+
+              <div class="col-xs-6 col-sm-3  js--isotope-target  js--cat-1" data-price="" data-rating="">
   <div class="products__single">
     <figure class="products__image">
-      <a href="single-product.html">
-        <img alt="#" class="product__image" width="263" height="334" src="/images/dummy/w263/1.jpg">
+      <a href="/products/detail/{{ $product->id }}">
+        <img alt="#" class="product__image" width="263" height="334" src="/{{ $product->image }}">
       </a>
       <div class="product-overlay">
-        <a class="product-overlay__more" href="single-product.html">
+        <a class="product-overlay__more" href="/products/detail/{{ $product->id }}">
           <span class="glyphicon glyphicon-search"></span>
         </a>
         <a class="product-overlay__cart" href="#">
@@ -126,26 +169,27 @@
     <div class="row">
       <div class="col-xs-9">
         <h5 class="products__title">
-          <a class="products__link  js--isotope-title" href="single-product.html">Orange Flavoured Raw Cacao Bar</a>
+          <a class="products__link  js--isotope-title" href="/products/detail/{{ $product->id }}">{{ $product->name }}</a>
         </h5>
       </div>
       <div class="col-xs-3">
         <div class="products__price">
-          $8.25
+          ${{ $product->price }}
         </div>
       </div>
     </div>
     <div class="products__category">
-      Bars
+      {{ $product->brand->name }}
     </div>
   </div>
 </div>
-            
+            @endif
+      @endforeach
           
             
             
             
-              <div class="col-xs-6 col-sm-3  js--isotope-target  js--cat-2" data-price="14.36" data-rating="4">
+              <!-- <div class="col-xs-6 col-sm-3  js--isotope-target  js--cat-2" data-price="14.36" data-rating="4">
   <div class="products__single">
     <figure class="products__image">
       <a href="single-product.html">
@@ -1019,13 +1063,13 @@
       Muesli
     </div>
   </div>
-</div>
+</div> -->
             
           
             
             
             
-              <div class="col-xs-6 col-sm-3  js--isotope-target  js--cat-7" data-price="14.95" data-rating="4">
+              <!-- <div class="col-xs-6 col-sm-3  js--isotope-target  js--cat-7" data-price="14.95" data-rating="4">
   <div class="products__single">
     <figure class="products__image">
       <a href="single-product.html">
@@ -1059,7 +1103,7 @@
       Other
     </div>
   </div>
-</div>
+</div> -->
             
           
           <div class="clearfix  hidden-xs"></div>
@@ -1079,168 +1123,5 @@
       </div>
     </div>
   </div>
-</div>
-
-
-<div class="container">
-    <div class="row">
-
-    	<div class="col-lg-12">
-                <h1 class="page-header">Productos
-                    <small><i>Todos los productos</i></small>
-                </h1>
-        </div>
-        <div class="col-md-3">
-        	<div class="well">
-                <h4>Busqueda rápida</h4>
-               		<form class="form-horizontal" role="form" method="POST" action="{{ url('/products/list/search') }}">
-				{{ csrf_field() }}
-
-	            <div class="form-group{{ $errors->has('parameter') ? ' has-error' : '' }}">
-	                <div class="col-md-12">
-	                    <input id="parameter" type="text" class="form-control" name="parameter" value="{{ old('parameter') }}">
-
-	                    @if ($errors->has('parameter'))
-	                        <span class="help-block">
-	                            <strong>{{ $errors->first('parameter') }}</strong>
-	                        </span>
-	                    @endif
-	                </div>
-	            </div>
-	            <div class="form-group">
-	                <div class="col-md-12">
-	                    <button type="submit" class="btn btn-primary btn-lg btn-block">
-	                        <i class="fa fa-btn fa-search"></i> Buscar
-	                    </button>
-	                </div>
-	            </div>
-	        	</form>
-                    
-                    
-            </div>
-
-    	<hr/>
-
-    	<ol class="breadcrumb">
-            <li class="active">Filtre su búsqueda...</li>
-		</ol>
-    		@if(isset($s))
-					<h4>Sección: {{ $s->name }} <a href="/products/list" class="btn btn-xs btn-warning pull-right">Quitar</a></h4>
-			@else
-	    		<form class="form-inline" method="POST" action="/products/list/section/">
-	    			{{ csrf_field() }}
-	    			<div class="form-group">
-		    			<select name="id" class="form-control">
-		    				<option>Por Sección...</option>
-		    				@foreach($sections as $section)
-		    					<option value="{{ $section->id }}">{{ $section->name }}</option>
-		    				@endforeach
-		    			</select>
-		    		</div>
-	    			<button class="btn btn-primary" type="submit">Ir</button>
-	    		</form>
-	    	@endif
-
-    		<hr />
-
-    		@if(isset($b))
-				<h4>Marca: {{ $b->name }} <a href="/products/list" class="btn  btn-xs btn-warning pull-right">Quitar</a></h4>
-			@else
-	    		<form class="form-inline" method="POST" action="/products/list/brand/">
-	    			{{ csrf_field() }}
-	    			<div class="form-group">
-		    			<select name="id" class="form-control">
-		    				<option>Por Marca ....</option>
-		    				@foreach($brands as $brand)
-		    					<option value="{{ $brand->id }}">{{ $brand->name }}</option>
-		    				@endforeach
-		    			</select>
-		    		</div>
-	    			<button class="btn btn-primary" type="submit">Ir</button>
-	    		</form>
-	    	@endif
-	    	
-    		<hr />
-			<!--
-    		@if(isset($c))
-				<h4>Barrio: {{ $c->name }} <a href="/products/list" class="btn btn-xs btn-warning pull-right">Quitar</a></h4>
-			@else
-	    		<form class="form-inline" method="POST" action="/products/list/city/">
-	    		{{ csrf_field() }}
-	    			<div class="form-group">
-		    			<select name="id" class="form-control">
-		    				<option>Por Barrio...</option>
-		    				@foreach($cities as $city)
-		    					<option value="{{ $city->id }}">{{ $city->name }}</option>
-		    				@endforeach
-		    			</select>
-		    		</div>
-	    			<button class="btn btn-primary" type="submit">Ir</button>
-	    		</form>
-	    	@endif
-
-    		<hr />
-
-    		-->
-    	</div>
-        <div class="col-md-9">
-			@foreach($products as $product)
-				@if(isset($c))
-					@foreach($product as $subProduct)
-	                <div class="thumbnail">
-	                    <img src="/{{ $subProduct->image }}">
-	                    <div class="caption">
-	                        <h4 class="pull-right">${{ $subProduct->price }}</h4>
-	                        <h4><a href="/products/detail/{{ $subProduct->id }}">{{ $subProduct->name }}</a>
-	                        </h4>
-	                        <p>{{ $subProduct->description }}</p>
-	                    </div>
-	                    <div class="ratings">
-	                    	<p style="color:green;">Ventas: {{ $subProduct->sales()->count() }}</p>
-	                        <p class="pull-right">{{ $subProduct->qualifications()->count() }} calificaciones</p>
-	                        <p>
-	                            <span class="glyphicon glyphicon-star"></span>
-	                            <span class="glyphicon glyphicon-star"></span>
-	                            <span class="glyphicon glyphicon-star"></span>
-	                            <span class="glyphicon glyphicon-star"></span>
-	                            <span class="glyphicon glyphicon-star"></span>
-	                        </p>
-	                    </div>
-	            	</div>
-            	
-					@endforeach
-				@else
-				<div class="col-md-4">
-	                <div class="thumbnail">
-	                    <img src="/{{ $product->image }}">
-	                    <div class="caption">
-	                        <h4 class="pull-right">${{ $product->price }}</h4>
-	                        <h4><a href="/products/detail/{{ $product->id }}">{{ $product->name }}</a>
-	                        </h4>
-	                        <p>{{ $product->description }}</p>
-	                    </div>
-	                    <div class="ratings">
-	                    	<p style="color:green;">Ventas: {{ $product->sales()->count() }}</p>
-	                        <p class="pull-right">{{ $product->qualifications()->count() }} calificaciones</p>
-	                        <p>
-	                            <span class="glyphicon glyphicon-star"></span>
-	                            <span class="glyphicon glyphicon-star"></span>
-	                            <span class="glyphicon glyphicon-star"></span>
-	                            <span class="glyphicon glyphicon-star"></span>
-	                            <span class="glyphicon glyphicon-star"></span>
-	                        </p>
-	                    </div>
-	            	</div>
-            	</div>
-				@endif
-			@endforeach
-				<div class="row">
-					<div class="col-md-12">
-						{!! $products->render() !!}
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
 </div>
 @endsection
