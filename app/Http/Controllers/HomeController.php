@@ -32,7 +32,7 @@ class HomeController extends Controller {
 	public function welcome(){
 		$usersFollowing = Auth::user()->following;
 		$products       = Product::orderBy('id', 'DESC')->limit(4)->offset(0)->get();
-		return view('welcome', compact('products', 'usersFollowing'));
+		return view('home', compact('usersFollowing', 'products'));
 	}
 }	
 

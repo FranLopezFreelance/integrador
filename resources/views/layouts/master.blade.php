@@ -261,47 +261,46 @@
         </ul> -->
       </li>
       <li class="dropdown">
-        <a href="shop.html" class="dropdown-toggle">SHOP<b class="caret"></b></a>
-        <ul class="dropdown-menu">
-          <li><a href="/products/list">Productos</a></li>
-          <li><a href="shop-list-view.html">Marcas</a></li>
-          <li><a href="single-product.html">Vendedores</a></li>
-        </ul>
+        <a href="/products/list" class="dropdown-toggle">PRODUCTOS</a>
+        <!-- <ul class="dropdown-menu">
+          <li><a href="/products/list">Productos Orgánicos</a></li>
+          <li><a href="shop-list-view.html">Tienda de Ropa?</a></li>
+        </ul> -->
       </li>
       <li class="dropdown">
-        <a href="blog.html" class="dropdown-toggle">BLOG<b class="caret"></b></a>
-        <ul class="dropdown-menu">
+        <a href="blog.html" class="dropdown-toggle">BLOG</a>
+        <!-- <ul class="dropdown-menu">
           <li><a href="blog-right-sidebar.html">Blog (Right sidebar)</a></li>
-          <!-- <li><a href="blog-left-sidebar.html">Blog (Left sidebar)</a></li>
+          <li><a href="blog-left-sidebar.html">Blog (Left sidebar)</a></li>
           <li><a href="blog.html">Blog (Alternative)</a></li>
-          <li><a href="single-post.html">Single Blogpost</a></li> -->
-        </ul>
+          <li><a href="single-post.html">Single Blogpost</a></li>
+        </ul> -->
       </li>
       <li class="dropdown">
-        <a href="about-us.html" class="dropdown-toggle">SOBRE NOSOTROS <b class="caret"></b></a>
-        <ul class="dropdown-menu">
+        <a href="about-us.html" class="dropdown-toggle">SOBRE NOSOTROS</a>
+        <!-- <ul class="dropdown-menu">
           <li><a href="about-us.html">About us</a></li>
-          <!-- <li><a href="pricing.html">Pricing Tables</a></li>
+          <li><a href="pricing.html">Pricing Tables</a></li>
           <li><a href="contact.html">Contact 1</a></li>
           <li><a href="contact-2.html">Contact 2</a></li>
           <li><a href="search-results.html">Search Results</a></li>
           <li><a href="404.html">404 page</a></li>
           <li><a href="page-right.html">Page (Right sidebar)</a></li>
           <li><a href="page-left.html">Page (Left sidebar)</a></li>
-          <li><a href="page-full-width.html">Page (Full width)</a></li> -->
-        </ul>
+          <li><a href="page-full-width.html">Page (Full width)</a></li>
+        </ul> -->
       </li>
       <li class="dropdown">
-        <a href="features.html" class="dropdown-toggle">FEATURES <b class="caret"></b></a>
-        <ul class="dropdown-menu">
+        <a href="features.html" class="dropdown-toggle">CONTACTO</a>
+        <!-- <ul class="dropdown-menu">
           <li><a href="features.html">Responsive design</a></li>
-          <!-- <li><a href="features.html">Retina ready</a></li>
+          <li><a href="features.html">Retina ready</a></li>
           <li><a href="features.html">Lightning fast</a></li>
           <li><a href="features.html">Search engine optimized</a></li>
           <li><a href="features.html">Layered PSDs included</a></li>
           <li><a href="features.html">Unlimited colors and layouts</a></li>
           <li><a href="features.html">290+ Glyphicons and Zocial icons</a></li>
-          <li><a href="features.html">Advance shop filters</a></li> -->
+          <li><a href="features.html">Advance shop filters</a></li>
           
           
           <li><a href="features.html">Awesome support</a></li>
@@ -314,9 +313,9 @@
               <li><a href="single-post.html">Single Blogpost</a></li>
             </ul>
           </li>
-        </ul>
+        </ul> -->
       </li>
-      <li class="dropdown">
+      <!-- <li class="dropdown">
         <a href="elements.html" class="dropdown-toggle">ELEMENTS<b class="caret"></b></a>
         <ul class="dropdown-menu">
           <li><a href="elements.html#headings">Headings</a></li>
@@ -332,7 +331,7 @@
           <li><a href="elements.html#code">Code</a></li>
           <li><a href="elements.html#toggles">Toggles</a></li>
         </ul>
-      </li>
+      </li> -->
       <li class="hidden-xs  hidden-sm">
         <a href="#" class="js--toggle-search-mode"><span class="glyphicon  glyphicon-search  glyphicon-search--nav"></span></a>
       </li>
@@ -481,37 +480,36 @@
           <div class="col-xs-12  col-sm-3">
             <nav class="footer-widgets__navigation">
               <div class="footer-wdgets__heading--line">
-                <h4 class="footer-widgets__heading">Navigation</h4>
+                <h4 class="footer-widgets__heading">Mapa del Sitio</h4>
               </div>
               <ul class="nav nav-footer">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="shop.html">Shop</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/products/list">Shop</a></li>
                 <li><a href="blog.html">Blog</a></li>
-                <li><a href="about-us.html">Pages</a></li>
-                <li><a href="features.html">Features</a></li>
-                <li><a href="elements.html">Elements</a></li>
+                <li><a href="about-us.html">Acerca de Nosotros</a></li>
+                <li><a href="features.html">Contactenos</a></li>
               </ul>
             </nav>
           </div>
           <div class="col-xs-12  col-sm-3">
             <div class="footer-widgets__navigation">
               <div class="footer-wdgets__heading--line">
-                <h4 class="footer-widgets__heading">Popular Tags</h4>
+                <h4 class="footer-widgets__heading">Etiquetas Populares</h4>
               </div>
-              <a class="tag" href="shop.html">Food</a> <a class="tag" href="shop.html">Fungus</a> <a class="tag" href="shop.html">Lifestyle</a> <a class="tag" href="shop.html">Extras</a> <a class="tag" href="shop.html">Tea</a> <a class="tag" href="shop.html">Coffe</a> <a class="tag" href="shop.html">Fruit</a> <a class="tag" href="shop.html">Fruti &amp; vegetables</a> <a class="tag" href="shop.html">Fungus</a> <a class="tag" href="shop.html">Healthy</a>
+              <a class="tag" href="shop.html">Bebidas</a> <a class="tag" href="shop.html">Legumbres</a> <a class="tag" href="shop.html">Infusiones</a> <a class="tag" href="shop.html">Aceites</a> <a class="tag" href="shop.html">Cremas</a> <a class="tag" href="shop.html">Café</a> <a class="tag" href="shop.html">Fruit</a> <a class="tag" href="shop.html">Frutos secos</a> <a class="tag" href="shop.html">Dulces</a> <a class="tag" href="shop.html">Suplementos Dietarios</a>
             </div>
           </div>
           <div class="col-xs-12  col-sm-3">
             <div class="footer-widgets__navigation">
                 <div class="footer-wdgets__heading--line">
-                  <h4 class="footer-widgets__heading">Contact Us</h4>
+                  <h4 class="footer-widgets__heading">Contáctenos</h4>
                 </div>
-                <a class="footer__link" href="#">Organique ltd.</a><br>
-                Tehnološki park 19,<br>
-                1000 Ljubljana, Slovenia<br>
+                <a class="footer__link" href="#">Natural Market S.A.</a><br>
+                Calle de las Magnolias,<br>
+                2745 Los Brotes, Rio Turbio.<br>
                 <a class="footer__link--small" href="contact-2.html">View Google map <span class="glyphicon glyphicon-chevron-right glyphicon--footer-small"></span></a><br><br>
-                <a class="footer__link" href="#"><span class="glyphicon glyphicon-earphone glyphicon--footer"></span> +386 31 567 537</a><br>
-                <a class="footer__link" href="#"><span class="glyphicon glyphicon-envelope glyphicon--footer"></span> hello@proteusnet.com</a>
+                <a class="footer__link" href="#"><span class="glyphicon glyphicon-earphone glyphicon--footer"></span> +54 9 113 838 8907</a><br>
+                <a class="footer__link" href="#"><span class="glyphicon glyphicon-envelope glyphicon--footer"></span> info@naturalmarket.com</a>
               </div>
             </div>
         </div>
@@ -522,12 +520,12 @@
         <div class="row">
           <div class="col-xs-12  col-sm-6">
             <div class="footer__text--link">
-              <a class="footer__link" href="#">Organique</a> HTML Theme © Copyright 2014. Images of products by <a class="footer__link" href="http://www.nutrisslim.com/" target="_blank">Nutrisslim</a>.
+              <a class="footer__link" href="#">Natural Market</a> © All rights reserved 2016.
             </div>
           </div>
           <div class="col-xs-12  col-sm-6">
             <div class="footer__text">
-              Made with <span class="glyphicon  glyphicon-heart"></span> by <a class="footer__link" href="http://www.proteusthemes.com/" target="_blank">ProteusThemes</a>
+              Made with <span class="glyphicon glyphicon-thumbs-up"></span> by <b>Gonza</b> y <b>Fran.</b>
             </div>
           </div>
         </div>
