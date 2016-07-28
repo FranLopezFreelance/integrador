@@ -58,7 +58,7 @@ Home
   <div class="row">
     <div class="col-xs-12  col-sm-8">
       <div class="products-navigation__title">
-        <h3><span class="light">Naturales</span> como la naturaleza misma </h3>
+        <h3><span class="light">Productos</span> Destacados </h3>
       </div>
     </div>
     <div class="col-xs-12  col-sm-4">
@@ -70,7 +70,7 @@ Home
   </div>
 </div>
 
-<!-- Products -->
+<!-- Products Destacados -->
 <div id="js--latest-products-carousel" class="carousel slide" data-ride="carousel" data-interval="5000">
   <!-- Wrapper for slides -->
   <div class="carousel-inner">
@@ -78,7 +78,7 @@ Home
       <div class="row">
         
           
-@foreach ($products as $product)
+@foreach ($productsDestacados as $product)
             <div class="col-xs-6 col-sm-3  js--isotope-target  js--cat-5" data-price="2.73" data-rating="5">
   <div class="products__single">
     <figure class="products__image">
@@ -100,7 +100,7 @@ Home
     <div class="row">
       <div class="col-xs-9">
         <h5 class="products__title">
-          <a class="products__link  js--isotope-title" href="single-product.html">{{ $product->name }}</a>
+          <a class="products__link  js--isotope-title" href="/products/detail/{{ $product->id }}">{{ $product->name }}</a>
         </h5>
       </div>
       <div class="col-xs-3">
@@ -119,6 +119,7 @@ Home
     </div>
   </div>
 </div>
+
   <!-- Banners medium -->
 <div class="row">
   <div class="col-xs-12 col-sm-6">
@@ -141,13 +142,13 @@ Home
   <!-- Navigation -->
 <div class="products-navigation  push-down-15">
   <div class="products-navigation__title">
-    <h3><span class="light">Productos</span> Destacados</h3>
+    <h3><span class="light">Últimos</span> Productos Publicados</h3>
   </div>
 </div>
 
-<!-- Products -->
+<!-- Products Ultimos Publicados -->
 <div class="row">
-@foreach ($products as $product)    
+@foreach ($productsUltimosPublicados as $product)    
       <div class="col-xs-6 col-sm-3  js--isotope-target  js--cat-5" data-price="2.73" data-rating="5">
         <div class="products__single">
           <figure class="products__image">
@@ -169,7 +170,7 @@ Home
           <div class="row">
             <div class="col-xs-9">
               <h5 class="products__title">
-                <a class="products__link  js--isotope-title" href="single-product.html">{{ $product->name }}</a>
+                <a class="products__link  js--isotope-title" href="/products/detail/{{ $product->id }}">{{ $product->name }}</a>
               </h5>
             </div>
             <div class="col-xs-3">
@@ -209,6 +210,7 @@ Home
   </div>
 </div>
 
+<!-- Products Mejor Puntuados -->
   <div class="row">
   <div class="col-xs-12 col-sm-4">
     <div class="widgets__navigation">
@@ -240,7 +242,7 @@ Home
   </div>
   @endforeach
 
-  
+<!-- Products Mas Vendidos -->
     </div>
   </div>
   <div class="col-xs-12 col-sm-4">
@@ -254,7 +256,7 @@ Home
       <img alt="" class="widgets__products" width="78" height="78" src="/images/products/default.jpg">
     </a>
     <div class="products__title">
-      <a class="products__link" href="single-product.html">{{ $product->name }}</a>
+      <a class="products__link" href="/products/detail/{{ $product->id }}">{{ $product->name }}</a>
     </div>
     <span class="line-through">$16.71</span> <span class="products__price--widgets">${{ $product->price }}</span>
     <br><br>
