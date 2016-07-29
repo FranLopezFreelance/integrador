@@ -2,16 +2,16 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="ProteusNet">
-    <link rel="icon" type="image/ico" href="images/favicon.png">
+    <link rel="icon" type="image/ico" href="/images/favicon.png">
 
     <title>@yield ('titulo')</title>
 
     <!-- Custom styles for this template -->
-    <link rel="stylesheet" href="css/ed5eec95.main.css"/>
+    <link rel="stylesheet" href="/css/ed5eec95.main.css"/>
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -143,7 +143,7 @@
     <div class="row">
       <div class="col-xs-10  col-md-3">
         <div class="header-logo">
-          <a href="/"><img alt="Logo" src="images/logo.png" width="200" height="90"></a>
+          <a href="/"><img alt="Logo" src="/images/logo.png" width="200" height="90"></a>
         </div>
       </div>
       <div class="col-xs-2  visible-sm  visible-xs">
@@ -216,8 +216,8 @@
           <li><a href="features.html">Unlimited colors and layouts</a></li>
           <li><a href="features.html">290+ Glyphicons and Zocial icons</a></li>
           <li><a href="features.html">Advance shop filters</a></li>
-          
-          
+
+
           <li><a href="features.html">Awesome support</a></li>
           <li class="dropdown">
             <a href="blog.html" class="dropdown-toggle">3rd level menu</a>
@@ -278,10 +278,10 @@
   </a>
   <!-- Open cart panel -->
   <div class="header-cart__open-cart">
-  
+
     <div class="header-cart__product  clearfix  js--cart-remove-target">
       <div class="header-cart__product-image">
-        <img alt="Product in the cart" src="images/dummy/product-cart.jpg" width="40" height="50">
+        <img alt="Product in the cart" src="/images/dummy/product-cart.jpg" width="40" height="50">
       </div>
       <div class="header-cart__product-image--hover">
         <a href="#" class="js--remove-item" data-target=".js--cart-remove-target"><span class="glyphicon  glyphicon-circle  glyphicon-remove"></span></a>
@@ -294,10 +294,10 @@
         $16.45
       </div>
     </div>
-  
+
     <div class="header-cart__product  clearfix  js--cart-remove-target">
       <div class="header-cart__product-image">
-        <img alt="Product in the cart" src="images/dummy/product-cart.jpg" width="40" height="50">
+        <img alt="Product in the cart" src="/images/dummy/product-cart.jpg" width="40" height="50">
       </div>
       <div class="header-cart__product-image--hover">
         <a href="#" class="js--remove-item" data-target=".js--cart-remove-target"><span class="glyphicon  glyphicon-circle  glyphicon-remove"></span></a>
@@ -310,10 +310,10 @@
         $16.45
       </div>
     </div>
-  
+
     <div class="header-cart__product  clearfix  js--cart-remove-target">
       <div class="header-cart__product-image">
-        <img alt="Product in the cart" src="images/dummy/product-cart.jpg" width="40" height="50">
+        <img alt="Product in the cart" src="/images/dummy/product-cart.jpg" width="40" height="50">
       </div>
       <div class="header-cart__product-image--hover">
         <a href="#" class="js--remove-item" data-target=".js--cart-remove-target"><span class="glyphicon  glyphicon-circle  glyphicon-remove"></span></a>
@@ -326,7 +326,7 @@
         $16.45
       </div>
     </div>
-  
+
     <hr class="header-cart__divider">
     <div class="header-cart__subtotal-box">
       <span class="header-cart__subtotal">CART SUBTOTAL:</span>
@@ -368,7 +368,7 @@
         <div class="row">
           <div class="col-xs-12  col-sm-3">
             <div class="footer-widgets__social">
-              <img class="push-down-10" alt="Footer Logo" src="images/logo-footer.png" width="139" height="35">
+              <img class="push-down-10" alt="Footer Logo" src="/images/logo-footer.png" width="139" height="35">
               <p class="push-down-15">Adipiscing elit. Ut ullamcorper consectetur, non lacinia turpis suscipit non. Estibulum nu nc lacus, tincidunt non odio eu, scelerisque tristique quam.</p>
               <a class="social-container" href="https://www.facebook.com/ProteusNet"><span class="zocial-facebook"></span></a>
               <a class="social-container" href="https://twitter.com/ProteusNetCom"><span class="zocial-twitter"></span></a>
@@ -433,12 +433,12 @@
     </div>
   </footer>
   <div class="search-mode__overlay"></div>
-    
-    
+
+
     <script type="text/javascript">
       function downloadJSAtOnload() {
         var element = document.createElement("script");
-        element.src = "js/main.js";
+        element.src = "/js/main.js";
         document.body.appendChild(element);
       }
       if (window.addEventListener)
@@ -447,12 +447,15 @@
         window.attachEvent("onload", downloadJSAtOnload);
       else window.onload = downloadJSAtOnload;
     </script>
-    
+
 
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      m=s.getElementsByTagName(o)[0];
+a.async=1;
+a.src=g;
+m.parentNode.insertBefore(a,m)
       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
       ga('create', 'UA-33538073-8', 'proteusthemes.com');

@@ -14,7 +14,7 @@ class HomeController extends Controller {
 	 * @return void
 	 */
 	public function __construct() {
-	$this->middleware('auth');
+		$this->middleware('auth');
 	}
 
 	/**
@@ -25,14 +25,13 @@ class HomeController extends Controller {
 
 	public function index() {
 		$usersFollowing = Auth::user()->following;
-		$products       = Product::orderBy('id', 'DESC')->limit(4)->offset(0)->get();
+		$products       = Product::orderBy('id', 'DESC')->limit(8)->offset(0)->get();
 		return view('home', compact('usersFollowing', 'products'));
 	}
 
-	public function welcome(){
+	public function welcome() {
 		$usersFollowing = Auth::user()->following;
-		$products       = Product::orderBy('id', 'DESC')->limit(4)->offset(0)->get();
+		$products       = Product::orderBy('id', 'DESC')->limit(8)->offset(0)->get();
 		return view('welcome', compact('products', 'usersFollowing'));
 	}
-}	
-
+}
