@@ -14,7 +14,7 @@ Home
       <h1 class="jumbotron__title">
         Productos Orgánicos
       </h1>
-      <a class="btn  btn-warning" href="/products/list">Ver Productos</a> 
+      <a class="btn  btn-warning" href="/products/list">Ver Productos</a>
     </div>
   </div>
 </div>
@@ -76,8 +76,8 @@ Home
   <div class="carousel-inner">
     <div class="item active">
       <div class="row">
-        
-          
+
+
 @foreach ($productsDestacados as $product)
             <div class="col-xs-6 col-sm-3  js--isotope-target  js--cat-5" data-price="2.73" data-rating="5">
   <div class="products__single">
@@ -110,11 +110,11 @@ Home
       </div>
     </div>
     <div class="products__category">
-      {{ $product->section->name }} 
+      {{ $product->section->name }}
     </div>
   </div>
 </div>
-@endforeach                            
+@endforeach
       </div>
     </div>
   </div>
@@ -148,7 +148,7 @@ Home
 
 <!-- Products Ultimos Publicados -->
 <div class="row">
-@foreach ($productsUltimosPublicados as $product)    
+@foreach ($productsUltimosPublicados as $product)
       <div class="col-xs-6 col-sm-3  js--isotope-target  js--cat-5" data-price="2.73" data-rating="5">
         <div class="products__single">
           <figure class="products__image">
@@ -180,7 +180,7 @@ Home
             </div>
           </div>
           <div class="products__category">
-            {{ $product->section->name }} 
+            {{ $product->section->name }}
           </div>
         </div>
       </div>
@@ -228,17 +228,17 @@ Home
     <span class="line-through">$11.25</span> <span class="products__price--widgets">${{ $product->price }}</span>
     <br><br>
 
-    
+
     <span class="glyphicon glyphicon-star  star-on"></span>
-    
+
     <span class="glyphicon glyphicon-star  star-on"></span>
-    
+
     <span class="glyphicon glyphicon-star  star-on"></span>
-    
+
     <span class="glyphicon glyphicon-star  star-on"></span>
-    
+
     <span class="glyphicon glyphicon-star  star-on"></span>
-    
+
   </div>
   @endforeach
 

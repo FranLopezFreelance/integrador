@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="ProteusNet">
@@ -37,6 +37,13 @@
 
   </head>
   <body>
+
+    <!-- SI EL USUARIO ESTÁ LOGUEADO IMPRIMIMOS UN TAG CON SU ID PARA USARLO CON PUSHER -->
+
+      @if(!Auth::guest())
+        <input id="userId-pusher" type="hidden" value="{{ Auth::user()->id }}" />
+      @endif
+
     <div class="top  js--fixed-header-offset">
   <div class="container">
     <div class="row">
@@ -107,7 +114,7 @@
                   <span class="help-block">
                       <strong>{{ $errors->first('name') }}</strong>
                   </span>
-                @endif   
+                @endif
             </div>
 
             <div class="form-group{{ $errors->has('lastname') ? ' has-error' : '' }}">
@@ -116,7 +123,7 @@
                   <span class="help-block">
                       <strong>{{ $errors->first('lastname') }}</strong>
                   </span>
-                @endif   
+                @endif
             </div>
 
             <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
@@ -136,7 +143,7 @@
                   </span>
                 @endif
             </div>
-            
+
             <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
                 <input type="password" class="form-control  form-control--contact" name="password_confirmation" placeholder="Re-ingrese Password" >
                 @if ($errors->has('password'))
@@ -221,7 +228,7 @@
                 <a data-toggle="modal" role="button" href="{{ url('/password/reset') }}" data-dismiss="modal">Olvidaste tu contraseña?</a>
             </div>
           </div>
-          
+
         </form>
       </div>
     </div>
@@ -301,8 +308,8 @@
           <li><a href="features.html">Unlimited colors and layouts</a></li>
           <li><a href="features.html">290+ Glyphicons and Zocial icons</a></li>
           <li><a href="features.html">Advance shop filters</a></li>
-          
-          
+
+
           <li><a href="features.html">Awesome support</a></li>
           <li class="dropdown">
             <a href="blog.html" class="dropdown-toggle">3rd level menu</a>
@@ -374,7 +381,7 @@
   @endif
   <!-- Open cart panel -->
   <div class="header-cart__open-cart">
-  
+
     <div class="header-cart__product  clearfix  js--cart-remove-target">
       <div class="header-cart__product-image">
         <img alt="Product in the cart" src="/images/dummy/product-cart.jpg" width="40" height="50">
@@ -390,7 +397,7 @@
         $16.45
       </div>
     </div>
-  
+
     <div class="header-cart__product  clearfix  js--cart-remove-target">
       <div class="header-cart__product-image">
         <img alt="Product in the cart" src="/images/dummy/product-cart.jpg" width="40" height="50">
@@ -406,7 +413,7 @@
         $16.45
       </div>
     </div>
-  
+
     <div class="header-cart__product  clearfix  js--cart-remove-target">
       <div class="header-cart__product-image">
         <img alt="Product in the cart" src="/images/dummy/product-cart.jpg" width="40" height="50">
@@ -422,7 +429,7 @@
         $16.45
       </div>
     </div>
-  
+
     <hr class="header-cart__divider">
     <div class="header-cart__subtotal-box">
       <span class="header-cart__subtotal">CART SUBTOTAL:</span>
@@ -533,8 +540,8 @@
     </div>
   </footer>
   <div class="search-mode__overlay"></div>
-    
-    
+
+
     <script type="text/javascript">
       function downloadJSAtOnload() {
         var element = document.createElement("script");
@@ -547,17 +554,26 @@
         window.attachEvent("onload", downloadJSAtOnload);
       else window.onload = downloadJSAtOnload;
     </script>
-    
+
 
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      m=s.getElementsByTagName(o)[0];
+a.async=1;
+a.src=g;
+m.parentNode.insertBefore(a,m)
       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
       ga('create', 'UA-33538073-8', 'proteusthemes.com');
       ga('send', 'pageview');
 
     </script>
+
+    <script src="/js/jquery/jquery.js"></script>
+    <script src="/js/pusher/pusher.js"></script>
+    <script src="/js/handlebars/handlebars.js"></script>
+    <script src="/js/app-pusher.js"></script>
+
   </body>
 </html>

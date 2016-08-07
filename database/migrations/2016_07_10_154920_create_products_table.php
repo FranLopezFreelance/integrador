@@ -12,13 +12,10 @@ class CreateProductsTable extends Migration {
 	public function up() {
 		Schema::create('products', function (Blueprint $table) {
 				$table->increments('id');
-				$table->integer('user_id')->unsigned();
-				$table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+				$table->integer('user_id');
 				$table->string('name');
-				$table->integer('section_id')->unsigned();
-				$table->foreign('section_id')->references('id')->on('sections')->onDelete('cascade');
-				$table->integer('brand_id')->unsigned();
-				$table->foreign('brand_id')->references('id')->on('brands')->onDelete('cascade');
+				$table->integer('section_id');
+				$table->integer('brand_id');
 				$table->string('description');
 				$table->float('price');
 				$table->string('image');

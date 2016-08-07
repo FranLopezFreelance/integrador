@@ -1,5 +1,9 @@
 <?php
 
+/*$pusher = new Pusher('fde4c913418bef9c7a8b', 'f372de6e86369b9aae85', 231061);
+
+session(['pusher' => $pusher]);*/
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -13,6 +17,18 @@
 
 Route::get('/', 'HomeControllerNoAuth@home');
 Route::get('/welcome', 'HomeController@welcome');
+
+Route::get('push', function () {
+		//NOTIFICATION//
+		$pusher = new Pusher('fde4c913418bef9c7a8b', 'f372de6e86369b9aae85', 231061);
+
+		$pusher->trigger('notifications', 'new', [
+				'title'   => 'Te han hecho una compra',
+				'user_id' => 5
+			]);
+
+		return view('push');
+	});
 
 Route::group(['prefix' => 'users'], function () {
 		//GET METHOD

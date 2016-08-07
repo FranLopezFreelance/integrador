@@ -12,10 +12,8 @@ class CreateOrdersTable extends Migration {
 	public function up() {
 		Schema::create('orders', function (Blueprint $table) {
 				$table->increments('id');
-				$table->integer('customer_id')->unsigned();
-				$table->foreign('customer_id')->references('id')->on('users')->onDelete('cascade');
-				$table->integer('seller_id')->unsigned();
-				$table->foreign('seller_id')->references('id')->on('users')->onDelete('cascade');
+				$table->integer('customer_id');
+				$table->integer('seller_id');
 				$table->integer('customer_ok');
 				$table->integer('seller_ok');
 				$table->float('total');

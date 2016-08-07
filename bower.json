@@ -1,0 +1,27 @@
+{
+  "name": "integrador",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Fran <franlopez.freelance@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/FranLopezFreelance/integrador",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "pusher-websocket-iso": "pusher#^3.1.0",
+    "handlebars": "^4.0.5"
+  },
+  "install": {
+    "path": "public/js"
+  },
+  "dependencies": {
+    "jquery": "^3.1.0"
+  }
+}
