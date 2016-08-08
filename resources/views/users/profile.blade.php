@@ -23,6 +23,7 @@
                         <hr />
 
                         <div class="row">
+                            <h3>Calificaciones</h3>
                             <div class="col-md-6">
                                 <h4><a href="">Calificaciones como Vendedor:
                                 {{ $user->qualifySeller()->count() }}</a></h4>

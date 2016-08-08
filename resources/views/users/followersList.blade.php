@@ -16,7 +16,12 @@
 					</div>
 				@endif
 			@empty
+
 				<h3>Aún no te sigue ningún Usuario</h3>
+
+				<hr />
+
+				<h4>Publica más productos para que tus usuarios te sigan. <a href="/products/create">Ir</a></h4>
 			@endforelse
 		</div>
 	</div>

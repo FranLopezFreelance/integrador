@@ -7,13 +7,13 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
 
-                <div class="panel-heading">Editar datos de Usuario [{{ $user->type->name }}] </div>
+                <div class="panel-heading">Editar datos de Usuario <b>{{ $user->type->name }}</b> </div>
 
                 <div class="panel-body">
 
                     @if (Session::get('msg'))
-                        <div class="alert alert-success" role="alert">
-                            {{ Session::get('msg') }}
+                        <div class="alert alert-success fade" role="alert">
+                           <b> {{ Session::get('msg') }}</b>
                         </div>
                     @endif
 

@@ -42,13 +42,16 @@
         <div class="top__menu">
           <ul class="nav  nav-pills">
             @if (Auth::guest())
-            <li><a href="#registerModal" role="button" data-toggle="modal">Register</a></li>
-            <li><a href="#loginModal" role="button" data-toggle="modal">Login</a></li>
-            @endif
-            @if (!Auth::guest())
+              <li><a href="#registerModal" role="button" data-toggle="modal">Register</a></li>
+              <li><a href="#loginModal" role="button" data-toggle="modal">Login</a></li>
+            @else
+
+            <!-- Dejo el Id de usuario logueado para que lo tome js para PUSHER -->
+            <span id="idUserLogedIn" style="visibility:hidden">{{ Auth::user()->id }}</span>
+
             <li class="dropdown  js--mobile-dropdown">
               <a class="dropdown-toggle" href="#">
-                Mi cuenta <span class="caret"></span>
+                Mi cuenta ({{ Auth::user()->name }}): <span class="caret"></span>
               </a>
               <ul class="dropdown-menu">
                 <li><a href="/users/myProfile"><i class="fa fa-btn fa-user"></i>Mi Perfil</a></li>
@@ -253,7 +256,7 @@
         </ul> -->
       </li>
       <li class="dropdown">
-        <a href="blog.html" class="dropdown-toggle">NOTICACIONES <span class="badge">3</span></a>
+        <a href="blog.html" class="dropdown-toggle">NOTICACIONES <span id="barNotifications" class="badge"></span></a>
         <ul class="dropdown-menu">
           <li><a href="blog-right-sidebar.html">Han calificado una compra</a></li>
           <li><a href="blog-left-sidebar.html">Te han comprado un producto</a></li>
@@ -262,6 +265,12 @@
       </li>
       <li class="dropdown">
         <a href="features.html" class="dropdown-toggle">SEGUIDORES</a>
+        <ul class="dropdown-menu">
+          <li><a href="/users/followingList">Usuarios que sigues</a></li>
+        @if(!Auth::guest() && Auth::user()->type_id==2)
+          <li><a href="/users/followersList">Usuarios que te siguen</a></li>
+        @endif
+        </ul>
       </li>
 
       <li class="hidden-xs  hidden-sm">
@@ -357,7 +366,7 @@
 
         <hr class="header-cart__divider">
         <div class="header-cart__subtotal-box">
-          <span class="header-cart__subtotal">CART SUBTOTAL:</span>
+          <span class="header-cart__subtotal">SUBTOTAL:</span>
           <span class="header-cart__subtotal-price">$49.35</span>
         </div>
         <a class="btn btn-darker" href="cart.html">Finalizar compra</a>
@@ -487,6 +496,15 @@
       else if (window.attachEvent)
         window.attachEvent("onload", downloadJSAtOnload);
       else window.onload = downloadJSAtOnload;
+    </script>
+
+    <!-- ALERT PARA LAS NOTIFICACIONES -->
+
+    <div id="divNotifications">
+    </div>
+
+    <script>
+      var snd = new Audio("/audio/notification.mp3");
     </script>
 
     <script src="/js/jquery/jquery.js"></script>

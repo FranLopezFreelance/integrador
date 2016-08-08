@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\City;
+use App\Events\NotificationEvent;
 use App\Type;
 use App\User;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -32,14 +34,23 @@ class UsersController extends Controller {
 	}
 
 	public function sellersList() {
-		$users     = User::where('type_id', 2)->get();
+		$users     = User::where('type_id', 2)->paginate(12);
 		$following = Auth::user()->following;
 		return view('users.sellersList', compact('users', 'following'));
 	}
 
 	public function follow($id) {
 		Auth::user()->following()->attach(['following_id' => $id]);
-		return back();
+		$user = Auth::user()->name;
+
+		//ENVIO LA NOTIFICACION POR PUSHER
+		event(new NotificationEvent(
+				[
+					'text'    => "$user te está siguiendo.",
+					'user_id' => $id,
+				]));
+
+		//return back();
 	}
 
 	public function unFollow($id) {
