@@ -81,12 +81,12 @@
     <div class="col-xs-12  col-sm-9">
       <div class="grid">
         <ul class="pagination  shop__amount-filter">
-          <li>
+          <!--<li>
             <a class="shop__amount-filter__link  hidden-xs" href="shop.html"><span class="glyphicon glyphicon-th"></span></a>
           </li>
           <li>
               <a class="shop__amount-filter__link  hidden-xs" href="shop-list-view.html"><span class="glyphicon glyphicon-th-list"></span></a>
-          </li>
+          </li>-->
         </ul>
         <div class="shop__sort-filter">
           <select class="js--isotope-sorting  btn  btn-shop">

@@ -64,14 +64,6 @@
               </ul>
             </li>
             @endif
-            <li class="dropdown  js--mobile-dropdown">
-              <a class="dropdown-toggle" href="#">
-                Español <span class="caret"></span>
-              </a>
-              <ul class="dropdown-menu">
-                <li><a href="#">English</a></li>
-              </ul>
-            </li>
           </ul>
         </div>
       </div>
@@ -374,7 +366,7 @@
 
     @else
       <div class="header-cart">
-        <a href="#" class="btn btn-success">Iniciar Orden de Compra</a>
+        <a href="#" class="btn btn-success">Iniciar Orden</a>
       </div>
     @endif
   @endif
