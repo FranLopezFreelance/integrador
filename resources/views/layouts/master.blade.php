@@ -44,6 +44,8 @@
             @if (Auth::guest())
             <li><a href="#registerModal" role="button" data-toggle="modal">Register</a></li>
             <li><a href="#loginModal" role="button" data-toggle="modal">Login</a></li>
+            
+              
             @endif
             @if (!Auth::guest())
             <li class="dropdown  js--mobile-dropdown">
