@@ -12,28 +12,13 @@
 
     <!-- Custom styles for this template -->
     <link rel="stylesheet" href="/css/ed5eec95.main.css"/>
+    <link rel="stylesheet" href="/css/styles.css"/>
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
-
-    <!-- Google fonts -->
-    <script type="text/javascript">
-      WebFontConfig = {
-        google: { families: [ 'Arvo:700:latin', 'Open+Sans:400,600,700:latin' ] }
-      };
-      (function() {
-        var wf = document.createElement('script');
-        wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
-          '://ajax.googleapis.com/ajax/libs/webfont/5/webfont.js';
-        wf.type = 'text/javascript';
-        wf.async = 'true';
-        var s = document.getElementsByTagName('script')[0];
-        s.parentNode.insertBefore(wf, s);
-      })();
-    </script>
 
   </head>
   <body>
@@ -275,70 +260,17 @@
         </ul> -->
       </li>
       <li class="dropdown">
-        <a href="blog.html" class="dropdown-toggle">BLOG</a>
-        <!-- <ul class="dropdown-menu">
-          <li><a href="blog-right-sidebar.html">Blog (Right sidebar)</a></li>
-          <li><a href="blog-left-sidebar.html">Blog (Left sidebar)</a></li>
-          <li><a href="blog.html">Blog (Alternative)</a></li>
-          <li><a href="single-post.html">Single Blogpost</a></li>
-        </ul> -->
-      </li>
-      <li class="dropdown">
-        <a href="about-us.html" class="dropdown-toggle">SOBRE NOSOTROS</a>
-        <!-- <ul class="dropdown-menu">
-          <li><a href="about-us.html">About us</a></li>
-          <li><a href="pricing.html">Pricing Tables</a></li>
-          <li><a href="contact.html">Contact 1</a></li>
-          <li><a href="contact-2.html">Contact 2</a></li>
-          <li><a href="search-results.html">Search Results</a></li>
-          <li><a href="404.html">404 page</a></li>
-          <li><a href="page-right.html">Page (Right sidebar)</a></li>
-          <li><a href="page-left.html">Page (Left sidebar)</a></li>
-          <li><a href="page-full-width.html">Page (Full width)</a></li>
-        </ul> -->
-      </li>
-      <li class="dropdown">
-        <a href="features.html" class="dropdown-toggle">CONTACTO</a>
-        <!-- <ul class="dropdown-menu">
-          <li><a href="features.html">Responsive design</a></li>
-          <li><a href="features.html">Retina ready</a></li>
-          <li><a href="features.html">Lightning fast</a></li>
-          <li><a href="features.html">Search engine optimized</a></li>
-          <li><a href="features.html">Layered PSDs included</a></li>
-          <li><a href="features.html">Unlimited colors and layouts</a></li>
-          <li><a href="features.html">290+ Glyphicons and Zocial icons</a></li>
-          <li><a href="features.html">Advance shop filters</a></li>
-
-
-          <li><a href="features.html">Awesome support</a></li>
-          <li class="dropdown">
-            <a href="blog.html" class="dropdown-toggle">3rd level menu</a>
-            <ul class="dropdown-menu">
-              <li><a href="blog-right-sidebar.html">Blog (Right sidebar)</a></li>
-              <li><a href="blog-left-sidebar.html">Blog (Left sidebar)</a></li>
-              <li><a href="blog.html">Blog (Alternative)</a></li>
-              <li><a href="single-post.html">Single Blogpost</a></li>
-            </ul>
-          </li>
-        </ul> -->
-      </li>
-      <!-- <li class="dropdown">
-        <a href="elements.html" class="dropdown-toggle">ELEMENTS<b class="caret"></b></a>
+        <a href="blog.html" class="dropdown-toggle">NOTICACIONES <span class="badge">3</span></a>
         <ul class="dropdown-menu">
-          <li><a href="elements.html#headings">Headings</a></li>
-          <li><a href="elements.html#banners">Banners</a></li>
-          <li><a href="elements.html#alerts">Alerts</a></li>
-          <li><a href="elements.html#tabs">Tabs</a></li>
-          <li><a href="elements.html#buttons">Buttons</a></li>
-          <li><a href="elements.html#tables">Tables</a></li>
-          <li><a href="elements.html#maps">Maps</a></li>
-          <li><a href="elements.html#bars">Bars</a></li>
-          <li><a href="elements.html#columns">Columns</a></li>
-          <li><a href="elements.html#gallerys">Gallerys</a></li>
-          <li><a href="elements.html#code">Code</a></li>
-          <li><a href="elements.html#toggles">Toggles</a></li>
+          <li><a href="blog-right-sidebar.html">Han calificado una compra</a></li>
+          <li><a href="blog-left-sidebar.html">Te han comprado un producto</a></li>
+          <li><a href="blog-left-sidebar.html">Tienes un nuevo Seguidor</a></li>
         </ul>
-      </li> -->
+      </li>
+      <li class="dropdown">
+        <a href="features.html" class="dropdown-toggle">SEGUIDORES</a>
+      </li>
+
       <li class="hidden-xs  hidden-sm">
         <a href="#" class="js--toggle-search-mode"><span class="glyphicon  glyphicon-search  glyphicon-search--nav"></span></a>
       </li>
@@ -360,7 +292,7 @@
       </div>
     </form>
     @if (!Auth::guest())
-    <div class="mobile-cart  visible-xs  visible-sm  push-down-15">
+    <!--<div class="mobile-cart  visible-xs  visible-sm  push-down-15">
         <span class="header-cart__text--price"><span class="header-cart__text">Carrito</span> $49.35</span>
       <a href="cart.html" class="header-cart__items">
         <span class="header-cart__items-num">3</span>
@@ -539,6 +471,7 @@
       </div>
     </div>
   </footer>
+
   <div class="search-mode__overlay"></div>
 
 
@@ -555,24 +488,8 @@
       else window.onload = downloadJSAtOnload;
     </script>
 
-
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];
-a.async=1;
-a.src=g;
-m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-      ga('create', 'UA-33538073-8', 'proteusthemes.com');
-      ga('send', 'pageview');
-
-    </script>
-
     <script src="/js/jquery/jquery.js"></script>
     <script src="/js/pusher/pusher.js"></script>
-    <script src="/js/handlebars/handlebars.js"></script>
     <script src="/js/app-pusher.js"></script>
 
   </body>
