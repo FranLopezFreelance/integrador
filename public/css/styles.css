@@ -14,3 +14,7 @@
 	color: #fff!important;
 }
 
+.sidebar__subtitle {
+	cursor: pointer;
+}
+

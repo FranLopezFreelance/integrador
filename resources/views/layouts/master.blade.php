@@ -306,72 +306,80 @@
       <div class="col-xs-12  col-md-2  hidden-sm  hidden-xs">
         <!-- Cart in header -->
 @if (!Auth::guest())
-<div class="header-cart">
-  <span class="header-cart__text--price"><span class="header-cart__text">Carrito</span> $49.35</span>
-  <a href="#" class="header-cart__items">
-    <span class="header-cart__items-num">3</span>
-  </a>
+  @if(session('cart'))
+    <div class="header-cart">
+      <span class="header-cart__text--price"><span class="header-cart__text">Carrito</span> $49.35</span>
+      <a href="#" class="header-cart__items">
+        <span class="header-cart__items-num">3</span>
+      </a>
+      <!-- Open cart panel -->
+      <div class="header-cart__open-cart">
+
+        <div class="header-cart__product  clearfix  js--cart-remove-target">
+          <div class="header-cart__product-image">
+            <img alt="Product in the cart" src="/images/dummy/product-cart.jpg" width="40" height="50">
+          </div>
+          <div class="header-cart__product-image--hover">
+            <a href="#" class="js--remove-item" data-target=".js--cart-remove-target"><span class="glyphicon  glyphicon-circle  glyphicon-remove"></span></a>
+          </div>
+          <div class="header-cart__product-title">
+            <a class="header-cart__link" href="single-product.html">Eatable Hemp</a>
+            <span class="header-cart__qty">Qty: 1</span>
+          </div>
+          <div class="header-cart__price">
+            $16.45
+          </div>
+        </div>
+
+        <div class="header-cart__product  clearfix  js--cart-remove-target">
+          <div class="header-cart__product-image">
+            <img alt="Product in the cart" src="/images/dummy/product-cart.jpg" width="40" height="50">
+          </div>
+          <div class="header-cart__product-image--hover">
+            <a href="#" class="js--remove-item" data-target=".js--cart-remove-target"><span class="glyphicon  glyphicon-circle  glyphicon-remove"></span></a>
+          </div>
+          <div class="header-cart__product-title">
+            <a class="header-cart__link" href="single-product.html">Eatable Hemp</a>
+            <span class="header-cart__qty">Qty: 1</span>
+          </div>
+          <div class="header-cart__price">
+            $16.45
+          </div>
+        </div>
+
+        <div class="header-cart__product  clearfix  js--cart-remove-target">
+          <div class="header-cart__product-image">
+            <img alt="Product in the cart" src="/images/dummy/product-cart.jpg" width="40" height="50">
+          </div>
+          <div class="header-cart__product-image--hover">
+            <a href="#" class="js--remove-item" data-target=".js--cart-remove-target"><span class="glyphicon  glyphicon-circle  glyphicon-remove"></span></a>
+          </div>
+          <div class="header-cart__product-title">
+            <a class="header-cart__link" href="single-product.html">Eatable Hemp</a>
+            <span class="header-cart__qty">Qty: 1</span>
+          </div>
+          <div class="header-cart__price">
+            $16.45
+          </div>
+        </div>
+
+        <hr class="header-cart__divider">
+        <div class="header-cart__subtotal-box">
+          <span class="header-cart__subtotal">CART SUBTOTAL:</span>
+          <span class="header-cart__subtotal-price">$49.35</span>
+        </div>
+        <a class="btn btn-darker" href="cart.html">Finalizar compra</a>
+      </div>
+    </div>
+
+    @else
+      <div class="header-cart">
+        <a href="#" class="btn btn-success">Iniciar Orden de Compra</a>
+      </div>
+    @endif
   @endif
-  <!-- Open cart panel -->
-  <div class="header-cart__open-cart">
 
-    <div class="header-cart__product  clearfix  js--cart-remove-target">
-      <div class="header-cart__product-image">
-        <img alt="Product in the cart" src="/images/dummy/product-cart.jpg" width="40" height="50">
-      </div>
-      <div class="header-cart__product-image--hover">
-        <a href="#" class="js--remove-item" data-target=".js--cart-remove-target"><span class="glyphicon  glyphicon-circle  glyphicon-remove"></span></a>
-      </div>
-      <div class="header-cart__product-title">
-        <a class="header-cart__link" href="single-product.html">Eatable Hemp</a>
-        <span class="header-cart__qty">Qty: 1</span>
-      </div>
-      <div class="header-cart__price">
-        $16.45
-      </div>
     </div>
-
-    <div class="header-cart__product  clearfix  js--cart-remove-target">
-      <div class="header-cart__product-image">
-        <img alt="Product in the cart" src="/images/dummy/product-cart.jpg" width="40" height="50">
-      </div>
-      <div class="header-cart__product-image--hover">
-        <a href="#" class="js--remove-item" data-target=".js--cart-remove-target"><span class="glyphicon  glyphicon-circle  glyphicon-remove"></span></a>
-      </div>
-      <div class="header-cart__product-title">
-        <a class="header-cart__link" href="single-product.html">Eatable Hemp</a>
-        <span class="header-cart__qty">Qty: 1</span>
-      </div>
-      <div class="header-cart__price">
-        $16.45
-      </div>
-    </div>
-
-    <div class="header-cart__product  clearfix  js--cart-remove-target">
-      <div class="header-cart__product-image">
-        <img alt="Product in the cart" src="/images/dummy/product-cart.jpg" width="40" height="50">
-      </div>
-      <div class="header-cart__product-image--hover">
-        <a href="#" class="js--remove-item" data-target=".js--cart-remove-target"><span class="glyphicon  glyphicon-circle  glyphicon-remove"></span></a>
-      </div>
-      <div class="header-cart__product-title">
-        <a class="header-cart__link" href="single-product.html">Eatable Hemp</a>
-        <span class="header-cart__qty">Qty: 1</span>
-      </div>
-      <div class="header-cart__price">
-        $16.45
-      </div>
-    </div>
-
-    <hr class="header-cart__divider">
-    <div class="header-cart__subtotal-box">
-      <span class="header-cart__subtotal">CART SUBTOTAL:</span>
-      <span class="header-cart__subtotal-price">$49.35</span>
-    </div>
-    <a class="btn btn-darker" href="cart.html">Finalizar compra</a>
-  </div>
-</div>
-      </div>
     </div>
   </div>
 
@@ -492,6 +500,7 @@
     <script src="/js/jquery/jquery.js"></script>
     <script src="/js/pusher/pusher.js"></script>
     <script src="/js/app-pusher.js"></script>
+    <script src="/js/scripts.js"></script>
 
   </body>
 </html>

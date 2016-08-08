@@ -40,7 +40,7 @@
 
         <div class="shop-filter">
 
-          <h5 class="sidebar__subtitle">Categoría</h5>
+          <h5 class="sidebar__subtitle open">Categoría</h5>
 
           <div id="categorias" style="display:none;">
             <ul class="nav  nav--filter">
@@ -63,12 +63,12 @@
 
           <hr class="divider">
           <nav>
-            <h5 class="sidebar__subtitle">Barrio</h5>
+            <h5 class="sidebar__subtitle open">Barrio</h5>
 
             <div id="barrios" style="display:none;">
             <ul class="nav  nav--filter">
               @foreach ($cities as $barrios)
-                <li><a data-target=".{{ str_replace(" ", "-", $barrios->name) }}" class="js--filter-selectable" href="#">{{ $barrios->name }}</a></li>
+                <li><a data-target=".{{ $barrios->id }}" class="js--filter-selectable" href="#">{{ $barrios->name }}</a></li>
               @endforeach
             </ul>
             </div>
@@ -104,7 +104,7 @@
 
             @foreach($products as $product)
 
-              <div class="col-xs-6 col-sm-3  js--isotope-target  {{ $product->section->name }} {{ str_replace(" ", "-", $product->user->city->name) }}" data-price="{{ $product->price }}" data-rating="">
+              <div class="col-xs-6 col-sm-3  js--isotope-target  {{ $product->section->name }} {{ $product->user->city_id }}" data-price="{{ $product->price }}" data-rating="">
               <div class="products__single">
                 <figure class="products__image">
                   <a href="/products/detail/{{ $product->id }}">
