@@ -25,5 +25,8 @@ class EventsSeeder extends Seeder {
 		DB::table('events')->insert([
 				'name' => 'te ha calificado.',
 			]);
+		DB::table('events')->insert([
+				'name' => 'te está siguiendo.',
+			]);
 	}
 }
