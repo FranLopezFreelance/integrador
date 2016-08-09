@@ -11,10 +11,6 @@ class EventsSeeder extends Seeder {
 	public function run() {
 
 		DB::table('events')->insert([
-				'name' => 'te está siguiendo.',
-			]);
-
-		DB::table('events')->insert([
 				'name' => 'te ha hecho una compra.',
 			]);
 
@@ -28,6 +24,9 @@ class EventsSeeder extends Seeder {
 
 		DB::table('events')->insert([
 				'name' => 'te ha calificado.',
+			]);
+		DB::table('events')->insert([
+				'name' => 'te está siguiendo.',
 			]);
 	}
 }

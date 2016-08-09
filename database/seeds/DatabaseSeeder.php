@@ -9,8 +9,8 @@ class DatabaseSeeder extends Seeder {
 	 * @return void
 	 */
 	public function run() {
-		
-		$this->call(CitiesSeeder::class);
+
+		/*$this->call(CitiesSeeder::class);
 
 		$this->call(BrandSeeder::class);
 
@@ -21,13 +21,15 @@ class DatabaseSeeder extends Seeder {
 		$this->call(UsuariosSeeder::class);
 
 		$this->call(ProductsSeeder::class);
-		
+
 		$this->call(QualityProductsSeeder::class);
 
 		$this->call(QualityCostumersSeeder::class);
 
-		$this->call(QualitySellersSeeder::class);
+		$this->call(QualitySellersSeeder::class);*/
 
 		//$this->call(FollowingSeeder::class);
+
+		$this->call(EventsSeeder::class );
 	}
 }

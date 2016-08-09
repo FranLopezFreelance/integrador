@@ -10,13 +10,13 @@ $(function(){
 
 		channel.bind('App\\Events\\NotificationEvent', function(data){
 
-			var q = 1;
-
-			var notification = "<a href='/notifications/1'><div class='alert alert-warning notification' role='alert'><b>" + data.msg.text + "</b></div></a>";
+			var notification = "<a href='" + data.msg.url + "'><div class='alert alert-warning notification' role='alert'><b>" + data.msg.text + "</b></div></a>";
 
 			$('#divNotifications').prepend(notification);
 
-			$('#barNotifications').text(q);
+			$('#barNotifications').show();
+
+			$('#barNotifications').text(data.msg.notifications);
 
 			snd.play();
 

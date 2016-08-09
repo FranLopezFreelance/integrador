@@ -2,10 +2,6 @@
 
 namespace App;
 
-use App\City;
-
-use App\Product;
-use App\Type;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable {
@@ -61,6 +57,10 @@ class User extends Authenticatable {
 
 	public function qualifySeller() {
 		return $this->hasMany(Qualifyseller::class , 'seller_id');
+	}
+
+	public function notifications() {
+		return $this->hasMany(Notification::class );
 	}
 
 }

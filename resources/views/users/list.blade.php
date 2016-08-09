@@ -12,6 +12,7 @@
 					<h4><a href="/users/profile/{{ $user->id }}">{{ $user->name }}</a></h4>
 					<p>Localidad: {{ $user->city->name }} </p>
 					<h4><a class="btn btn-primary" onclick="follow({{ $user->id }})">Seguir</a></h4>
+
 					<hr />
 				</div>
 			@empty
@@ -26,8 +27,6 @@
 </div>
 
 <script>
-    function follow( id) {
-        $.get( "/users/follow/" + id );
-    }
+
 </script>
 @endsection
