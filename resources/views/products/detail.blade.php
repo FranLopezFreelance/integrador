@@ -1,30 +1,32 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="breadcrumbs">
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12">
-        <nav>
-          <ol class="breadcrumb">
+    <div class="breadcrumbs">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12">
+            <nav>
+              <ol class="breadcrumb">
 
-            <li><a href="/">Home</a></li>
+                <li><a href="/">Home</a></li>
 
-            <li><a href="/products/list">Productos</a></li>
+                <li><a href="/products/list">Productos</a></li>
 
-            <li class="active">{{ $product->name }}</li>
+                <li class="active">{{ $product->name }}</li>
 
-          </ol>
-        </nav>
+              </ol>
+            </nav>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-@if (Session::get('msg'))
+
+            @if (Session::get('msg'))
                 <div class="alert alert-success" role="alert">
                     {{ Session::get('msg') }}
                 </div>
             @endif
+
 <div class="container">
   <div class="push-down-30">
     <div class="row">

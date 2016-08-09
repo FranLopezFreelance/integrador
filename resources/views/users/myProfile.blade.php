@@ -25,15 +25,19 @@
                         <hr />
 
                         <div class="row">
+                            <h5>Calificaciones</h5>
+                            <hr />
                             <div class="col-md-6">
-                                <h4><a href="">Calificaciones como Vendedor:
+                                <h4><a href="">como Vendedor:
                                 {{ $user->qualifySeller()->count() }}</a></h4>
                             </div>
                             <div class="col-md-6">
-                                <h4><a href="">Calificaciones como Comprador:
+                                <h4><a href="">como Comprador:
                                 {{ $user->qualifyCustomer()->count() }}</a></h4>
                             </div>
                         </div>
+
+                        <hr />
 
                     </div>
                 </div>

@@ -10,3 +10,9 @@ $(document).ready(function(){
     }
    });
 });
+
+if($("div.alert")){
+	window.setTimeout(function () {
+	    $("div.alert").fadeOut();
+	}, 2500);
+}

@@ -18,6 +18,10 @@
 				@endif
 			@empty
 				<h3>Aún no sigues a ningún Usuario</h3>
+
+				<hr />
+
+				<h4>Busca algún usuario que seguir y te entererás cuando suba nuevos productos. <a href="/users/sellersList">Ver Usuarios</a></h4>
 			@endforelse
 		</div>
 	</div>

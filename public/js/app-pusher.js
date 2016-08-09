@@ -1,35 +1,30 @@
 $(function(){
 
-	if($('#userId-pusher')){
+	if($('#idUserLogedIn')){
 
-		$userId = $('#userId-pusher').val();
-
-		console.log($userId );
-	
 		var pusher = new Pusher('fde4c913418bef9c7a8b');
 
-		var channel = pusher.subscribe('notifications');
+		var id = $('#idUserLogedIn').html();
 
+		var channel = pusher.subscribe(id);
 
-		/*window.App = {};
+		channel.bind('App\\Events\\NotificationEvent', function(data){
 
-		App.Notifier = function(data){
-			this.notify = function(message){
-				var template = Handlebars.compile($('#flash-template').html());
+			var q = 1;
 
-				$(template({ message: 'Hello World!' })).appendTo('body').fadeIn(300);
-			}	
-		};
+			var notification = "<a href='/notifications/1'><div class='alert alert-warning notification' role='alert'><b>" + data.msg.text + "</b></div></a>";
 
-		App.Listeners = {};*/
+			$('#divNotifications').prepend(notification);
 
-		channel.bind('new', function(data){
-			
-			console.log('Título: ' + data.title + ' / Id de Usuario: ' + data.user_id)
+			$('#barNotifications').text(q);
+
+			snd.play();
+
+			window.setTimeout(function () {
+			    $(".notification").fadeOut();
+			}, 5000);
 
 		});
-
 	}
-
 
 });
