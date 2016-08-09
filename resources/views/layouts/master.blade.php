@@ -4,11 +4,11 @@
     <meta charset="utf-8">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="ProteusNet">
+    <meta name="description" content="Portal de venta de Productos Naturales y Orgánicos">
+    <meta name="author" content="Francisco López - Gonzalo Maceira">
     <link rel="icon" type="image/ico" href="/images/favicon.png">
 
-    <title>@yield ('titulo')</title>
+    <title>Natural Market</title>
 
     <!-- Custom styles for this template -->
     <link rel="stylesheet" href="/css/ed5eec95.main.css"/>
@@ -218,9 +218,9 @@
 <header class="header">
   <div class="container">
     <div class="row">
-      <div class="col-xs-10  col-md-3">
+      <div class="col-xs-10  col-md-2">
         <div class="header-logo">
-          <a href="/"><img alt="Logo" src="/images/logo.png" width="200" height="90"></a>
+          <a href="/"><img alt="Logo" src="/images/logo.png" width="180" height="80"></a>
         </div>
       </div>
       <div class="col-xs-2  visible-sm  visible-xs">
@@ -234,7 +234,7 @@
           </button>
         </div>
       </div>
-      <div class="col-xs-12  col-md-7">
+      <div class="col-xs-12  col-md-8">
         <nav class="navbar  navbar-default" role="navigation">
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse  navbar-collapse" id="collapsible-navbar">
@@ -255,23 +255,57 @@
           <li><a href="shop-list-view.html">Tienda de Ropa?</a></li>
         </ul> -->
       </li>
+
       <li class="dropdown">
-        <a href="blog.html" class="dropdown-toggle">NOTICACIONES <span id="barNotifications" class="badge"></span></a>
-        <ul class="dropdown-menu">
-          <li><a href="blog-right-sidebar.html">Han calificado una compra</a></li>
-          <li><a href="blog-left-sidebar.html">Te han comprado un producto</a></li>
-          <li><a href="blog-left-sidebar.html">Tienes un nuevo Seguidor</a></li>
-        </ul>
+        <a href="/users/sellersList" class="dropdown-toggle">VENDEDORES</a>
+        <!-- <ul class="dropdown-menu">
+          <li><a href="/products/list">Productos Orgánicos</a></li>
+          <li><a href="shop-list-view.html">Tienda de Ropa?</a></li>
+        </ul> -->
       </li>
-      <li class="dropdown">
-        <a href="features.html" class="dropdown-toggle">SEGUIDORES</a>
-        <ul class="dropdown-menu">
-          <li><a href="/users/followingList">Usuarios que sigues</a></li>
-        @if(!Auth::guest() && Auth::user()->type_id==2)
-          <li><a href="/users/followersList">Usuarios que te siguen</a></li>
-        @endif
-        </ul>
-      </li>
+
+      @if(!Auth::guest())
+        <li class="dropdown">
+        @if(Auth::user()->notifications()->where('status_id', 0)->count() > 0)
+
+          <a href="" class="dropdown-toggle">NOTIFICACIONES
+              <span id="barNotifications" class="badge">
+                {{ Auth::user()->notifications()->where('status_id', 0)->count() }}
+              </span>
+          </a>
+
+          <ul class="dropdown-menu">
+            @foreach(Auth::user()->notifications as $notification)
+              <li class="notification_{{ $notification->status_id }}">
+                <a href="{{ $notification->url }}/{{ $notification->id }}">
+                  {{ $notification->userEvent->name }} {{ $notification->event->name }}
+                </a>
+              </li>
+            @endforeach
+          </ul>
+
+          @else
+
+            <a href="" class="dropdown-toggle">NOTIFICACIONES
+              <span id="barNotifications" class="badge" style="display:none"></span>
+            </a>
+
+          @endif
+
+        </li>
+
+        <li class="dropdown">
+          <a href="features.html" class="dropdown-toggle">SEGUIDORES</a>
+          <ul class="dropdown-menu">
+            <li><a href="/users/followingList">Usuarios que sigues</a></li>
+
+              @if(!Auth::guest() && Auth::user()->type_id==2)
+                <li><a href="/users/followersList">Usuarios que te siguen</a></li>
+              @endif
+
+          </ul>
+        </li>
+      @endif
 
       <li class="hidden-xs  hidden-sm">
         <a href="#" class="js--toggle-search-mode"><span class="glyphicon  glyphicon-search  glyphicon-search--nav"></span></a>
@@ -391,7 +425,7 @@
         <div class="col-sm-11">
           <form class="search-panel__form" method="POST" role="form" action="{{ url('/products/list/search') }}">{{ csrf_field() }}
             <button type="submit"><span class="glyphicon  glyphicon-search"></span></button>
-                  <input type="text" id="parameter" name="parameter" class="form-control {{ $errors->has('parameter') ? ' has-error' : '' }}" placeholder="Enter your search keyword" value="{{ old('parameter') }}">
+                  <input type="text" id="parameter" name="parameter" class="form-control {{ $errors->has('parameter') ? ' has-error' : '' }}" placeholder="Ingresá tu criterio de búsqueda" value="{{ old('parameter') }}">
                   @if ($errors->has('parameter'))
                       <span class="help-block">
                           <strong>{{ $errors->first('parameter') }}</strong>

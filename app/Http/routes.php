@@ -18,18 +18,6 @@ session(['pusher' => $pusher]);*/
 Route::get('/', 'HomeControllerNoAuth@home');
 Route::get('/welcome', 'HomeController@welcome');
 
-Route::get('push', function () {
-		//NOTIFICATION//
-		$pusher = new Pusher('fde4c913418bef9c7a8b', 'f372de6e86369b9aae85', 231061);
-
-		$pusher->trigger('notifications', 'new', [
-				'title'   => 'Te han hecho una compra',
-				'user_id' => 5
-			]);
-
-		return view('push');
-	});
-
 Route::group(['prefix' => 'users'], function () {
 		//GET METHOD
 		Route::get('myProfile', 'UsersController@myProfile');
@@ -37,9 +25,10 @@ Route::group(['prefix' => 'users'], function () {
 		Route::get('update', 'UsersController@update')->middleware('web');
 		Route::get('sellersList', 'UsersController@sellersList');
 		Route::get('follow/{id}', 'UsersController@follow');
-		Route::get('unfollow/{id}', 'UsersController@unfollow');
+		Route::get('unfollow/{id}', 'UsersController@unFollow');
 		Route::get('followingList', 'UsersController@followingList');
 		Route::get('followersList', 'UsersController@followersList');
+		Route::get('followersList/{id}', 'UsersController@followersListNotification');
 
 		//PATCH METHOD
 		Route::patch('update/{user}', 'UsersController@save');

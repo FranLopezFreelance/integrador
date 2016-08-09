@@ -29,14 +29,28 @@
 	opacity: 0.95;
 }
 
-#parameter {
-	border: 1px solid silver;
-	background: #fff;
-}
-
 .badge {
-	background: #fff; 
-	color: #000; 
+	background: #04B404; 
+	color: #fff; 
 	padding: 2px 6px; 
 	border-radius: 50%;
+}
+
+.button-hidden {
+	display: none;
+}
+
+.notification_0 a {
+	background: #81F781!important;
+	color: #444!important;
+}
+
+.notification_0 a:hover {
+	background: #3ADF00!important;
+	color: #fff;
+}
+
+.notification_1 a {
+	background: #D8F6CE!important;
+	color: #666!important;
 }
