@@ -42,22 +42,17 @@
         <div class="top__menu">
           <ul class="nav  nav-pills">
             @if (Auth::guest())
-<<<<<<< HEAD
+
             <li><a href="#registerModal" role="button" data-toggle="modal">Register</a></li>
             <li><a href="#loginModal" role="button" data-toggle="modal">Login</a></li>
             
               
             @endif
             @if (!Auth::guest())
-=======
-              <li><a href="#registerModal" role="button" data-toggle="modal">Register</a></li>
-              <li><a href="#loginModal" role="button" data-toggle="modal">Login</a></li>
-            @else
-
+     
             <!-- Dejo el Id de usuario logueado para que lo tome js para PUSHER -->
             <span id="idUserLogedIn" style="visibility:hidden">{{ Auth::user()->id }}</span>
 
->>>>>>> d144032d8d35c847bff083381da69cd03eefab36
             <li class="dropdown  js--mobile-dropdown">
               <a class="dropdown-toggle" href="#">
                 Mi cuenta ({{ Auth::user()->name }}): <span class="caret"></span>
@@ -277,7 +272,7 @@
         <li class="dropdown">
         @if(Auth::user()->notifications()->where('status_id', 0)->count() > 0)
 
-          <a href="" class="dropdown-toggle">NOTIFICACIONES
+          <a href="/notifications/list" class="dropdown-toggle">NOTIFICACIONES
               <span id="barNotifications" class="badge">
                 {{ Auth::user()->notifications()->where('status_id', 0)->count() }}
               </span>
@@ -295,7 +290,7 @@
 
           @else
 
-            <a href="" class="dropdown-toggle">NOTIFICACIONES
+            <a href="/notifications/list" class="dropdown-toggle">NOTIFICACIONES
               <span id="barNotifications" class="badge" style="display:none"></span>
             </a>
 

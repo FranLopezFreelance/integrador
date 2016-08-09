@@ -2,69 +2,84 @@
 
 @section('content')
 
-
-<div class="container">
+<div class="woocommerce  push-down-30">
+  <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
+      <div class="col-xs-12  push-down-30">
+        <h3>Orden de Compra</h3>
+        <hr>
+        <table class="shop-table  shop-cart">
+          <thead>
+            <tr class="cart_table_title">
+              <th class="product-remove">Eliminar</th>
+              <th class="product-thumbnail"></th>
+              <th class="product-name">Producto</th>
+              <th class="product-price">Vendedor</th>
+              <th class="product-price">Precio</th>
+              <th class="product-quantity">Cantidad</th>
+              <th class="product-subtotal">Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="cart_table_item">
+              <td class="product-remove"><span class="glyphicon  glyphicon-remove"></span></td>
+              <td class="product-thumbnail"><img src="/{{ $product->image }}"/ width="50" height="50"></td>
+              <td class="product-name"><a href="/products/detail/{{ $product->id }}">{{ $product->name }}</a></td>
+              <td class="product-price">{{ $product->user->name }} {{ $product->user->lastname }}</td>
+              <td class="product-price">${{ $product->price }}</td>
+              <td class="product-quantity">
+                <div class="quantity  js--quantity">
+                  <input type="button" value="-" class="quantity__button  js--minus-one  js--clickable">
+                  <input type="text" name="quantity" value="1" class="quantity__input">
+                  <input type="button" value="+" class="quantity__button  js--plus-one  js--clickable"> <span>Disponibles {{ $product->quantity }}</span>
+                </div>
+              </td>
+              <td class="product-subtotal">${{ $product->price }}</td>
+            </tr>
 
-                <div class="panel-heading">Nueva Compra</div>
-
-                <div class="panel-body">
-
-					<form class="form" method="POST" action="/orders/create/{{ $product->id }}">
-
-					{{ csrf_field() }}
-
-						<div class="row">
-							<div class="col-md-5">
-			                	<h2>{{ $product->name }}</h2>
-			                	<p>{{ $product->description }}</p>
-			                	<p>Vendedor: {{ $product->user->name }} ({{ $product->user->city->name }})</p>
-			                	<h4>Precio Unitario: ${{ $product->price }}</h4>
-			                </div>
-
-			                <div class="col-md-7">
-								<img width="180" src="/{{ $product->image }}" />
-							</div>
-						</div>
-
-						<hr />
-
-						<div class="form-group{{ $errors->has('quantity') ? ' has-error' : '' }}">
-                            <label for="quantity" class="col-md-2 control-label">Cantidad</label>
-
-                            <div class="col-md-2">
-                                <input id="quantity" type="number" class="form-control" name="quantity" value="{{ old('quantity') }}">
-                                <p class="help-block">{{ $product->quantity }} disp.</p>
-
-                                @if ($errors->has('quantity'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('quantity') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-					<div class="form-group">
-                        <div class="col-md-12">
-							<h3>Total: ${{ $product->price }} </h3>
-						</div>
-					</div>
-
-					<div class="form-group">
-                        <div class="col-md-12">
-                            <button type="submit" class="btn btn-success">
-                                    <i class="fa fa-btn fa-item"></i> Confirmar Compra
-                           </button>
-                        </div>
-                    </div>
-
-					</form>
-				</div>
-
-            </div>
+            <tr class="cart_table_action">
+              <td colspan="8" class="actions">
+                <div class="col-xs-6">
+                  <div class="coupon">
+                    <input name="coupon_code" class="input-text">
+                    <a href="#" class="btn  btn-warning">Cupón de Promoción</a>
+                  </div>
+                </div>
+                <div class="col-xs-6">
+                  <a href="#" class="btn  btn-primary  pull-right">Confirmar Compra</a>
+                  <a href="#" class="btn  btn-warning  pull-right">Actualizar Carrito</a>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    <div class="col-xs-12 col-sm-6">
+      </div>
+      <div class="col-xs-12 col-sm-6" class="text-right">
+      <!-- Your order - table -->
+        <h3  class="pull-right"><span class="light">Cart</span> Totals</h3>
+        <table class="shop_table  push-down-30">
+          <tfoot>
+            <tr class="cart-subtotal">
+              <th>Cart Subtotal</th>
+              <td><span class="amount">${{ $product->price }}</span></td>
+            </tr>
+            <tr class="shipping">
+              <th>Shipping</th>
+              <td>Free Shipping</td>
+            </tr>
+            <tr class="total">
+              <th><strong>Order Total</strong></th>
+              <td>
+                <strong><span class="amount">${{ $product->price }}</span></strong>
+              </td>
+            </tr>
+          </tfoot>
+        </table>
         </div>
     </div>
+</div>
 </div>
 
 @endsection

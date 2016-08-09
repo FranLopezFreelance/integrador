@@ -64,8 +64,8 @@
           <div class="push-down-30"></div>
           	<nav>
           		<ol class="breadcrumb">
-           		 <li><a href="shop.html"><span class="products__category">{{ $product->brand->name }}</span></a></li>
-           		 <li class="active"><a href="shop.html"><span class="products__category">{{ $product->section->name }}</span></a></li>
+           		 <li><a href="/products/list"><span class="products__category">{{ $product->brand->name }}</span></a></li>
+           		 <li class="active"><a href="/products/list"><span class="products__category">{{ $product->section->name }}</span></a></li>
          	 	</ol>
         	</nav>
           <h1 class="single-product__title"><span class="light">{{ $product->name }}</span></h1>
@@ -89,31 +89,30 @@
 
 
           <!-- Add to cart button -->
-          <a class="btn btn-primary--transition" href="/products/buy/{{ $product->id }}">
-            <!--<span class="glyphicon glyphicon-plus"></span><span class="glyphicon glyphicon-shopping-cart"></span>-->
-            <span class="single-product__btn-text">Comprar</span>
+          <a href="/products/buy/{{ $product->id }}">
+            <!-- <span class="glyphicon glyphicon-plus"></span><span class="glyphicon glyphicon-shopping-cart"></span> -->
+            <button type="button" class="btn btn-primary--transition">Comprar</button> &nbsp;
           </a>
-
+          
           <!-- Add to cart button -->
-          <a class="btn btn-primary--transition" href="/products/buy/{{ $product->id }}">
-            <!--<span class="glyphicon glyphicon-plus"></span><span class="glyphicon glyphicon-shopping-cart"></span>-->
-            <span class="single-product__btn-text">Iniciar Orden</span>
+          <a href="/products/buy/{{ $product->id }}">          
+          <button type="button" class="btn btn-primary--reverse-transition">Iniciar Orden</button>
           </a>
-
+          <br><br><br>
           <!-- Social banners -->
           <div class="row">
-            <div class="col-xs-12  col-sm-6  col-md-3">
-              <div class="banners--small  banners--small--social back-facebook">
-                <a href="#" class="social">
-                Compartir en <br>
+            <div class="col-xs-12  col-sm-6  col-md-5">
+              <div class="banners--small  banners--small--social">
+                <a href="#" class="social"><span class="zocial-facebook"></span>
+                Share on<br>
                 <span class="banners--small--text">Facebook</span>
                 </a>
               </div>
             </div>
-            <div class="col-xs-12 col-sm-6  col-md-3">
-              <div class="banners--small  banners--small--social back-twitter">
-                <a href="#" class="social">
-                Compartir en<br>
+            <div class="col-xs-12 col-sm-6  col-md-5">
+              <div class="banners--small  banners--small--social">
+                <a href="#" class="social"><span class="zocial-twitter"></span>
+                Tweet it<br>
                 <span class="banners--small--text">Twitter</span>
                 </a>
               </div>
