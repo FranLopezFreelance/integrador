@@ -28,6 +28,7 @@ Route::group(['prefix' => 'users'], function () {
 		Route::get('unfollow/{id}', 'UsersController@unFollow');
 		Route::get('followingList', 'UsersController@followingList');
 		Route::get('followersList', 'UsersController@followersList');
+		//Para la confirmacion de la notificacion
 		Route::get('followersList/{id}', 'UsersController@followersListNotification');
 
 		//PATCH METHOD
@@ -63,6 +64,11 @@ Route::group(['prefix' => 'orders'], function () {
 		Route::get('update/{order}', 'OrdersController@update');
 		Route::get('customerOK/{order}', 'OrdersController@customerOK');
 		Route::get('sellerOK/{order}', 'OrdersController@sellerOK');
+
+		//Para la confirmacion de la notificacion
+		Route::get('sales/{id}', 'OrdersController@saleNotification');
+		Route::get('customerOKNotification/{id}', 'OrdersController@customerOKNotification');
+		Route::get('sellerOKNotification/{id}', 'OrdersController@sellerOKNotification');
 
 		//POST METHOD
 		Route::post('create/{product}', 'OrdersController@create');

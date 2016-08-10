@@ -53,3 +53,27 @@ if($("div.alert")){
       
   }
 
+    function sellerOK( id) {
+      $.ajax({
+        type: "GET",
+        dataType: "json", 
+        url: "/users/unfollow/" + id,
+        success: function(data){
+          $('.followers_' + id).text(data.followers);
+        }
+      });
+      
+  }
+
+    function customerOK( id) {
+      $.ajax({
+        type: "GET",
+        dataType: "json", 
+        url: "/orders/customerOK/" + id,
+        success: function(data){
+          
+        }
+      });
+      
+  }
+

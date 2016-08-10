@@ -44,9 +44,10 @@ class UsersController extends Controller {
 	public function follow($id) {
 		Auth::user()->following()->attach(['following_id' => $id]);
 
+		//Tomo el nombre de usuario para la notificacion
 		$user = Auth::user()->name;
 
-		//Tomo al "otro" usuario
+		//Tomo al "otro" usuario, que es qeu recibe la notificación
 		$otherUser = User::find($id);
 
 		//URL a la la queredirecciona la notificacion
@@ -56,7 +57,7 @@ class UsersController extends Controller {
 		$notification = new Notification([
 				'user_id'       => $id,
 				'event_user_id' => Auth::user()->id,
-				'event_id'      => 1,
+				'event_id'      => 5,
 				'status_id'     => 0,
 				'url'           => $url,
 			]);

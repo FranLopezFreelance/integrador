@@ -10,6 +10,8 @@ $(function(){
 
 		channel.bind('App\\Events\\NotificationEvent', function(data){
 
+			console.log(data + 'Hasta aca llega...');
+
 			var notification = "<a href='" + data.msg.url + "'><div class='alert alert-warning notification' role='alert'><b>" + data.msg.text + "</b></div></a>";
 
 			$('#divNotifications').prepend(notification);
