@@ -22,15 +22,15 @@
 
 <div class="container">
   <!-- Big banner -->
-  <div class="row">
+  <!-- <div class="row">
     <div class="col-xs-12">
       <div class="push-down-30">
-        <!--<div class="banners--big">
+        <div class="banners--big">
           Exposed shop notice, like <strong>free worldwide</strong> shipping on all purchases over $50
-        </div>-->
+        </div>
       </div>
     </div>
-  </div>
+  </div> -->
   <div class="row">
     <div class="col-xs-12  col-sm-3">
       <aside class="sidebar  sidebar--shop">
@@ -98,12 +98,11 @@
               <option value='{"sortBy":"rating", "sortAscending":"false"}'>Por Mayor Rating</option>
           </select>
         </div>
+        
         <hr class="shop__divider">
+
         <div class="row  js--isotope-container">
-
-
             @foreach($products as $product)
-
               <div class="col-xs-6 col-sm-3  js--isotope-target  {{ $product->section->name }} {{ $product->user->city_id }}" data-price="{{ $product->price }}" data-rating="">
               <div class="products__single">
                 <figure class="products__image">
@@ -142,7 +141,6 @@
           @endforeach
 
           <div class="clearfix  hidden-xs"></div>
-
         </div>
 
         <hr class="shop__divider">

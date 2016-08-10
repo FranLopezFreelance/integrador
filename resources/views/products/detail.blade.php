@@ -91,7 +91,7 @@
           <!-- Add to cart button -->
           <a href="/products/buy/{{ $product->id }}">
             <!-- <span class="glyphicon glyphicon-plus"></span><span class="glyphicon glyphicon-shopping-cart"></span> -->
-            <button type="button" class="btn btn-primary--transition">Comprar</button> &nbsp;
+            <button type="button" class="btn btn-primary--transition">Comprar</button>
           </a>
           
           <!-- Add to cart button -->

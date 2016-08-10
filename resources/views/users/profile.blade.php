@@ -1,7 +1,25 @@
 @extends('layouts.master')
 
 @section('content')
+<div class="breadcrumbs">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <nav>
+          <ol class="breadcrumb">
+            
+            <li><a href="/">Home</a></li>
+            
+            <li><a href="/users/sellersList">Vendedores</a></li>
 
+            <li class="active">{{ $user->name }} {{ $user->lastname }}</li>
+            
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">

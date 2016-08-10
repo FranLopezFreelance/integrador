@@ -1,40 +1,74 @@
 @extends('layouts.master')
 
 @section('content')
+<div class="breadcrumbs">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <nav>
+          <ol class="breadcrumb">
+            
+            <li><a href="/">Home</a></li>
+            
+            <li class="active">Vendedores</li>
+            
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 <div class="container">
     <div class="row">
-        <div class="col-md-12">
-			<h1>Vendedores Registrados</h1>
+
+        <div class="col-md-12 col-sm-3"">
+
+
+        	<div class="products-navigation  push-down-15">
+        		<div class="products-navigation__title">
+        			<h3><span class="light">Vendedores</span> Registrados</h3>
+				</div>
+			</div>
 
 			@if(!Auth::user())
 				<h4><a href="/login">Logueate</a> para poder Seguir usuarios y enterarte de todas sus novedades!</h4>
 			@endif
 
-			<hr />
+	
 			@forelse($users as $user)
 				@if(!Auth::user() || $user->id != Auth::user()->id)
 					<div class="col-md-3">
-						<img width="100" class="img-circle" src="/{{ $user->avatar }}" />
-						<h4><a href="/users/profile/{{ $user->id }}">{{ $user->name }}</a></h4>
-						<p>Localidad: {{ $user->city->name }} </p>
-
-							@if(Auth::user())
-							<p>Seguidores: <span class="followers_{{ $user->id }}">{{ $user->followers->count() }}</span></p>
-								<h4 class="unFollowButton
-									@if(!$following->contains($user->id))
-										button-hidden
-									@endif
-								"><a class="btn btn-warning" onclick="unfollow({{ $user->id }})">Dejar de seguir</a></h4>
-
-								<h4 class="followButton
-									@if($following->contains($user->id))
-										button-hidden"
-									@endif
-									"><a class="btn btn-primary" onclick="follow({{ $user->id }})">Seguir</a></h4>
-							@endif
-
-						<hr />
+			<div class="profile-sidebar">
+				<!-- SIDEBAR USERPIC -->
+				<div class="profile-userpic">
+					<img width="200" class="img-responsive" alt="" src="/{{ $user->avatar }}" />
+				</div>
+				<!-- END SIDEBAR USERPIC -->
+				<!-- SIDEBAR USER TITLE -->
+				<div class="profile-usertitle">
+					<div class="profile-usertitle-name">
+						{{ $user->name }} {{ $user->lastname }}
 					</div>
+					<div class="profile-usertitle-job">
+						{{ $user->city->name }}
+				@if(Auth::user())
+					<p>Seguidores: <span class="followers_{{ $user->id }}">{{ $user->followers->count() }}</span></p>
+					</div>
+				</div>
+				<div class="profile-userbuttons">
+					<button type="button" class="unFollowButton @if(!$following->contains($user->id)) button-hidden @endif">
+						<a class="btn btn-danger btn-sm" onclick="unfollow({{ $user->id }})">No seguir</a></button>
+
+					<button type="button" class="followButton @if($following->contains($user->id))button-hidden @endif">
+						<a class="btn btn-success btn-sm" onclick="follow({{ $user->id }})">Seguir</a></button>
+				@endif
+					<a class="btn btn-info btn-sm" href="/users/profile/{{ $user->id }}">Ver Perfil</a>
+				</div>
+			</div>
+		</div>
 				@endif
 
 			@empty
@@ -43,10 +77,13 @@
 		</div>
 
 			<hr />
-
+			<div style="text-align: center">
 			{{ $users->links() }}
+			</div>
 	</div>
 </div>
+</div>
+
 
 <script>
     function follow( id) {
