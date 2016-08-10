@@ -178,8 +178,8 @@ class OrdersController extends Controller {
 		$notification->status_id = 1;
 		$notification->save();
 
-		$user  = Auth::user();
-		$sales = $user->sales;
-		return view('orders.sales', compact('sales'));
+		$user      = Auth::user();
+		$purchases = $user->purchases;
+		return view('orders.purchases', compact('purchases'));
 	}
 }

@@ -45,11 +45,11 @@
 
             <li><a href="#registerModal" role="button" data-toggle="modal">Register</a></li>
             <li><a href="#loginModal" role="button" data-toggle="modal">Login</a></li>
-            
-              
+
+
             @endif
             @if (!Auth::guest())
-     
+
             <!-- Dejo el Id de usuario logueado para que lo tome js para PUSHER -->
             <span id="idUserLogedIn" style="visibility:hidden">{{ Auth::user()->id }}</span>
 
@@ -286,6 +286,11 @@
                 </a>
               </li>
             @endforeach
+              <li class="seeMore">
+                <a href="/notifications/list">
+                  Ver más...
+                </a>
+              </li>
           </ul>
 
           @else
