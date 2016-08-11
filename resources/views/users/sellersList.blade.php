@@ -23,10 +23,7 @@
 
 <div class="container">
     <div class="row">
-
         <div class="col-md-12 col-sm-3"">
-
-
         	<div class="products-navigation  push-down-15">
         		<div class="products-navigation__title">
         			<h3><span class="light">Vendedores</span> Registrados</h3>
@@ -40,8 +37,8 @@
 	
 			@forelse($users as $user)
 				@if(!Auth::user() || $user->id != Auth::user()->id)
-					<div class="col-md-3">
-			<div class="profile-sidebar">
+			<div class="col-md-3">
+				<div class="profile-sidebar">
 				<!-- SIDEBAR USERPIC -->
 				<div class="profile-userpic">
 					<img width="200" class="img-responsive" alt="" src="/{{ $user->avatar }}" />

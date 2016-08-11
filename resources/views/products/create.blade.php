@@ -1,12 +1,35 @@
 @extends('layouts.master')
 
 @section('content')
+<div class="breadcrumbs">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <nav>
+          <ol class="breadcrumb">
+
+            <li><a href="/">Home</a></li>
+            <li><a href="/users/myProfile">Mi Perfil</a></li>
+            <li><a href="/products/myList">Mis Productos</a></li>
+            <li class="active">Nuevo Producto</li>
+
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
+            <div class="products-navigation  push-down-15">
+                <div class="products-navigation__title">
+                    <h3><span class="light">Nuevo</span> Producto</h3>
+                </div>
+            </div>
 
-                <div class="panel-heading">Nuevo Producto</div>
+
+            <div class="panel panel-default">
 
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/products/create') }}">
@@ -32,7 +55,7 @@
                             <label for="description" class="col-md-4 control-label">Descripción</label>
 
                             <div class="col-md-6">
-                                <input id="description" type="text" class="form-control" name="description" value="{{ old('description') }}">
+                                <input id="description" type="text" class="form-control" name="description" value="{{ old('description') }}" placeholder="Breve...">
 
                                 @if ($errors->has('description'))
                                     <span class="help-block">

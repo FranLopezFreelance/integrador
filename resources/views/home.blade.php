@@ -79,7 +79,7 @@ Home
 
 
 @foreach ($productsDestacados as $product)
-            <div class="col-xs-6 col-sm-3  js--isotope-target  js--cat-5" data-price="2.73" data-rating="5">
+  <div class="col-xs-6 col-sm-3  js--isotope-target  js--cat-5" data-price="2.73" data-rating="5">
   <div class="products__single">
     <figure class="products__image">
       <a href="/{{ $product->image }}">

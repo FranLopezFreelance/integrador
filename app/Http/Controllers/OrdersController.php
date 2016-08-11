@@ -62,7 +62,7 @@ class OrdersController extends Controller {
 	public function purchasesList() {
 		$user      = Auth::user();
 		$purchases = $user->purchases;
-		return view('orders.purchases', compact('purchases'));
+		return view('orders.purchases', compact('purchases', 'user'));
 	}
 
 	public function salesList() {

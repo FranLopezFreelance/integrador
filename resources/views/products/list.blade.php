@@ -34,50 +34,42 @@
   <div class="row">
     <div class="col-xs-12  col-sm-3">
       <aside class="sidebar  sidebar--shop">
-        <h3 class="sidebar__title"><span class="light">Productos</span> Orgánicos</h3>
-
-        <hr class="shop__divider">
-
-        <div class="shop-filter">
-
-          <h5 class="sidebar__subtitle open">Categoría</h5>
-
-          <div id="categorias" style="display:none;">
-            <ul class="nav  nav--filter">
-
+      <h3 class="sidebar__title"><span class="light">Productos</span> Orgánicos</h3>
+          <hr class="shop__divider">  
+            <div class="shop-filter">
+              <h5 class="sidebar__subtitle open">Categoría</h5>
+                <div id="categorias" style="display:none;">
+                  <ul class="nav  nav--filter">
             @foreach($sections as $section)
-
-              <li><a data-target=".{{ $section->name }}" class="js--filter-selectable" href="#">{{ $section->name }}</a></li>
-
+                      <li><a data-target=".{{ $section->name }}" class="js--filter-selectable" href="#">{{ $section->name }}</a></li>
             @endforeach
+                      </ul>
+                </div>
 
-            </ul>
-          </div>
+              <hr class="divider">
 
-          <hr class="divider">
+              <h5 class="sidebar__subtitle">Precio</h5>
+                <div class="shop__filter__slider">
+                  <div class="js--jqueryui-price-filter"></div>
+                </div>
 
-          <h5 class="sidebar__subtitle">Precio</h5>
-          <div class="shop__filter__slider">
-            <div class="js--jqueryui-price-filter"></div>
-          </div>
-
-          <hr class="divider">
-          <nav>
-            <h5 class="sidebar__subtitle open">Barrio</h5>
-
-            <div id="barrios" style="display:none;">
-            <ul class="nav  nav--filter">
+              <hr class="divider">
+            
+              <nav>
+              <h5 class="sidebar__subtitle open">Barrio</h5>
+                <div id="barrios" style="display:none;">
+                  <ul class="nav  nav--filter">
               @foreach ($cities as $barrios)
-                <li><a data-target=".{{ $barrios->id }}" class="js--filter-selectable" href="#">{{ $barrios->name }}</a></li>
+                    <li><a data-target=".{{ $barrios->id }}" class="js--filter-selectable" href="#">{{ $barrios->name }}</a></li>
               @endforeach
-            </ul>
-            </div>
-
-          </nav>
-          <hr class="divider">
-        </div>
+                  </ul>
+                </div>
+              </nav>
+              <hr class="divider">
+             </div>
       </aside>
     </div>
+    
     <div class="col-xs-12  col-sm-9">
       <div class="grid">
         <ul class="pagination  shop__amount-filter">

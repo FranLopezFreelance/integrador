@@ -20,8 +20,70 @@
 </div>
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
+        <div class="col-md-12">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-3">
+
+              <h3 id="logo"><span class="light">Mi</span> Perfil</h3>
+
+              <hr class="sidebar-divider">
+               
+                  <ul class="nav  nav-sidebar-menu">
+                    <li class="active"><a class="sidebar-menu__links" href="#headings">Mi Perfil</a></li>
+                    <li><a href="/orders/purchases">Mis Compras</a></li>
+                    <li><a href="/orders/sales">Mis Ventas</a></li>
+                    <li><a href="/products/myList">Mis Productos</a></li>
+                  </ul>
+               
+              </div>
+              <div class="col-xs-12  col-sm-9">
+                <h3 id="headings"><span class="light">Datos</span></h3>
+
+                <hr class="title__divider">
+
+                <div class="panel-heading"> </div>
+                  <div class="row">
+                      <div class="col-md-5">
+                        <div class="profile-sidebar">
+                          <h2 style="text-align:center;">{{  $user->name  }} {{  $user->lastname  }}</h2>
+                          <div class="profile-userpic">
+                            <img id="user_img" class="img-circle" src="/{{  $user->avatar  }}" style="margin-left: 35%;width: 30%;" />
+                          </div>
+                            <h5>E-Mail: {{  $user->email  }}</h5>
+                            <p><b>Barrio:</b> {{  $user->city->name  }}</p>
+                            <p><b>Perfil:</b> {{  $user->type->name  }}</p>
+                            <a class="btn btn-primary pull right" href="/users/update">Editar</a>
+
+                          <hr />
+
+                          <div class="row">
+                              <h5>Calificaciones</h5>
+                                            
+                              <hr />
+
+                              <div class="col-md-6">
+                                  <h4><a href="">como Vendedor:
+                                  {{ $user->qualifySeller()->count() }}</a></h4>
+                              </div>
+                              <div class="col-md-6">
+                                  <h4><a href="">como Comprador:
+                                  {{ $user->qualifyCustomer()->count() }}</a></h4>
+                              </div>
+                          </div>
+                      </div>
+                    </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+
+ 
+<!--             <div class="panel panel-default">
 
                 <div class="panel-heading">Perfil de Usuario [{{ $user->type->name }}] </div>
 
@@ -112,4 +174,4 @@
     </div>
   </div>
 </div>
-@endsection
+ -->@endsection

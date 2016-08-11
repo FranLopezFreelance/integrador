@@ -8,7 +8,7 @@
       <div class="col-xs-12  push-down-30">
         <h3>Orden de Compra</h3>
         <hr>
-        <table class="shop-table  shop-cart">
+        <table class="shop-table  shop-cart" style="background-color:#d2e8d3">
           <thead>
             <tr class="cart_table_title">
               <th class="product-remove">Eliminar</th>
@@ -33,7 +33,7 @@
               <td class="product-price">${{ $product->price }}</td>
               <td class="product-price">
                <!--  <div class="quantity  js--quantity"> -->
-                  <input id="quantity" type="number" style="width:50px;" class="form-control" name="quantity" value="{{ old('quantity') }}">
+                  <input id="quantity" type="number" style="width:60px;" class="form-control" name="quantity" value="{{ old('quantity') }}">
                                 @if ($errors->has('quantity'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('quantity') }}</strong>
@@ -61,6 +61,8 @@
                 <div class="col-xs-6">
 
                   <button type="submit" class="btn  btn-primary  pull-right">Confirmar Compra</button>
+
+                  <a href="/products/list" class="btn  btn-warning  pull-right">Cancelar</a>
                  <!--  <a href="#" class="btn  btn-warning  pull-right">Actualizar Carrito</a> -->
 
                 </div>
@@ -68,6 +70,7 @@
             </tr>
           </tbody>
         </table>
+        </form>
       </div>
 <!--     <div class="col-xs-12 col-sm-6">
       </div>
