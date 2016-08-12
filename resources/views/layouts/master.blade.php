@@ -55,18 +55,11 @@
 
             <li class="dropdown  js--mobile-dropdown">
               <a class="dropdown-toggle" href="#">
-                Mi cuenta ({{ Auth::user()->name }}): <span class="caret"></span>
+                <img class="img-circle user-image" width="30" src="/{{ Auth::user()->avatar }}" />
+                  {{ Auth::user()->name }} <span class="caret"></span>
               </a>
               <ul class="dropdown-menu">
                 <li><a href="/users/myProfile"><i class="fa fa-btn fa-user"></i>Mi Perfil</a></li>
-                <li><a href="/orders/purchases"><i class="fa fa-btn fa-shopping-cart"></i>Mis Compras</a></li>
-
-                <!-- Customer Links -->
-                @if (Auth::user()->type_id == 2)
-                <li><a href="/orders/sales"><i class="fa fa-btn fa-signal"></i>Mis Ventas</a></li>
-                    <li><a href="/products/myList"><i class="fa fa-btn fa-align-justify"></i>Mis Productos</a></li>
-                @endif
-
                 <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
               </ul>
             </li>
@@ -553,6 +546,7 @@
     <script src="/js/jquery/jquery.js"></script>
     <script src="/js/pusher/pusher.js"></script>
     <script src="/js/app-pusher.js"></script>
+    <script src="/js/scripts-profile.js"></script>
     <script src="/js/scripts.js"></script>
 
   </body>

@@ -33,6 +33,9 @@ Route::group(['prefix' => 'users'], function () {
 
 		//PATCH METHOD
 		Route::patch('update/{user}', 'UsersController@save');
+
+		//POST
+		Route::post('imageChange/', 'UsersController@imageChange');
 	});
 
 Route::group(['prefix' => 'products'], function () {

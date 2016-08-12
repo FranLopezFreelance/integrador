@@ -6,17 +6,19 @@ use App\City;
 use App\Event;
 use App\Events\NotificationEvent;
 use App\Notification;
+
 use App\Type;
 use App\User;
-
 use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\Auth;
+use Image;
 
 class UsersController extends Controller {
 
 	public function myProfile() {
 		$user = Auth::user();
-		return view('users.myProfile', compact('user'));
+		return view('users.profile.data', compact('user'));
 	}
 
 	public function profile(User $user) {
@@ -27,11 +29,11 @@ class UsersController extends Controller {
 		$user   = Auth::user();
 		$types  = Type::all();
 		$cities = City::all();
-		return view('users.update', compact('user', 'types', 'cities'));
+		return view('users.profile.update', compact('user', 'types', 'cities'));
 	}
 
 	public function save(Request $request, User $user) {
-		$user->update($request->all());
+		$user->update($request->except('avatar'));
 		return back()->with('msg', 'Los datos se modificaron correctamente.');
 	}
 
@@ -94,12 +96,12 @@ class UsersController extends Controller {
 
 	public function followingList() {
 		$users = Auth::user()->following;
-		return view('users.followingList', compact('users'));
+		return view('users.profile.followingList', compact('users'));
 	}
 
 	public function followersList() {
 		$users = Auth::user()->followers;
-		return view('users.followersList', compact('users'));
+		return view('users.profile.followersList', compact('users'));
 	}
 
 	public function followersListNotification($id) {
@@ -109,6 +111,34 @@ class UsersController extends Controller {
 		$users = Auth::user()->followers;
 
 		return view('users.followersList', compact('users'));
+	}
+
+	public function imageChange(Request $request) {
+
+		if ($request->hasFile('image-profile')) {
+			$file     = $request->file('image-profile');
+			$fileName = time().'.'.$file->getClientOriginalExtension();
+
+			$path = 'images/users/'.$fileName;
+
+			$width  = Image::make($file)->width();
+			$height = Image::make($file)->height();
+
+			$r         = $width/150;
+			$newWidth  = $width/$r;
+			$newHeight = $height/$r;
+
+			Image::make($file)->resize($newWidth, $newHeight)->save(public_path($path));
+
+			$user         = Auth::user();
+			$user->avatar = $path;
+			$user->save();
+
+			return back()->with('msg', 'La imágen de Perfil se actualizó correctamente.');
+		} else {
+			return back()->with('msg-error', 'No se ha seleccionado ninguna imágen');
+		}
+
 	}
 
 }

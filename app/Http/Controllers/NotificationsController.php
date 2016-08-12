@@ -10,6 +10,6 @@ class NotificationsController extends Controller {
 
 	public function listAll() {
 		$notifications = Notification::where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->paginate(10);
-		return view('notifications.list', compact('notifications'));
+		return view('users.profile.notifications', compact('notifications'));
 	}
 }

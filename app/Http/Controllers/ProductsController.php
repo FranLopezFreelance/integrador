@@ -46,7 +46,7 @@ class ProductsController extends Controller {
 
 	public function getAllMyProducts() {
 		$products = Product::where('user_id', Auth::user()->id)->paginate(8);
-		return view('products.myList', compact('products'));
+		return view('users.profile.products', compact('products'));
 	}
 
 	public function listByParameter(Request $request) {

@@ -1,43 +1,43 @@
-@extends('layouts.master')
+@extends('users.myProfile')
 
-@section('content')
+@section('view-profile')
+<div class="col-xs-12  col-sm-9">
+  <h3 id="headings"><span class="light">Editar mis Datos</span></h3>
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
+  <hr class="title__divider">
 
-                <div class="panel-heading">Editar datos de Usuario <b>{{ $user->type->name }}</b> </div>
+    <div class="panel-heading"> </div>
+      <div class="row">
+            <div class="col-md-9">
+                @if (Session::get('msg'))
+                    <div class="alert alert-success" role="alert">
+                        <b> {{ Session::get('msg') }}</b>
+                    </div>
+                @endif
 
-                <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-1">
+                        <img class="img-circle" width="100" src="/{{ $user->avatar }}" />
 
-                    @if (Session::get('msg'))
-                        <div class="alert alert-success fade" role="alert">
-                           <b> {{ Session::get('msg') }}</b>
+                        <div class="image-change">
+
+                            <form action="/users/imageChange/" enctype="multipart/form-data" method="POST">
+
+                                {{ csrf_field() }}
+
+                                <input type="file" name="image-profile" />
+
+                                <button class="btn btn-success submit" type="submit">Guardar Nueva Imágen</button>
+
+                            </form>
                         </div>
-                    @endif
+
+                    </div>
+                </div>
 
                     <form class="form-horizontal" role="form" method="POST" action="/users/update/{{ $user->id }}">
                         {{ csrf_field() }}
                         {{ method_field('PATCH') }}
-
-                        <div class="row">
-                            <div class="col-md-4 col-md-offset-4">
-                                <img class="img-circle" width="100" src="/{{ $user->avatar }}" />
-
-                                <div class="image-change">
-
-                                  <form action="/users/imageChange/" enctype="multipart/form-data" method="POST">
-                                                    {{ csrf_field() }}
-                                    <input type="file" name="image-profile" />
-
-                                    <button class="btn btn-success submit" type="submit">Guardar Nueva Imágen</button>
-
-                                  </form>
-                                </div>
-
-                            </div>
-                        </div>
 
                         <hr />
 
@@ -142,14 +142,16 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    <i class="fa fa-btn fa-user"></i> Guardar
+                                    <i class="fa fa-btn fa-user"></i> Actualizar Datos
                                 </button>
                             </div>
                         </div>
                     </form>
-                </div>
             </div>
         </div>
     </div>
 </div>
 @endsection
+
+
+
