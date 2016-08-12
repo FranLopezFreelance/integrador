@@ -26,6 +26,7 @@ if($("div.alert")){
 	window.setTimeout(function () {
 	    $("div.alert").fadeOut();
 	}, 2500);
+
 }
 
   //Funciones de Seguir/Dejar de seguir

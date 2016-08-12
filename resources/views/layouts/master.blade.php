@@ -12,8 +12,9 @@
 
     <!-- Custom styles for this template -->
     <link rel="stylesheet" href="/css/ed5eec95.main.css"/>
+    <link rel="stylesheet" href="/css/carousel.css"/>
     <link rel="stylesheet" href="/css/styles.css"/>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/dropzone.css">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -297,7 +298,7 @@
         </li>
 
         <li class="dropdown">
-          <a href="features.html" class="dropdown-toggle">SEGUIDORES</a>
+          <a href="" class="dropdown-toggle">SEGUIDORES</a>
           <ul class="dropdown-menu">
             <li><a href="/users/followingList">Usuarios que sigues</a></li>
 
@@ -543,11 +544,15 @@
       var snd = new Audio("/audio/notification.mp3");
     </script>
 
+
+    <!--  core js -->
     <script src="/js/jquery/jquery.js"></script>
     <script src="/js/pusher/pusher.js"></script>
     <script src="/js/app-pusher.js"></script>
-    <script src="/js/scripts-profile.js"></script>
+    <script src="/js/carousel.js"></script>
+    <script src="/js/carousel-scripts.js"></script>
     <script src="/js/scripts.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/dropzone.js"></script>
 
   </body>
 </html>

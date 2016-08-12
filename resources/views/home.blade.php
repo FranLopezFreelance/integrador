@@ -24,7 +24,7 @@ Home
       <div class="col-xs-12  col-sm-6  col-md-3">
         <div class="banners-box">
           <span class="glyphicon glyphicon-earphone glyphicon--banners"></span>
-          <b class="banners__title">LLÁMENOS</b>
+          <b class="banners__title">LLÁMENOSz</b>
           +54 9 113 838 8907
         </div>
       </div>
@@ -53,6 +53,71 @@ Home
   </div>
 </div>
 <div class="container">
+
+  <!-- Navigation for products -->
+<div class="products-navigation  push-down-15">
+  <div class="row">
+    <div class="col-xs-12  col-sm-8">
+      <div class="products-navigation__title">
+        <h3><span class="light">Últimos</span> Productos Publicados </h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- CAROUSEL -->
+    <div class="row">
+     <div class="jcarousel-wrapper">
+      <div class="jcarousel">
+        <ul>
+        @foreach ($productsDestacados as $product)
+          <li>
+            <div class="col-md-12">
+              <div class="products__single">
+                <figure class="products__image">
+                  <a href="/{{ $product->image }}">
+                    <img alt="#" class="product__image" width="263" height="334" src="/images/products/default.jpg">
+                  </a>
+                  <div class="product-overlay">
+                    <a class="product-overlay__more" href="/products/detail/{{ $product->id }}">
+                      <span class="glyphicon glyphicon-search"></span>
+                    </a>
+                    <a class="product-overlay__cart" href="#">
+                      +<span class="glyphicon glyphicon-shopping-cart"></span>
+                    </a>
+                    <div class="product-overlay__stock">
+                      <span class="out-of-stock">&bull;</span> <span class="in-stock--text">En stock</span>
+                    </div>
+                  </div>
+                </figure>
+                <div class="row">
+                  <div class="col-xs-9">
+                    <h5 class="products__title">
+                      <a class="products__link  js--isotope-title" href="/products/detail/{{ $product->id }}">{{ $product->name }}</a>
+                    </h5>
+                  </div>
+                  <div class="col-xs-3">
+                    <div class="products__price">
+                      ${{ $product->price }}
+                    </div>
+                  </div>
+                </div>
+                <div class="products__category">
+                  {{ $product->section->name }}
+                </div>
+              </div>
+            </div>
+           </li>
+         @endforeach
+      </ul>
+    </div>
+
+      <a href="#" class="jcarousel-control-prev">&lsaquo;</a>
+      <a href="#" class="jcarousel-control-next">&rsaquo;</a>
+    </div>
+
+</div>
+
   <!-- Navigation for products -->
 <div class="products-navigation  push-down-15">
   <div class="row">
@@ -61,130 +126,60 @@ Home
         <h3><span class="light">Productos</span> Destacados </h3>
       </div>
     </div>
-    <div class="col-xs-12  col-sm-4">
-      <div class="products-navigation__arrows">
-        <a href="#js--latest-products-carousel" data-slide="prev"><span class="glyphicon  glyphicon-chevron-left  glyphicon-circle  products-navigation__arrow"></span></a>&nbsp;
-        <a href="#js--latest-products-carousel" data-slide="next"><span class="glyphicon  glyphicon-chevron-right  glyphicon-circle  products-navigation__arrow"></span></a>
-      </div>
-    </div>
   </div>
 </div>
 
-<!-- Products Destacados -->
-<div id="js--latest-products-carousel" class="carousel slide" data-ride="carousel" data-interval="5000">
-  <!-- Wrapper for slides -->
-  <div class="carousel-inner">
-    <div class="item active">
-      <div class="row">
-
-
-@foreach ($productsDestacados as $product)
-  <div class="col-xs-6 col-sm-3  js--isotope-target  js--cat-5" data-price="2.73" data-rating="5">
-  <div class="products__single">
-    <figure class="products__image">
-      <a href="/{{ $product->image }}">
-        <img alt="#" class="product__image" width="263" height="334" src="/images/products/default.jpg">
-      </a>
-      <div class="product-overlay">
-        <a class="product-overlay__more" href="/products/detail/{{ $product->id }}">
-          <span class="glyphicon glyphicon-search"></span>
-        </a>
-        <a class="product-overlay__cart" href="#">
-          +<span class="glyphicon glyphicon-shopping-cart"></span>
-        </a>
-        <div class="product-overlay__stock">
-          <span class="out-of-stock">&bull;</span> <span class="in-stock--text">Out of stock</span>
-        </div>
-      </div>
-    </figure>
+  <!-- CAROUSEL -->
     <div class="row">
-      <div class="col-xs-9">
-        <h5 class="products__title">
-          <a class="products__link  js--isotope-title" href="/products/detail/{{ $product->id }}">{{ $product->name }}</a>
-        </h5>
-      </div>
-      <div class="col-xs-3">
-        <div class="products__price">
-          ${{ $product->price }}
-        </div>
-      </div>
-    </div>
-    <div class="products__category">
-      {{ $product->section->name }}
-    </div>
-  </div>
-</div>
-@endforeach
-      </div>
-    </div>
-  </div>
-</div>
-
-  <!-- Banners medium -->
-<div class="row">
-  <div class="col-xs-12 col-sm-6">
-    <a href="/products/list">
-      <div class="banners--medium">
-        <span class="banners-text">Recién llegados <strong>en categoría Frutos Secos &amp; Legumbres</strong></span>
-        <span class="glyphicon  glyphicon-circle  glyphicon-chevron-right"></span>
-      </div>
-    </a>
-  </div>
-  <div class="col-xs-12 col-sm-6">
-    <a href="/products/list">
-      <div class="banners--medium">
-        <span class="banners-text">Hasta 35% de descuento en <strong>Suplementos Dietarios</strong> category</span>
-        <span class="glyphicon  glyphicon-circle  glyphicon-chevron-right"></span>
-      </div>
-    </a>
-  </div>
-</div>
-  <!-- Navigation -->
-<div class="products-navigation  push-down-15">
-  <div class="products-navigation__title">
-    <h3><span class="light">Últimos</span> Productos Publicados</h3>
-  </div>
-</div>
-
-<!-- Products Ultimos Publicados -->
-<div class="row">
-@foreach ($productsUltimosPublicados as $product)
-      <div class="col-xs-6 col-sm-3  js--isotope-target  js--cat-5" data-price="2.73" data-rating="5">
-        <div class="products__single">
-          <figure class="products__image">
-            <a href="/{{ $product->image }}">
-              <img alt="#" class="product__image" width="263" height="334" src="/images/products/default.jpg">
-            </a>
-            <div class="product-overlay">
-              <a class="product-overlay__more" href="/products/detail/{{ $product->id }}">
-                <span class="glyphicon glyphicon-search"></span>
-              </a>
-              <a class="product-overlay__cart" href="#">
-                +<span class="glyphicon glyphicon-shopping-cart"></span>
-              </a>
-              <div class="product-overlay__stock">
-                <span class="out-of-stock">&bull;</span> <span class="in-stock--text">Out of stock</span>
+     <div class="jcarousel-wrapper">
+      <div class="jcarousel">
+        <ul>
+        @foreach ($productsDestacados as $product)
+          <li>
+            <div class="col-md-12">
+              <div class="products__single">
+                <figure class="products__image">
+                  <a href="/{{ $product->image }}">
+                    <img alt="#" class="product__image" width="263" height="334" src="/images/products/default.jpg">
+                  </a>
+                  <div class="product-overlay">
+                    <a class="product-overlay__more" href="/products/detail/{{ $product->id }}">
+                      <span class="glyphicon glyphicon-search"></span>
+                    </a>
+                    <a class="product-overlay__cart" href="#">
+                      +<span class="glyphicon glyphicon-shopping-cart"></span>
+                    </a>
+                    <div class="product-overlay__stock">
+                      <span class="out-of-stock">&bull;</span> <span class="in-stock--text">En stock</span>
+                    </div>
+                  </div>
+                </figure>
+                <div class="row">
+                  <div class="col-xs-9">
+                    <h5 class="products__title">
+                      <a class="products__link  js--isotope-title" href="/products/detail/{{ $product->id }}">{{ $product->name }}</a>
+                    </h5>
+                  </div>
+                  <div class="col-xs-3">
+                    <div class="products__price">
+                      ${{ $product->price }}
+                    </div>
+                  </div>
+                </div>
+                <div class="products__category">
+                  {{ $product->section->name }}
+                </div>
               </div>
             </div>
-          </figure>
-          <div class="row">
-            <div class="col-xs-9">
-              <h5 class="products__title">
-                <a class="products__link  js--isotope-title" href="/products/detail/{{ $product->id }}">{{ $product->name }}</a>
-              </h5>
-            </div>
-            <div class="col-xs-3">
-              <div class="products__price">
-                ${{ $product->price }}
-              </div>
-            </div>
-          </div>
-          <div class="products__category">
-            {{ $product->section->name }}
-          </div>
-        </div>
-      </div>
-@endforeach
+           </li>
+         @endforeach
+      </ul>
+    </div>
+
+      <a href="#" class="jcarousel-control-prev">&lsaquo;</a>
+      <a href="#" class="jcarousel-control-next">&rsaquo;</a>
+    </div>
+
 </div>
 
   <!-- Banners big -->
@@ -316,8 +311,6 @@ Home
     </div>
   </div>
 </div>
-
-
 
 @endsection
 

@@ -16,17 +16,26 @@
                         </div>
                     @endif
 
-                    <form class="form-horizontal" role="form" method="POST" action="/products/update/{{ $product->id }}">
-                        {{ csrf_field() }}
-                        {{ method_field('PATCH') }}
-
                         <div class="row">
                             <div class="col-md-4 col-md-offset-4">
                                 <img src="/{{ $product->image }}" />
                             </div>
                         </div>
 
-                        <hr />
+                        <form action="" method="POST" class="dropzone">
+
+                        </form>
+
+
+                    <hr class="divider" />
+
+                    <form class="form-horizontal" role="form" method="POST" action="/products/update/{{ $product->id }}">
+                        {{ csrf_field() }}
+                        {{ method_field('PATCH') }}
+
+
+
+
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             <label for="name" class="col-md-4 control-label">Nombre</label>

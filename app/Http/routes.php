@@ -47,6 +47,7 @@ Route::group(['prefix' => 'products'], function () {
 		Route::get('detail/{product}', 'ProductsController@detail');
 		Route::get('update/{product}', 'ProductsController@update');
 		Route::get('buy/{product}', 'ProductsController@buy');
+		Route::get('{user}', 'ProductsController@listByUser');
 
 		//POST METHOD
 		Route::post('list/search', 'ProductsController@listByParameter');

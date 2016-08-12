@@ -59,7 +59,10 @@ class ProductsController extends Controller {
 
 	public function listByUser(User $user) {
 		$products = Product::where('user_id', $user->id)->paginate(8);
-		return view('products.list', compact('products'));
+		$sections = Section::all();
+		$cities   = City::all();
+
+		return view('products.list', compact('products', 'sections', 'cities'));
 	}
 
 	public function listBySection(Request $request) {
