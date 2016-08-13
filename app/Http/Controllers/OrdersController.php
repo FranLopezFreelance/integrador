@@ -160,7 +160,7 @@ class OrdersController extends Controller {
 
 		$user  = Auth::user();
 		$sales = $user->sales;
-		return view('orders.sales', compact('sales'));
+		return view('users.profile.sales', compact('sales'));
 	}
 
 	public function customerOKNotification($id) {
@@ -170,7 +170,7 @@ class OrdersController extends Controller {
 
 		$user  = Auth::user();
 		$sales = $user->sales;
-		return view('orders.sales', compact('sales'));
+		return view('users.profile.sales', compact('sales'));
 	}
 
 	public function sellerOKNotification($id) {
@@ -180,6 +180,6 @@ class OrdersController extends Controller {
 
 		$user      = Auth::user();
 		$purchases = $user->purchases;
-		return view('orders.purchases', compact('purchases'));
+		return view('users.profile.purchases', compact('purchases'));
 	}
 }

@@ -25,7 +25,7 @@
             <div class="row">
               <div class="col-sm-3">
 
-              <h3 id="logo"><span class="light">Mi</span> Perfil</h3>
+              <h3 id="logo"><span class="light">Mi</span> Perfil ({{ Auth::user()->type->name }})</h3>
 
               <hr class="sidebar-divider">
 

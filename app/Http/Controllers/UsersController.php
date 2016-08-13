@@ -49,7 +49,7 @@ class UsersController extends Controller {
 		//Tomo el nombre de usuario para la notificacion
 		$user = Auth::user()->name;
 
-		//Tomo al "otro" usuario, que es qeu recibe la notificación
+		//Tomo al "otro" usuario, que es el que recibe la notificación
 		$otherUser = User::find($id);
 
 		//URL a la la queredirecciona la notificacion
@@ -110,7 +110,7 @@ class UsersController extends Controller {
 		$notification->save();
 		$users = Auth::user()->followers;
 
-		return view('users.followersList', compact('users'));
+		return view('users.profile.followersList', compact('users'));
 	}
 
 	public function imageChange(Request $request) {
@@ -134,6 +134,14 @@ class UsersController extends Controller {
 			return back()->with('msg-error', 'No se ha seleccionado ninguna imágen');
 		}
 
+	}
+
+	public function changeType() {
+		$user          = Auth::user();
+		$user->type_id = 2;
+		$user->save();
+
+		return back()->with('msg', 'Muy bien! Ya tienes perfil de Vendedor.');
 	}
 
 }

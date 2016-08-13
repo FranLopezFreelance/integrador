@@ -49,7 +49,7 @@
 		  </div>
 		</div>
 		@empty
-			<h3>Aún no tienes productos cargados.</h3>
+			<h4>Aún no tienes cargado ningún Producto. <a href="/products/create">Carga el Primero!</a></h4>
 		@endforelse
 		      </div>
 		    </div>

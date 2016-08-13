@@ -48,7 +48,7 @@
 
             @empty
 
-            <h4>No has realizado compras.</h4>
+            <h4>No has realizado compras. Hecha un vistazo a los <a href="/products/list">Productos Publicados</a></h4>
 
             @endforelse
 

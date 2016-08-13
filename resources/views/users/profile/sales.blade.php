@@ -9,11 +9,11 @@
   <div class="panel-heading"> </div>
       <div class="row">
       <div class="col-xs-12  push-down-30">
-        @if (Session::get('msg'))
+          @if (Session::get('msg'))
                 <div class="alert alert-success" role="alert">
                     {{ Session::get('msg') }}
                 </div>
-        @endif
+          @endif
 
 
         <table class="shop-table  shop-cart">
@@ -53,7 +53,17 @@
 
             @empty
 
-            <h4 style="color:red">No has realizado Ventas.</h4>
+            @if(Auth::user()->type_id == 1)
+              <h4>No tienes perfil de Vendedor. Cambialo haciendo
+                <a href="/users/changeType">click aquí,</a></h4>
+            @else
+
+              @if(Auth::user()->products()->count() == 0)
+                <h4>No has realizado Ventas ya que aún no tienes cargado ningún Producto. <a href="/products/create">Carga el Primero!</a></h4>
+              @else
+                <h4 style="color:red">No has realizado Ventas. Deberías ver qué estás haciendo mal...</h4>
+              @endif
+            @endif
 
             @endforelse
 

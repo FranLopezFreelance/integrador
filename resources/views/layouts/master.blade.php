@@ -297,18 +297,6 @@
           @endif
 
         </li>
-
-        <li class="dropdown">
-          <a href="" class="dropdown-toggle">SEGUIDORES</a>
-          <ul class="dropdown-menu">
-            <li><a href="/users/followingList">Usuarios que sigues</a></li>
-
-              @if(!Auth::guest() && Auth::user()->type_id==2)
-                <li><a href="/users/followersList">Usuarios que te siguen</a></li>
-              @endif
-
-          </ul>
-        </li>
       @endif
 
       <li class="hidden-xs  hidden-sm">

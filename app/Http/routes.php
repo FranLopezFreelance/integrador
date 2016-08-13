@@ -28,6 +28,8 @@ Route::group(['prefix' => 'users'], function () {
 		Route::get('unfollow/{id}', 'UsersController@unFollow');
 		Route::get('followingList', 'UsersController@followingList');
 		Route::get('followersList', 'UsersController@followersList');
+		Route::get('changeType', 'UsersController@changeType');
+
 		//Para la confirmacion de la notificacion
 		Route::get('followersList/{id}', 'UsersController@followersListNotification');
 

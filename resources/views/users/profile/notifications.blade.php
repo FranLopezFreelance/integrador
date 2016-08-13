@@ -35,8 +35,6 @@
 
         {{ $notifications->links() }}
 
-		<hr class="divider">
-
 		</div>
 
        </div>
