@@ -56,6 +56,9 @@ Route::group(['prefix' => 'products'], function () {
 		Route::post('list/city', 'ProductsController@listByCity');
 		Route::post('create', 'ProductsController@create');
 
+		//PARA CARGAR LAS IMAGENES DE LOS PRODUCTOS
+		Route::post('uploadImages/{product}', 'ProductsController@uploadImages');
+
 		//PATCH METHOD
 		Route::patch('update/{product}', 'ProductsController@save');
 
@@ -68,6 +71,7 @@ Route::group(['prefix' => 'orders'], function () {
 		Route::get('update/{order}', 'OrdersController@update');
 		Route::get('customerOK/{order}', 'OrdersController@customerOK');
 		Route::get('sellerOK/{order}', 'OrdersController@sellerOK');
+		Route::get('init/{user}', 'OrdersController@init');
 
 		//Para la confirmacion de la notificacion
 		Route::get('sales/{id}', 'OrdersController@saleNotification');

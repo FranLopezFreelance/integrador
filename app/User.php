@@ -44,11 +44,11 @@ class User extends Authenticatable {
 	}
 
 	public function purchases() {
-		return $this->hasMany(Order::class , 'customer_id');
+		return $this->hasMany(Order::class , 'customer_id')->orderBy('created_at', 'desc');
 	}
 
 	public function sales() {
-		return $this->hasMany(Order::class , 'seller_id');
+		return $this->hasMany(Order::class , 'seller_id')->orderBy('created_at', 'desc');
 	}
 
 	public function qualifyCustomer() {

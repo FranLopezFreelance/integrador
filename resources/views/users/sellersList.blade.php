@@ -7,11 +7,11 @@
       <div class="col-xs-12">
         <nav>
           <ol class="breadcrumb">
-            
+
             <li><a href="/">Home</a></li>
-            
+
             <li class="active">Vendedores</li>
-            
+
           </ol>
         </nav>
       </div>
@@ -23,21 +23,41 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-md-12 col-sm-3"">
-        	<div class="products-navigation  push-down-15">
-        		<div class="products-navigation__title">
-        			<h3><span class="light">Vendedores</span> Registrados</h3>
-				</div>
-			</div>
+
+        <div class="col-xs-9  col-sm-3">
+
+
+      <aside class="sidebar  sidebar--shop">
+      <h3 class="sidebar__title"><span class="light">Vendedores</span> Registrados</h3>
+          <hr class="shop__divider">
+            <div class="shop-filter">
+              <h5 class="sidebar__subtitle open">Filtrar por Barrio</h5>
+                <div id="categorias" style="display:none;">
+                  <ul class="nav  nav--filter">
+            @foreach($users as $user)
+                      <li><a data-target=".{{ $user->city_id }}" class="js--filter-selectable" href="#">{{ $user->city->name }}</a></li>
+            @endforeach
+                      </ul>
+                </div>
+
+              	<hr class="divider">
+
+             </div>
+      </aside>
+
+    </div>
+
+        <div class="col-md-9 col-sm-9"">
 
 			@if(!Auth::user())
 				<h4><a href="/login">Logueate</a> para poder Seguir usuarios y enterarte de todas sus novedades!</h4>
 			@endif
 
-	
+		<div class="row  js--isotope-container">
 			@forelse($users as $user)
 				@if(!Auth::user() || $user->id != Auth::user()->id)
-			<div class="col-md-3">
+			<div class="col-md-4 js--isotope-target {{ $user->city->id }}">
+			  <div class="products__single">
 				<div class="profile-sidebar">
 				<!-- SIDEBAR USERPIC -->
 				<div class="profile-userpic">
@@ -65,13 +85,16 @@
 					<a class="btn btn-info btn-sm" href="/users/profile/{{ $user->id }}">Ver Perfil</a>
 				</div>
 			</div>
+		  </div>
 		</div>
 				@endif
 
 			@empty
 				<h3>No hay Vendedores registrados.</h3>
 			@endforelse
-		</div>
+			<div class="clearfix  hidden-xs"></div>
+        </div>
+	</div>
 
 			<hr />
 			<div style="text-align: center">

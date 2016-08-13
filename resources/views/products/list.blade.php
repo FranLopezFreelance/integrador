@@ -35,13 +35,13 @@
     <div class="col-xs-12  col-sm-3">
       <aside class="sidebar  sidebar--shop">
       <h3 class="sidebar__title"><span class="light">Productos</span> Orgánicos</h3>
-          <hr class="shop__divider">  
+          <hr class="shop__divider">
             <div class="shop-filter">
               <h5 class="sidebar__subtitle open">Categoría</h5>
                 <div id="categorias" style="display:none;">
                   <ul class="nav  nav--filter">
             @foreach($sections as $section)
-                      <li><a data-target=".{{ $section->name }}" class="js--filter-selectable" href="#">{{ $section->name }}</a></li>
+                      <li><a data-target=".section_{{ $section->id }}" class="js--filter-selectable" href="#">{{ $section->name }}</a></li>
             @endforeach
                       </ul>
                 </div>
@@ -54,13 +54,13 @@
                 </div>
 
               <hr class="divider">
-            
+
               <nav>
               <h5 class="sidebar__subtitle open">Barrio</h5>
                 <div id="barrios" style="display:none;">
                   <ul class="nav  nav--filter">
               @foreach ($cities as $barrios)
-                    <li><a data-target=".{{ $barrios->id }}" class="js--filter-selectable" href="#">{{ $barrios->name }}</a></li>
+                    <li><a data-target=".city_{{ $barrios->id }}" class="js--filter-selectable" href="#">{{ $barrios->name }}</a></li>
               @endforeach
                   </ul>
                 </div>
@@ -69,7 +69,7 @@
              </div>
       </aside>
     </div>
-    
+
     <div class="col-xs-12  col-sm-9">
       <div class="grid">
         <ul class="pagination  shop__amount-filter">
@@ -90,12 +90,13 @@
               <option value='{"sortBy":"rating", "sortAscending":"false"}'>Por Mayor Rating</option>
           </select>
         </div>
-        
+
         <hr class="shop__divider">
 
         <div class="row  js--isotope-container">
             @foreach($products as $product)
-              <div class="col-xs-6 col-sm-3  js--isotope-target  {{ $product->section->name }} {{ $product->user->city_id }}" data-price="{{ $product->price }}" data-rating="">
+              <div class="col-xs-6 col-sm-3  js--isotope-target  section_{{ $product->section_id }}
+              city_{{ $product->user->city_id }}" data-price="{{ $product->price }}" data-rating="">
               <div class="products__single">
                 <figure class="products__image">
                   <a href="/products/detail/{{ $product->id }}">

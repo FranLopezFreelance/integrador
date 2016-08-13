@@ -27,12 +27,12 @@
 
 				</div><a href="/products/create" class="btn btn-large btn-primary pull-right">Crear un Nuevo Producto</a>
 			</div>
-				
+
 @forelse($products as $product)
   <div class="col-xs-6 col-sm-3  js--isotope-target  js--cat-5" data-price="2.73" data-rating="5">
   <div class="products__single">
     <figure class="products__image">
-      <a href="/{{ $product->image }}">
+      <a href="/{{ $product->images()->first()->path }}">
         <img alt="#" class="product__image" width="263" height="334" src="/images/products/default.jpg">
       </a>
       <div class="product-overlay">
@@ -40,7 +40,7 @@
           <span class="glyphicon glyphicon-search"></span>
         </a>
 
-        
+
         <div class="product-overlay__stock" style="right: 0px;">
           <span class="out-of-stock"></span> <span class="in-stock--text"><a href="/products/update/{{ $product->id }}">Editar</a></span>
         </div>

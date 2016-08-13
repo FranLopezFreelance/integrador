@@ -14,7 +14,7 @@
 		  <div class="products__single">
 		    <figure class="products__image">
 		      <a href="/{{ $product->image }}">
-		        <img alt="#" class="product__image" width="263" height="334" src="/images/products/default.jpg">
+		        <img alt="#" class="product__image" width="263" height="334" src="/{{ $product->images()->first()->path }}">
 		      </a>
 		      <div class="product-overlay">
 		        <a class="product-overlay__more" href="/products/detail/{{ $product->id }}">

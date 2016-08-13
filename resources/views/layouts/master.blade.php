@@ -13,8 +13,9 @@
     <!-- Custom styles for this template -->
     <link rel="stylesheet" href="/css/ed5eec95.main.css"/>
     <link rel="stylesheet" href="/css/carousel.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.0.1/dropzone.css">
+
     <link rel="stylesheet" href="/css/styles.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/dropzone.css">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -56,7 +57,7 @@
 
             <li class="dropdown  js--mobile-dropdown">
               <a class="dropdown-toggle" href="#">
-                <img class="img-circle user-image" width="30" src="/{{ Auth::user()->avatar }}" />
+                <img class="img-circle user-image-nav" width="30" src="/{{ Auth::user()->avatar }}" />
                   {{ Auth::user()->name }} <span class="caret"></span>
               </a>
               <ul class="dropdown-menu">
@@ -552,7 +553,7 @@
     <script src="/js/carousel.js"></script>
     <script src="/js/carousel-scripts.js"></script>
     <script src="/js/scripts.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/dropzone.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.0.1/dropzone.js"></script>
 
   </body>
 </html>

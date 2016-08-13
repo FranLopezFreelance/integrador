@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Brand;
 use App\City;
+
+use App\Image;
 use App\Product;
 use App\Section;
 use App\User;
@@ -27,6 +29,15 @@ class ProductsController extends Controller {
 		$product = Product::create($request->all());
 		$product->setUserId(Auth::user()->id);
 		$product->save();
+
+		$image = new Image([
+				'path'   => 'images/products/default.jpg',
+				'active' => 1,
+				'order'  => 1
+			]);
+
+		$product->images()->save($image);
+
 		return redirect("products/detail/$product->id")->with('msg', 'El Producto se creó correctamente.');
 	}
 
@@ -121,5 +132,22 @@ class ProductsController extends Controller {
 	public function save(Request $request, Product $product) {
 		$product->update($request->all());
 		return back()->with('msg', 'Los datos se modificaron correctamente.');
+	}
+
+	public function uploadImages(Request $request, Product $product) {
+
+		$file = $request->file('file');
+		$name = time().$file->getClientOriginalName();
+		$path = 'images/products/'.$product->id;
+		$file->move($path, $name);
+
+		$image = new Image([
+				'path'   => $path.'/'.$name,
+				'active' => 1,
+				'order'  => 1
+			]);
+
+		$product->images()->save($image);
+
 	}
 }

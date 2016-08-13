@@ -45,12 +45,6 @@ class QualificationsController extends Controller {
 		$qualification->setComment($request->input('comment'));
 		$qualification->save();
 
-		//NOTIFICATION//
-		session('pusher')->trigger('notificactionn', 'new', [
-				'title'   => 'Han calificado un producto',
-				'user_id' => $seller_id
-			]);
-
 		return redirect('/orders/purchases')->with('msg', 'La calificación fué realizada.');
 	}
 
@@ -66,14 +60,6 @@ class QualificationsController extends Controller {
 		$qualification->setComment($request->input('comment'));
 		$qualification->save();
 
-		dd(session('pusher'));
-
-		//NOTIFICATION//
-		session('pusher')->trigger('notificactionn', 'new', [
-				'title'     => 'Un comprador te ha calificado',
-				'seller_id' => $seller_id
-			]);
-
 		return redirect('/orders/purchases')->with('msg', 'La calificación fué realizada.');
 	}
 
@@ -88,14 +74,6 @@ class QualificationsController extends Controller {
 		$qualification->setQualityId($request->input('quality_id'));
 		$qualification->setComment($request->input('comment'));
 		$qualification->save();
-
-		$puser =
-
-		//NOTIFICATION//
-		session('pusher')->trigger('notificactionn', 'new', [
-				'title'   => 'Un vendedor te ha calificado',
-				'user_id' => $customer_id
-			]);
 
 		return redirect('/orders/sales')->with('msg', 'La calificación fué realizada.');
 	}

@@ -18,13 +18,26 @@
 
                         <div class="row">
                             <div class="col-md-4 col-md-offset-4">
+
+                            <p>Imágenes: {{ $product->images()->count() }}</p>
+
+                            @if($product->images()->count() == 0)
                                 <img src="/{{ $product->image }}" />
+                            @else
+                                <img src="/{{ $product->images()->first()->path }}" width="150" />
+                            @endif
                             </div>
                         </div>
 
-                        <form action="" method="POST" class="dropzone">
+                        <div class="dropzoneDIV">
+                            <h4>Carga Imágenes del Producto</h4>
+                            <form action="/products/uploadImages/{{ $product->id }}" class="dropzone" method="POST">
 
-                        </form>
+
+                            {{ csrf_field() }}
+
+                            </form>
+                        </div>
 
 
                     <hr class="divider" />

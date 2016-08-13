@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "3fbbf0f28ed2d29438327d7880c38abd",
-    "content-hash": "f2df037e78b04ada658b0ccf5cf34363",
+    "hash": "73453a4ba1bf73050fdf11ef4fe30528",
+    "content-hash": "9851aec59f0114637b9155e5cf1334af",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -1169,6 +1169,47 @@
                 "trigger"
             ],
             "time": "2016-07-04 13:08:05"
+        },
+        {
+            "name": "santigraviano/laravel-mercadopago",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/santigraviano/laravel-mercadopago.git",
+                "reference": "42e25efcd85d7d576ac5f8cd56046a1a76dbdd67"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/santigraviano/laravel-mercadopago/zipball/42e25efcd85d7d576ac5f8cd56046a1a76dbdd67",
+                "reference": "42e25efcd85d7d576ac5f8cd56046a1a76dbdd67",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SantiGraviano\\LaravelMercadoPago\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Santiago Graviano",
+                    "email": "santiago.graviano@gmail.com"
+                }
+            ],
+            "description": "Mercado Pago SDK v0.5.2 for Laravel",
+            "keywords": [
+                "laravel",
+                "mercadopago",
+                "sdk"
+            ],
+            "time": "2016-03-22 09:44:27"
         },
         {
             "name": "swiftmailer/swiftmailer",

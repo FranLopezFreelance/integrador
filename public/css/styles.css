@@ -83,6 +83,10 @@
   margin: 20px 10px;
 }
 
+.user-image-nav {
+  margin-right: 10px!important;
+}
+
 /* Profile sidebar */
 .profile-sidebar {
     margin: 5px -10px;
@@ -111,8 +115,20 @@
   font-size: 16px!important;
 }
 
+.notified {
+  background: #eee;
+  border-bottom: 1px solid silver;
+}
+
+.notNotified {
+  background: #9c9;
+  border-bottom: 1px solid silver;
+}
+
+
 .profile-data {
-  margin-top: 15px!important;
+  margin-top: 25px!important;
+  margin-left: 25px!important;
 }
 
 .profile-userpic img {
@@ -221,5 +237,14 @@
 	border-bottom: 1px solid grey;
 
 }
+
+.dropzoneDIV {
+  margin-top: 20px!important;
+}
+
+table tr td {
+  text-align: center!important;
+}
+
 
 
