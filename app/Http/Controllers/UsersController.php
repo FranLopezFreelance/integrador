@@ -12,7 +12,7 @@ use App\User;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
-use Image;
+use Illuminate\Support\Facades\File;
 
 class UsersController extends Controller {
 
@@ -116,22 +116,17 @@ class UsersController extends Controller {
 	public function imageChange(Request $request) {
 
 		if ($request->hasFile('image-profile')) {
-			$file     = $request->file('image-profile');
-			$fileName = time().'.'.$file->getClientOriginalExtension();
 
-			$path = 'images/users/'.$fileName;
+			$user = Auth::user();
 
-			$width  = Image::make($file)->width();
-			$height = Image::make($file)->height();
+			$file = $request->file('image-profile');
+			$name = $file->getClientOriginalExtension();
 
-			$r         = $width/150;
-			$newWidth  = $width/$r;
-			$newHeight = $height/$r;
+			$path = 'images/users/'.$user->id;
 
-			Image::make($file)->resize($newWidth, $newHeight)->save(public_path($path));
+			$file->move($path, $name);
 
-			$user         = Auth::user();
-			$user->avatar = $path;
+			$user->avatar = $path.'/'.$name;
 			$user->save();
 
 			return back()->with('msg', 'La imágen de Perfil se actualizó correctamente.');
