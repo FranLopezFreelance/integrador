@@ -76,37 +76,6 @@ class ProductsController extends Controller {
 		return view('products.list', compact('products', 'sections', 'cities'));
 	}
 
-	public function listBySection(Request $request) {
-		$sections = Section::All();
-		$brands   = Brand::All();
-		$cities   = City::All();
-		$products = Product::where('section_id', $request->input('id'))->paginate(8);
-		$s        = Section::find($request->input('id'));
-		return view('products.list', compact('products', 's', 'sections', 'brands', 'cities'));
-	}
-
-	public function listByBrand(Request $request) {
-		$sections = Section::All();
-		$brands   = Brand::All();
-		$cities   = City::All();
-		$products = Product::where('brand_id', $request->input('id'))->paginate(12);
-		$b        = Brand::find($request->input('id'));
-		return view('products.list', compact('products', 'b', 'sections', 'brands', 'cities'));
-	}
-
-	public function listByCity(Request $request) {
-		$products = [];
-		$sections = Section::All();
-		$brands   = Brand::All();
-		$cities   = City::All();
-		$products = Product::all();
-		$s        = Section::find($request->input('id'));
-		foreach ($users as $user) {
-			$products[] = $user->products;
-		}
-		return view('products.list', compact('products', 'c', 'sections', 'brands', 'cities'));
-	}
-
 	public function detail(Product $product) {
 		return view('products.detail', compact('product'));
 	}
@@ -116,9 +85,14 @@ class ProductsController extends Controller {
 			return redirect('/login');
 		}
 
+		if ($product->user_id != Auth::user()->id) {
+			return redirect('products/detail/'.$product->id);
+		}
+
 		$sections = Section::All();
 		$brands   = Brand::All();
-		return view('products.update', compact('product', 'sections', 'brands'));
+		$images   = $product->images;
+		return view('products.update', compact('product', 'sections', 'brands', 'images'));
 	}
 
 	public function buy(Product $product) {
@@ -136,11 +110,23 @@ class ProductsController extends Controller {
 
 	public function uploadImages(Request $request, Product $product) {
 
+		$cantImages = $product->images()->where('active', 1)->count();
+
+		if ($cantImages >= 4) {
+			return null;
+		}
+
 		$file = $request->file('file');
 		$name = time().$file->getClientOriginalName();
 		$path = 'images/products/'.$product->id;
 		$file->move($path, $name);
 
+		//Desactivo la imágen por default
+		$imageDefault         = Image::where('path', 'images/products/default.jpg')->get()->first();
+		$imageDefault->active = 0;
+		$imageDefault->save();
+
+		//Instancio la nueva imágen y la guardo a través de la relación
 		$image = new Image([
 				'path'   => $path.'/'.$name,
 				'active' => 1,
@@ -149,5 +135,22 @@ class ProductsController extends Controller {
 
 		$product->images()->save($image);
 
+	}
+
+	public function orderImagesUpdate(Request $request) {
+
+		$imageIds = $request->input('imageIds');
+
+		//Iterador para el orden de la imágen
+		$i = 1;
+
+		foreach ($imageIds as $id) {
+			$newOrderImage        = Image::find($id);
+			$newOrderImage->order = $i;
+			$newOrderImage->save();
+			$i++;
+		}
+
+		return 'El orden de las Imágenes se Guardó correctamente.';
 	}
 }

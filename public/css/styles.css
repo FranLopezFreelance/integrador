@@ -222,6 +222,7 @@
   padding: 20px;
   background: #fff;
   min-height: 460px;
+}
 
 .notNotified {
 	background: #50dd69;
@@ -229,7 +230,6 @@
 	padding: 1px;
 	border-bottom: 1px solid grey;
 }
-
 
 .notified {
 	background: #ddd;
@@ -246,5 +246,29 @@ table tr td {
   text-align: center!important;
 }
 
+.img-product {
+  display: inline-block!important;
+}
 
+/*ESTILOS PARA EL DRAG-DROP DE LAS IMAGENES DE LOS PRODUCTOS*/
+.ui-state-default {
+  display: inline!important;
+}
 
+.saveOrder {
+  margin-top: 20px;
+}
+
+.saveImages {
+  margin-top: 20px;
+}
+
+.imageProduct:hover {
+  display: inline;
+}
+
+.ui-sortable-helper {
+  box-shadow: -2px 2px 10px #222;
+  border-top: 2px solid red;
+  height: 100%;
+}

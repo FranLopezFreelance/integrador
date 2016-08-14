@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Mail;
 
 class UsersController extends Controller {
 
@@ -79,6 +80,14 @@ class UsersController extends Controller {
 
 		//Retorno la nueva cantidad de seguidores para refrescarlo
 		$newFollowers = $otherUser->followers()->count();
+
+		//Envio el email con la notificación
+		Mail::send('emails.follow', compact('otherUser', 'user'), function ($m) use ($otherUser) {
+				$m->from('info@naturalmarket.com.ar', 'Natural Market');
+
+				$m->to($otherUser->email, $otherUser->name)->subject('Your Reminder!');
+			});
+
 		return response()->json(['followers' => $newFollowers]);
 	}
 
@@ -142,6 +151,12 @@ class UsersController extends Controller {
 		$user->save();
 
 		return back()->with('msg', 'Muy bien! Ya tienes perfil de Vendedor.');
+	}
+
+	public function destroy() {
+		$user = User::find(Auth::user()->id);
+		$user->delete();
+		return redirect('/logout');
 	}
 
 }

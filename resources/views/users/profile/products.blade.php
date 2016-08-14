@@ -2,19 +2,18 @@
 
 @section('view-profile')
 <div class="col-xs-12  col-sm-9">
-  <h3 id="headings"><span class="light">Productos</span></h3>
+  <h3 id="headings"><span class="light">Productos</span><a href="/products/create" class="btn btn-large btn-primary pull-right">Crear un Nuevo Producto</a></h3>
 
   <hr class="title__divider">
 
   <div class="panel-heading"> </div>
       <div class="row">
-
 		@forelse($products as $product)
 		  <div class="col-xs-6 col-sm-3  js--isotope-target  js--cat-5" data-price="2.73" data-rating="5">
 		  <div class="products__single">
 		    <figure class="products__image">
 		      <a href="/{{ $product->image }}">
-		        <img alt="#" class="product__image" width="263" height="334" src="/{{ $product->images()->first()->path }}">
+		        <img alt="#" class="product__image" width="263" height="334" src="/{{ $product->images()->where('active', 1)->first()->path }}">
 		      </a>
 		      <div class="product-overlay">
 		        <a class="product-overlay__more" href="/products/detail/{{ $product->id }}">

@@ -3,10 +3,13 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
 
-                <div class="panel-heading">Editar Producto [{{ $product->id }}]</div>
+                <div class="panel-heading"><h3>Editar <a href="/products/detail/{{ $product->id }}">Producto</a></h3></div>
+
+                <hr class="divider" />
+                <div class="panel-heading"><h4>Editar Imágenes del Producto</h4></div>
 
                 <div class="panel-body">
 
@@ -17,20 +20,34 @@
                     @endif
 
                         <div class="row">
-                            <div class="col-md-4 col-md-offset-4">
+                            <div class="col-md-10 col-md-offset-1">
 
-                            <p>Imágenes: {{ $product->images()->count() }}</p>
+                                <h4>Elije el orden para tus imágenes</h4>
 
-                            @if($product->images()->count() == 0)
-                                <img src="/{{ $product->image }}" />
-                            @else
-                                <img src="/{{ $product->images()->first()->path }}" width="150" />
-                            @endif
+                                <div id="sortable">
+
+                                    <input type="hidden" name="productId" id="productId" value="{{ $product->id }}">
+
+                                    <input type="hidden" name="token" id="token" value="{{ csrf_token() }}">
+
+                                    @foreach($images as $image)
+                                        @if($image->active == 1)
+                                            <span id="{{ $image->id }}" class="ui-state-default imageProduct">
+                                                <img class="image-drag-drop" src="/{{ $image->path }}" width="150" >
+                                            </span>
+
+                                            <a style="display:none;" class="btn btn-danger" href="/products/deleteImage/{{ $image->id }}"><i class="glyphicon glyphicon-trash"></i></a>
+                                        @endif
+                                    @endforeach
+                                </div>
                             </div>
+
+                            <a class="btn btn-success saveOrder" id="{{ $product->id }}">Guardar Orden</a>
+
                         </div>
 
                         <div class="dropzoneDIV">
-                            <h4>Carga Imágenes del Producto</h4>
+                            <h4>Arrrastra aquí las imágenes que quieras agregar al Producto (Máximo 4)</h4>
                             <form action="/products/uploadImages/{{ $product->id }}" class="dropzone" method="POST">
 
 
@@ -39,16 +56,16 @@
                             </form>
                         </div>
 
+                        <a href="/products/update/{{ $product->id }}" class="btn btn-success saveImages">Guardar Imágenes</a>
+
 
                     <hr class="divider" />
+
+                    <div class="panel-heading"><h4>Editar Datos del Producto</h4></div>
 
                     <form class="form-horizontal" role="form" method="POST" action="/products/update/{{ $product->id }}">
                         {{ csrf_field() }}
                         {{ method_field('PATCH') }}
-
-
-
-
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             <label for="name" class="col-md-4 control-label">Nombre</label>

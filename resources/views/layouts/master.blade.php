@@ -535,13 +535,15 @@
 
 
     <!--  core js -->
-    <script src="/js/jquery/jquery.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
     <script src="/js/pusher/pusher.js"></script>
     <script src="/js/app-pusher.js"></script>
     <script src="/js/carousel.js"></script>
     <script src="/js/carousel-scripts.js"></script>
     <script src="/js/scripts.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.0.1/dropzone.js"></script>
+    <script src="/js/drag-drop.js"></script>
 
   </body>
 </html>

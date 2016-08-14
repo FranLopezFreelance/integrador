@@ -33,29 +33,27 @@
       <div class="col-xs-12 col-sm-4">
         <div class="product-preview">
           <div class="push-down-20">
-            <img class="js--product-preview" alt="Single product image" src="/images/dummy/w360/13.jpg" width="360" height="458">
+
+          <!--@foreach($product->images()->where('active', 1)->get() as $image)
+                <div class="product-preview__thumbs  clearfix">
+                  <div class="product-preview__thumb  active  js--preview-thumbs">
+                    <a href=".js--product-preview" data-src="/{{ $image->path }}">
+                      <img src="/{{ $image->path }}" width="20" />
+                    </a>
+                  </div>
+                </div>
+            @endforeach-->
+
+            <img class="js--product-preview" alt="Single product image" src="/{{ $product->images()->where('active', 1)->first()->path }}" width="360" height="458">
           </div>
           <div class="product-preview__thumbs  clearfix">
-            <div class="product-preview__thumb  active  js--preview-thumbs">
-              <a href=".js--product-preview" data-src="/images/dummy/w360/13.jpg">
-                <img src="/images/dummy/w66/13.jpg" alt="Single product thumbnail image" width="66" height="82" />
-              </a>
-            </div>
-            <div class="product-preview__thumb  js--preview-thumbs">
-              <a href=".js--product-preview" data-src="/images/dummy/w360/9.jpg">
-                <img src="/images/dummy/w66/9.jpg" alt="Single product thumbnail image" width="66" height="82" />
-              </a>
-            </div>
-            <div class="product-preview__thumb  js--preview-thumbs">
-              <a href=".js--product-preview" data-src="/images/dummy/w360/10.jpg">
-                <img src="/images/dummy/w66/10.jpg" alt="Single product thumbnail image" width="66" height="82" />
-              </a>
-            </div>
-            <div class="product-preview__thumb  js--preview-thumbs">
-              <a href=".js--product-preview" data-src="/images/dummy/w360/14.jpg">
-                <img src="/images/dummy/w66/14.jpg" alt="Single product thumbnail image" width="66" height="82" />
-              </a>
-            </div>
+            @foreach($product->images()->where('active', 1)->get() as $image)
+                  <div class="product-preview__thumb  active  js--preview-thumbs">
+                    <a href=".js--product-preview" data-src="/{{ $image->path }}">
+                      <img src="/{{ $image->path }}" width="20" />
+                    </a>
+                  </div>
+            @endforeach
           </div>
         </div>
       </div>
@@ -88,16 +86,23 @@
           <hr class="bold__divider">
 
 
-          <!-- Add to cart button -->
-          <a href="/products/buy/{{ $product->id }}">
-            <!-- <span class="glyphicon glyphicon-plus"></span><span class="glyphicon glyphicon-shopping-cart"></span> -->
-            <button type="button" class="btn btn-primary--transition">Comprar</button>
-          </a>
-          
-          <!-- Add to cart button -->
-          <a href="/products/buy/{{ $product->id }}">          
-          <button type="button" class="btn btn-primary--reverse-transition">Iniciar Orden</button>
-          </a>
+          @if(Auth::user()->id != $product->user_id)
+            <!-- Add to cart button -->
+            <a href="/products/buy/{{ $product->id }}">
+              <!-- <span class="glyphicon glyphicon-plus"></span><span class="glyphicon glyphicon-shopping-cart"></span> -->
+              <button type="button" class="btn btn-primary--transition">Comprar</button>
+            </a>
+
+            <!-- Add to cart button -->
+            <a href="/products/buy/{{ $product->id }}">
+            <button type="button" class="btn btn-primary--reverse-transition">Iniciar Orden</button>
+            </a>
+          @else
+            <!-- Add to cart button -->
+            <a href="/products/update/{{ $product->id }}">
+              <button type="button" class="btn btn-primary--transition">Editar</button>
+            </a>
+          @endif
           <br><br><br>
           <!-- Social banners -->
           <div class="row">

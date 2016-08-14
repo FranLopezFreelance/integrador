@@ -58,6 +58,9 @@ Route::group(['prefix' => 'products'], function () {
 		Route::post('list/city', 'ProductsController@listByCity');
 		Route::post('create', 'ProductsController@create');
 
+		//Para actualizar automáticamente el orden de los productos
+		Route::post('orderImagesUpdate', 'ProductsController@orderImagesUpdate');
+
 		//PARA CARGAR LAS IMAGENES DE LOS PRODUCTOS
 		Route::post('uploadImages/{product}', 'ProductsController@uploadImages');
 
@@ -111,3 +114,18 @@ Route::group(['prefix' => 'notifications'], function () {
 	});
 
 Route::auth();
+
+//Rutass de testeo
+
+Route::get('pruebaMail', function () {
+
+		$user = Auth::user();
+
+		Mail::send('emails.reminder', ['user' => $user], function ($m) use ($user) {
+				$m->from('info@naturalmarket.com.ar', 'Natural Market');
+
+				$m->to($user->email, $user->name)->subject('Your Reminder!');
+			});
+	});
+
+Route::get('destroy', 'UsersController@destroy');

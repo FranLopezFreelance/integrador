@@ -56,6 +56,13 @@ class OrdersController extends Controller {
 					'notifications' => $notifications, //Es La cantidad
 				]));
 
+		//Envio el email con la notificación
+		Mail::send('emails.sale', compact('otherUser', 'user'), function ($m) use ($otherUser) {
+				$m->from('info@naturalmarket.com.ar', 'Natural Market');
+
+				$m->to($otherUser->email, $otherUser->name)->subject('Your Reminder!');
+			});
+
 		return redirect('/orders/purchases/')->with('msg', 'La Orden se generó correctamente.');
 	}
 
