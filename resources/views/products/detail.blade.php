@@ -175,7 +175,6 @@
   <div class="tab-pane  fade" id="tabManufacturer">
   <div class="row">
       <div class="col-xs-12  col-sm-6">
-    <h5>Nombre</h5>
     <p class="tab-text">@if(!Auth::guest())
           @if($product->user->id == Auth::user()->id)
             Tú</p>

@@ -67,7 +67,7 @@ class OrdersController extends Controller {
 	}
 
 	public function start(User $user) {
-		Order::create()
+
 	}
 
 	public function purchasesList() {
