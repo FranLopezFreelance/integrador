@@ -94,8 +94,8 @@
             </a>
 
             <!-- Add to cart button -->
-            <a href="/products/buy/{{ $product->id }}">
-            <button type="button" class="btn btn-primary--reverse-transition">Iniciar Orden</button>
+            <a href="/orders/start{{ $product->id }}">
+            <button type="button" class="btn btn-primary--reverse-transition">Iniciar Orden de Compra</button>
             </a>
           @else
             <!-- Add to cart button -->
