@@ -180,7 +180,8 @@
           @if($product->user->id == Auth::user()->id)
             Tú</p>
           @else
-            <a href="/users/profile/{{ $product->user_id }}">{{ $product->user->name }} {{ $product->user->lastname }}</a> </p>
+            <img class="img-circle user-image-nav" width="50" src="/{{ $product->user->avatar }}" />
+            <h4><a href="/users/profile/{{ $product->user_id }}">{{ $product->user->name }} {{ $product->user->lastname }}</a> </p></h4>
           @endif
           @if($product->user->id == Auth::user()->id)
             <p><a class="btn btn-primary" href="/products/update/{{ $product->id }}">Editar</a></p>
