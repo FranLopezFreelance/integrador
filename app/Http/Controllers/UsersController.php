@@ -131,7 +131,7 @@ class UsersController extends Controller {
 			$file = $request->file('image-profile');
 			$name = $file->getClientOriginalExtension();
 
-			$path = 'images/users/'.$user->id;
+			$path = '../storage/app/public/images/users/'.$user->id;
 
 			$file->move($path, $name);
 
