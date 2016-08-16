@@ -17,7 +17,7 @@
 
                 <div class="row">
                     <div class="col-md-6 col-md-offset-1">
-                        <img class="img-circle" width="100" src="/{{ $user->avatar }}" />
+                        <img class="img-circle" width="100" src="{{ $user->avatar }}" />
 
                         <div class="image-change">
 
