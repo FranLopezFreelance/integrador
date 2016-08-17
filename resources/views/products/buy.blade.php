@@ -26,8 +26,15 @@
 
           {{ csrf_field() }}
             <tr class="cart_table_item">
-              <td class="product-remove"><span class="glyphicon  glyphicon-remove"></span></td>
-              <td class="product-thumbnail"><img src="/{{ $product->image }}"/ width="50" height="50"></td>
+              <td class="product-remove"><a href="/products/detail/{{ $product->id }}"><span class="glyphicon  glyphicon-remove"></span><a></td>
+              <td class="product-thumbnail"><img
+                      @if($product->images()->where('active', 1)->first()->path == 'images/products/default.jpg')
+                          src="/{{ $product->images()->where('active', 1)->first()->path }}"
+                      @else
+                          src="{{ route('product.image', ['name' => $product->images()->where('active', 1)->first()->path]) }}"
+                      @endif
+
+               width="50" height="50" /></td>
               <td class="product-name"><a href="/products/detail/{{ $product->id }}">{{ $product->name }}</a></td>
               <td class="product-price">{{ $product->user->name }} {{ $product->user->lastname }}</td>
               <td class="product-price">${{ $product->price }}</td>
