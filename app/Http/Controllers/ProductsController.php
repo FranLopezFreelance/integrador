@@ -116,26 +116,6 @@ class ProductsController extends Controller {
 
 	public function uploadImages(Request $request, Product $product) {
 
-		/*$cantImages = $product->images()->where('active', 1)->count();
-		if ($cantImages >= 4) {
-		return null;
-		}
-		$file = $request->file('file');
-		$name = time().$file->getClientOriginalName();
-		$path = 'images/products/'.$product->id;
-		$file->move($path, $name);
-		//Desactivo la imágen por default
-		$imageDefault         = Image::where('path', 'images/products/default.jpg')->get()->first();
-		$imageDefault->active = 0;
-		$imageDefault->save();
-		//Instancio la nueva imágen y la guardo a través de la relación
-		$image = new Image([
-		'path'   => $path.'/'.$name,
-		'active' => 1,
-		'order'  => 1
-		]);
-		$product->images()->save($image);*/
-
 		$cantImages = $product->images()->where('active', 1)->count();
 
 		if ($cantImages >= 4) {

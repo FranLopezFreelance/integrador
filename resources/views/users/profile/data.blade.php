@@ -67,6 +67,21 @@
                   <div class="row">
                     <div class="col-md-12">
                     @forelse($user->qualifySeller as $qualification)
+                      <p class="quali"><b>{{ $qualification->quality->name }}</b></p>
+                      <p class="comment-quali">{{ $qualification->comment }}</p>
+                      <p class="data-quali">
+                          <img class="img-circle" width="40"
+                              @if($qualification->user->avatar == 'images/users/default.png')
+
+                                  src="/{{ $qualification->user->avatar }}" />
+
+                              @else
+                                  src="{{ route('user.image', ['name' => $qualification->user->avatar]) }}" />
+
+                              @endif
+                        <a href="/users/profile/{{ $qualification->user->id }}">{{ $qualification->user->name }} {{ $qualification->user->lastname }}</a>
+                       {{ date('F d, Y', strtotime($qualification->created_at)) }}</p>
+                       <hr class="divider" />
                     @empty
                       <h5>Aún no fue calificado como Vendedor</h5>
                     @endif
@@ -77,7 +92,22 @@
                   <div class="row">
                     <div class="col-md-12">
                       @forelse($user->qualifyCustomer as $qualification)
-                      @empty
+                        <p class="quali"><b>{{ $qualification->quality->name }}</b></p>
+                        <p class="comment-quali">{{ $qualification->comment }}</p>
+                        <p class="data-quali">
+                            <img class="img-circle" width="40"
+                                @if($qualification->user->avatar == 'images/users/default.png')
+
+                                    src="/{{ $qualification->user->avatar }}" />
+
+                                @else
+                                    src="{{ route('user.image', ['name' => $qualification->user->avatar]) }}" />
+
+                                @endif
+                          <a href="/users/profile/{{ $qualification->user->id }}">{{ $qualification->user->name }} {{ $qualification->user->lastname }}</a>
+                         {{ date('F d, Y', strtotime($qualification->created_at)) }}</p>
+                         <hr class="divider" />
+                        @empty
                         <h5>Aún no fue calificado como Comprador</h5>
                       @endif
                       </div>

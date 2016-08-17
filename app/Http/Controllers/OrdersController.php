@@ -21,6 +21,7 @@ class OrdersController extends Controller {
 		if ($q <= 0) {
 			return back()->with('msg', 'Elija una cantidad');
 		}
+
 		$total = $product->price*$q;
 		$order = new Order;
 		$order->setCustomerId(Auth::user()->id);
