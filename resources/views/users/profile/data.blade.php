@@ -15,7 +15,16 @@
               <div class="row">
                 <div class="col-md-4 col-md-offset-4">
 
-                  <img class="img-circle user-image" width="150" src="/{{ $user->avatar }}" />
+                        @if($user->avatar == 'images/users/default.png')
+
+                            <img class="img-circle" width="120" src="/{{ $user->avatar }}" />
+
+                        @else
+
+                        <img class="img-circle" width="120"
+                            src="{{ route('user.image', ['name' => $user->avatar]) }}" />
+
+                        @endif
 
                   </div>
               </div>

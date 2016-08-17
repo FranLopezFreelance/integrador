@@ -61,7 +61,16 @@
 				<div class="profile-sidebar">
 				<!-- SIDEBAR USERPIC -->
 				<div class="profile-userpic">
-					<img width="200" class="img-responsive" alt="" src="/{{ $user->avatar }}" />
+					@if($user->avatar == 'images/users/default.png')
+
+                            <img class="img-responsive" width="120" src="/{{ $user->avatar }}" />
+
+                        @else
+
+                        <img class="img-responsive" width="120"
+                            src="{{ route('user.image', ['name' => $user->avatar]) }}" />
+
+                        @endif
 				</div>
 				<!-- END SIDEBAR USERPIC -->
 				<!-- SIDEBAR USER TITLE -->
