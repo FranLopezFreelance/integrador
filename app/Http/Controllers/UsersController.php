@@ -10,10 +10,11 @@ use App\Notification;
 use App\Type;
 use App\User;
 use Illuminate\Http\Request;
-
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
 
 class UsersController extends Controller {
 
@@ -129,13 +130,12 @@ class UsersController extends Controller {
 			$user = Auth::user();
 
 			$file = $request->file('image-profile');
-			$name = $file->getClientOriginalExtension();
+			$name = $user->id.'.'.$file->getClientOriginalExtension();
 
-			$path = '../storage/app/public/images/users/'.$user->id;
+			$path = 'images/users';
+			Storage::disk($path)->put($name, File::get($file));
 
-			$file->move($path, $name);
-
-			$user->avatar = $path.'/'.$name;
+			$user->avatar = $name;
 			$user->save();
 
 			return back()->with('msg', 'La imágen de Perfil se actualizó correctamente.');
@@ -143,6 +143,11 @@ class UsersController extends Controller {
 			return back()->with('msg-error', 'No se ha seleccionado ninguna imágen');
 		}
 
+	}
+
+	public function getUserImage($name) {
+		$image = Storage::disk('images/users')->get($name);
+		return new Response($image, 200);
 	}
 
 	public function changeType() {

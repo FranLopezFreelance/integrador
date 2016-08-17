@@ -57,7 +57,14 @@
 
             <li class="dropdown  js--mobile-dropdown">
               <a class="dropdown-toggle" href="#">
-                <img class="img-circle user-image-nav" width="30" src="/{{ Auth::user()->avatar }}" />
+
+              @if(Auth::user()->avatar == 'images/users/default.png')
+                  <img class="img-circle user-image-nav" width="30" src="/{{ Auth::user()->avatar }}" />
+              @else
+                <img class="img-circle user-image-nav" width="30"
+                src="{{ route('user.image', ['name' => Auth::user()->avatar]) }}" />
+              @endif
+
                   {{ Auth::user()->name }} <span class="caret"></span>
               </a>
               <ul class="dropdown-menu">
