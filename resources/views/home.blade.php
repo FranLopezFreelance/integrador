@@ -75,8 +75,14 @@ Home
             <div class="col-md-12">
               <div class="products__single">
                 <figure class="products__image">
-                  <a href="/{{ $product->image }}">
-                    <img alt="#" class="product__image" width="263" height="334" src="/images/products/default.jpg">
+                  <a>
+                    <img alt="#" class="product__image" width="263" height="334"
+
+                        @if($product->images()->where('active', 1)->first()->path == 'images/products/default.jpg')
+                          src="/{{ $product->images()->where('active', 1)->first()->path }}" />
+                      @else
+                          src="{{ route('product.image', ['name' => $product->images()->where('active', 1)->first()->path]) }}" />
+                      @endif
                   </a>
                   <div class="product-overlay">
                     <a class="product-overlay__more" href="/products/detail/{{ $product->id }}">
@@ -139,8 +145,13 @@ Home
             <div class="col-md-12">
               <div class="products__single">
                 <figure class="products__image">
-                  <a href="/{{ $product->image }}">
-                    <img alt="#" class="product__image" width="263" height="334" src="/images/products/default.jpg">
+                  <a>
+                    <img alt="#" class="product__image" width="263" height="334"
+                       @if($product->images()->where('active', 1)->first()->path == 'images/products/default.jpg')
+                          src="/{{ $product->images()->where('active', 1)->first()->path }}" />
+                      @else
+                          src="{{ route('product.image', ['name' => $product->images()->where('active', 1)->first()->path]) }}" />
+                      @endif
                   </a>
                   <div class="product-overlay">
                     <a class="product-overlay__more" href="/products/detail/{{ $product->id }}">
@@ -215,12 +226,17 @@ Home
       @foreach ($productsMejorPuntuados as $products)
   <div class="push-down-20  clearfix">
     <a href="/products/detail/{{ $product->id }}">
-      <img alt="" class="widgets__products" width="78" height="78" src="/images/products/default.jpg">
+      <img alt="" class="widgets__products" width="78" height="78"
+                      @if($product->images()->where('active', 1)->first()->path == 'images/products/default.jpg')
+                          src="/{{ $product->images()->where('active', 1)->first()->path }}" />
+                      @else
+                          src="{{ route('product.image', ['name' => $product->images()->where('active', 1)->first()->path]) }}" />
+                      @endif
     </a>
     <h5 class="products__title">
       <a class="products__link" href="/products/detail/{{ $product->id }}">{{ $product->name }}</a>
     </h5>
-    <span class="line-through">$11.25</span> <span class="products__price--widgets">${{ $product->price }}</span>
+    <span class="line-through">${{ $product->price * 1.12 }}</span> <span class="products__price--widgets">${{ $product->price }}</span>
     <br><br>
 
 
@@ -246,19 +262,24 @@ Home
         <h4 class="widgets__heading">Más Vendidos</h4>
       </div>
       @foreach ($productsMejorVendidos as $products)
-  <div class="clearfix  push-down-15">
-    <a href="/products/detail/{{ $product->id }}">
-      <img alt="" class="widgets__products" width="78" height="78" src="/images/products/default.jpg">
-    </a>
-    <div class="products__title">
-      <a class="products__link" href="/products/detail/{{ $product->id }}">{{ $product->name }}</a>
-    </div>
-    <span class="line-through">$16.71</span> <span class="products__price--widgets">${{ $product->price }}</span>
-    <br><br>
-    <div class="products__category">
-      {{ $products->section->name }}
-    </div>
-  </div>
+        <div class="clearfix  push-down-15">
+          <a href="/products/detail/{{ $product->id }}">
+            <img alt="" class="widgets__products" width="78" height="78"
+                            @if($product->images()->where('active', 1)->first()->path == 'images/products/default.jpg')
+                                src="/{{ $product->images()->where('active', 1)->first()->path }}" />
+                            @else
+                                src="{{ route('product.image', ['name' => $product->images()->where('active', 1)->first()->path]) }}" />
+                            @endif
+          </a>
+          <div class="products__title">
+            <a class="products__link" href="/products/detail/{{ $product->id }}">{{ $product->name }}</a>
+          </div>
+          <span class="line-through">${{ $product->price * 1.12 }}</span> <span class="products__price--widgets">${{ $product->price }}</span>
+          <br><br>
+          <div class="products__category">
+            {{ $products->section->name }}
+          </div>
+        </div>
   @endforeach
     </div>
   </div>
