@@ -47,6 +47,7 @@
             <img class="js--product-preview" alt="Single product image" src="/{{ $product->images()->where('active', 1)->first()->path }}" width="360" height="458">
           </div>
           <div class="product-preview__thumbs  clearfix">
+
             @foreach($product->images()->where('active', 1)->get() as $image)
                   <div class="product-preview__thumb  active  js--preview-thumbs">
                     <a href=".js--product-preview" data-src="/{{ $image->path }}">
@@ -54,6 +55,7 @@
                     </a>
                   </div>
             @endforeach
+
           </div>
         </div>
       </div>

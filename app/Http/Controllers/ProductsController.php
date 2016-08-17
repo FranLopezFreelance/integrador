@@ -9,8 +9,13 @@ use App\Image;
 use App\Product;
 use App\Section;
 use App\User;
+
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class ProductsController extends Controller {
 
@@ -91,7 +96,7 @@ class ProductsController extends Controller {
 
 		$sections = Section::All();
 		$brands   = Brand::All();
-		$images   = $product->images;
+		$images   = $product->images()->where('active', 1)->get();
 		return view('products.update', compact('product', 'sections', 'brands', 'images'));
 	}
 
@@ -110,6 +115,26 @@ class ProductsController extends Controller {
 
 	public function uploadImages(Request $request, Product $product) {
 
+		/*$cantImages = $product->images()->where('active', 1)->count();
+		if ($cantImages >= 4) {
+		return null;
+		}
+		$file = $request->file('file');
+		$name = time().$file->getClientOriginalName();
+		$path = 'images/products/'.$product->id;
+		$file->move($path, $name);
+		//Desactivo la imágen por default
+		$imageDefault         = Image::where('path', 'images/products/default.jpg')->get()->first();
+		$imageDefault->active = 0;
+		$imageDefault->save();
+		//Instancio la nueva imágen y la guardo a través de la relación
+		$image = new Image([
+		'path'   => $path.'/'.$name,
+		'active' => 1,
+		'order'  => 1
+		]);
+		$product->images()->save($image);*/
+
 		$cantImages = $product->images()->where('active', 1)->count();
 
 		if ($cantImages >= 4) {
@@ -117,24 +142,32 @@ class ProductsController extends Controller {
 		}
 
 		$file = $request->file('file');
-		$name = time().$file->getClientOriginalName();
-		$path = 'images/products/'.$product->id;
-		$file->move($path, $name);
+		$name = $product->id.'-'.time().'.'.$file->getClientOriginalExtension();
+
+		$path = 'images/products';
+		Storage::disk($path)->put($name, File::get($file));
 
 		//Desactivo la imágen por default
-		$imageDefault         = Image::where('path', 'images/products/default.jpg')->get()->first();
+		$imageDefault = Image::where('path', 'images/products/default.jpg')
+			->where('product_id', $product->id)->get()->first();
+
 		$imageDefault->active = 0;
 		$imageDefault->save();
 
 		//Instancio la nueva imágen y la guardo a través de la relación
 		$image = new Image([
-				'path'   => $path.'/'.$name,
+				'path'   => $name,
 				'active' => 1,
 				'order'  => 1
 			]);
 
 		$product->images()->save($image);
 
+	}
+
+	public function getProductImage($name) {
+		$image = Storage::disk('images/products')->get($name);
+		return new Response($image, 200);
 	}
 
 	public function orderImagesUpdate(Request $request) {
@@ -152,5 +185,26 @@ class ProductsController extends Controller {
 		}
 
 		return 'El orden de las Imágenes se Guardó correctamente.';
+	}
+
+	public function imageDelete(Image $image) {
+
+		$image->delete();
+		$product = Product::find($image->product_id);
+
+		$cantImages = $product->images()->where('active', 1)->count();
+
+		if ($cantImages == 0) {
+
+			//Activo la imágen por default
+			$imageDefault = Image::where('path', 'images/products/default.jpg')
+				->where('product_id', $product->id)->get()->first();
+
+			$imageDefault->active = 1;
+			$imageDefault->save();
+		}
+
+		return back()->with('msg', 'La imágen se borró correctamente');
+
 	}
 }

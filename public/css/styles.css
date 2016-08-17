@@ -272,3 +272,8 @@ table tr td {
   border-top: 2px solid red;
   height: 100%;
 }
+
+.delete-product {
+  margin-left: -50px;
+  margin-bottom: -150px;
+}

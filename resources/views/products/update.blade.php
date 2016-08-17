@@ -33,10 +33,20 @@
                                     @foreach($images as $image)
                                         @if($image->active == 1)
                                             <span id="{{ $image->id }}" class="ui-state-default imageProduct">
-                                                <img class="image-drag-drop" src="/{{ $image->path }}" width="150" >
+
+                                                @if($image->path == 'images/products/default.jpg')
+                                                    <img class="image-drag-drop" src="/{{ $image->path }}" width="150" >
+                                                @else
+                                                    <img class="image-drag-drop"
+                                                    src="{{ route('product.image', ['name' => $image->path]) }}"
+                                                    width="150" >
+
+                                                    <a class="btn btn-danger btn-xs delete-product" href="/products/imageDelete/{{ $image->id }}"><i class="glyphicon glyphicon-trash"></i></a>
+                                                @endif
+
                                             </span>
 
-                                            <a style="display:none;" class="btn btn-danger" href="/products/deleteImage/{{ $image->id }}"><i class="glyphicon glyphicon-trash"></i></a>
+
                                         @endif
                                     @endforeach
                                 </div>

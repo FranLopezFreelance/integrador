@@ -29,6 +29,8 @@ Route::group(['prefix' => 'users'], function () {
 		Route::get('followingList', 'UsersController@followingList');
 		Route::get('followersList', 'UsersController@followersList');
 		Route::get('changeType', 'UsersController@changeType');
+
+		//Mostrar la imágen del usuario
 		Route::get('image/{name}', ['uses' => 'UsersController@getUserImage', 'as' => 'user.image']);
 
 		//Para la confirmacion de la notificacion
@@ -50,7 +52,10 @@ Route::group(['prefix' => 'products'], function () {
 		Route::get('detail/{product}', 'ProductsController@detail');
 		Route::get('update/{product}', 'ProductsController@update');
 		Route::get('buy/{product}', 'ProductsController@buy');
-		Route::get('{user}', 'ProductsController@listByUser');
+		Route::get('imageDelete/{image}', 'ProductsController@imageDelete');
+
+		//Mostrar la imágen del producto
+		Route::get('image/{name}', ['uses' => 'ProductsController@getProductImage', 'as' => 'product.image']);
 
 		//POST METHOD
 		Route::post('list/search', 'ProductsController@listByParameter');
