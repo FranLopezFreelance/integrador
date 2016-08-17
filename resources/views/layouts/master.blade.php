@@ -280,21 +280,6 @@
               </span>
           </a>
 
-          <ul class="dropdown-menu">
-            @foreach(Auth::user()->notifications as $notification)
-              <li class="notification_{{ $notification->status_id }}">
-                <a href="{{ $notification->url }}/{{ $notification->id }}">
-                  {{ $notification->userEvent->name }} {{ $notification->event->name }}
-                </a>
-              </li>
-            @endforeach
-              <li class="seeMore">
-                <a href="/notifications/list">
-                  Ver más...
-                </a>
-              </li>
-          </ul>
-
           @else
 
             <a href="/notifications/list" class="dropdown-toggle">NOTIFICACIONES

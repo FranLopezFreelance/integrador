@@ -34,9 +34,10 @@
               <h5 class="sidebar__subtitle open">Filtrar por Barrio</h5>
                 <div id="categorias" style="display:none;">
                   <ul class="nav  nav--filter">
-            @foreach($users as $user)
-                      <li><a data-target=".{{ $user->city_id }}" class="js--filter-selectable" href="#">{{ $user->city->name }}</a></li>
-            @endforeach
+            		@foreach($users as $user)
+                      <li><a data-target=".{{ $user->city_id }}" class="js--filter-selectable"
+                      	href="#">{{ $user->city->name }}</a></li>
+            		@endforeach
                       </ul>
                 </div>
 
@@ -61,15 +62,14 @@
 						<div class="profile-sidebar">
 						<!-- SIDEBAR USERPIC -->
 						<div class="profile-userpic">
-							@if(Auth::user()->avatar == 'images/users/default.png')
 
 		                        <img class="img-responsive" width="120"
-			                        @if(Auth::user()->avatar == 'images/users/default.png')
+			                        @if($user->avatar == 'images/users/default.png')
 
-		                            	src="/{{ Auth::user()->avatar }}" />
+		                            	src="/{{ $user->avatar }}" />
 
 			                        @else
-			                            src="{{ route('user.image', ['name' => Auth::user()->avatar]) }}" />
+			                            src="{{ route('user.image', ['name' => $user->avatar]) }}" />
 
 			                        @endif
 						</div>
