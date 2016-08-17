@@ -16,7 +16,11 @@ class OrdersController extends Controller {
 
 		$seller_id = $product->user_id;
 
-		$q     = $request->input('quantity');
+		$q = $request->input('quantity');
+
+		if ($q <= 0) {
+			return back()->with('msg', 'Elija una cantidad');
+		}
 		$total = $product->price*$q;
 		$order = new Order;
 		$order->setCustomerId(Auth::user()->id);
@@ -56,12 +60,12 @@ class OrdersController extends Controller {
 					'notifications' => $notifications, //Es La cantidad
 				]));
 
-		//Envio el email con la notificación
+		/*//Envio el email con la notificación
 		Mail::send('emails.sale', compact('otherUser', 'user'), function ($m) use ($otherUser) {
-				$m->from('info@naturalmarket.com.ar', 'Natural Market');
+		$m->from('info@naturalmarket.com.ar', 'Natural Market');
 
-				$m->to($otherUser->email, $otherUser->name)->subject('Your Reminder!');
-			});
+		$m->to($otherUser->email, $otherUser->name)->subject('Your Reminder!');
+		});*/
 
 		return redirect('/orders/purchases/')->with('msg', 'La Orden se generó correctamente.');
 	}
