@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Mail;
+
 use Illuminate\Support\Facades\Storage;
 
 class UsersController extends Controller {
@@ -83,11 +83,11 @@ class UsersController extends Controller {
 		$newFollowers = $otherUser->followers()->count();
 
 		//Envio el email con la notificación
-		Mail::send('emails.follow', compact('otherUser', 'user'), function ($m) use ($otherUser) {
-				$m->from('info@naturalmarket.com.ar', 'Natural Market');
+		/*Mail::send('emails.follow', compact('otherUser', 'user'), function ($m) use ($otherUser) {
+		$m->from('info@naturalmarket.com.ar', 'Natural Market');
 
-				$m->to($otherUser->email, $otherUser->name)->subject('Your Reminder!');
-			});
+		$m->to($otherUser->email, $otherUser->name)->subject('Your Reminder!');
+		});*/
 
 		return response()->json(['followers' => $newFollowers]);
 	}

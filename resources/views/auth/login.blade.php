@@ -8,7 +8,7 @@ Log In
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Login</div>
+                <div class="panel-heading"> <br /> <br /></div>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
                         {{ csrf_field() }}
@@ -57,7 +57,11 @@ Log In
                                     <i class="fa fa-btn fa-sign-in"></i> Login
                                 </button>
 
-                                <a class="btn btn-link" href="{{ url('/password/reset') }}">Forgot Your Password?</a>
+                                <a class="link" href="{{ url('/password/reset') }}">Olvidaste tu contraseña?</a>
+
+                                <hr class="divider" />
+
+                                <p>Si aún no tienes una cuenta puedes <a href="{{ url('/password/reset') }}">registrarte aquí</a></p>
                             </div>
                         </div>
                     </form>

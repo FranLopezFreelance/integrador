@@ -49,53 +49,64 @@
 
         <div class="col-md-9 col-sm-9"">
 
-			@if(!Auth::user())
+			@if(Auth::guest())
 				<h4><a href="/login">Logueate</a> para poder Seguir usuarios y enterarte de todas sus novedades!</h4>
 			@endif
 
 		<div class="row  js--isotope-container">
 			@forelse($users as $user)
 				@if(!Auth::user() || $user->id != Auth::user()->id)
-			<div class="col-md-4 js--isotope-target {{ $user->city->id }}">
-			  <div class="products__single">
-				<div class="profile-sidebar">
-				<!-- SIDEBAR USERPIC -->
-				<div class="profile-userpic">
-					@if($user->avatar == 'images/users/default.png')
+					<div class="col-md-4 js--isotope-target {{ $user->city->id }}">
+					  <div class="products__single">
+						<div class="profile-sidebar">
+						<!-- SIDEBAR USERPIC -->
+						<div class="profile-userpic">
+							@if($user->avatar == 'images/users/default.png')
 
-                            <img class="img-responsive" width="120" src="/{{ $user->avatar }}" />
+		                        <img class="img-responsive" width="120" src="/{{ $user->avatar }}" />
 
-                        @else
+		                     @else
 
-                        <img class="img-responsive" width="120"
-                            src="{{ route('user.image', ['name' => $user->avatar]) }}" />
+		                        <img class="img-responsive" width="120"
+		                          src="{{ route('user.image', ['name' => $user->avatar]) }}"
+		                        />
 
-                        @endif
-				</div>
-				<!-- END SIDEBAR USERPIC -->
-				<!-- SIDEBAR USER TITLE -->
-				<div class="profile-usertitle">
-					<div class="profile-usertitle-name">
-						{{ $user->name }} {{ $user->lastname }}
+		                     @endif
+						</div>
+						<!-- END SIDEBAR USERPIC -->
+
+						<!-- SIDEBAR USER TITLE -->
+						<div class="profile-usertitle">
+							<div class="profile-usertitle-name">
+								{{ $user->name }} {{ $user->lastname }}
+							</div>
+							<div class="profile-usertitle-job">
+								{{ $user->city->name }}
+						@if(!Auth::guest())
+							<p>Seguidores: <span class="followers_{{ $user->id }}">{{ $user->followers->count() }}</span></p>
+							</div>
+						</div>
+						<div class="profile-userbuttons">
+								<a class="btn unFollowButton btn-danger btn-sm
+									@if(!$following->contains($user->id))
+										button-hidden
+									@endif
+								" onclick="unfollow({{ $user->id }})">
+									No seguir
+								</a>
+								<a class="btn followButton btn-success btn-sm
+									@if($following->contains($user->id))
+										button-hidden
+									@endif"
+									onclick="follow({{ $user->id }})">
+										Seguir
+								</a>
+						@endif
+							<a class="btn btn-info btn-sm" href="/users/profile/{{ $user->id }}">Ver Perfil</a>
+						</div>
 					</div>
-					<div class="profile-usertitle-job">
-						{{ $user->city->name }}
-				@if(Auth::user())
-					<p>Seguidores: <span class="followers_{{ $user->id }}">{{ $user->followers->count() }}</span></p>
-					</div>
+				  </div>
 				</div>
-				<div class="profile-userbuttons">
-					<button type="button" class="unFollowButton @if(!$following->contains($user->id)) button-hidden @endif">
-						<a class="btn btn-danger btn-sm" onclick="unfollow({{ $user->id }})">No seguir</a></button>
-
-					<button type="button" class="followButton @if($following->contains($user->id))button-hidden @endif">
-						<a class="btn btn-success btn-sm" onclick="follow({{ $user->id }})">Seguir</a></button>
-				@endif
-					<a class="btn btn-info btn-sm" href="/users/profile/{{ $user->id }}">Ver Perfil</a>
-				</div>
-			</div>
-		  </div>
-		</div>
 				@endif
 
 			@empty

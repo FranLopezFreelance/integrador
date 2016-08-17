@@ -87,24 +87,28 @@
           </p>
           <hr class="bold__divider">
 
+          @if(!Auth::guest())
+            @if(Auth::user()->id != $product->user_id)
+              <!-- Add to cart button -->
+              <a href="/products/buy/{{ $product->id }}">
+                <!-- <span class="glyphicon glyphicon-plus"></span><span class="glyphicon glyphicon-shopping-cart"></span> -->
+                <button type="button" class="btn btn-primary--transition">Comprar</button>
+              </a>
 
-          @if(Auth::user()->id != $product->user_id)
-            <!-- Add to cart button -->
-            <a href="/products/buy/{{ $product->id }}">
-              <!-- <span class="glyphicon glyphicon-plus"></span><span class="glyphicon glyphicon-shopping-cart"></span> -->
-              <button type="button" class="btn btn-primary--transition">Comprar</button>
-            </a>
-
-            <!-- Add to cart button -->
-            <a href="/orders/start{{ $product->id }}">
-            <button type="button" class="btn btn-primary--reverse-transition">Iniciar Orden de Compra</button>
-            </a>
+              <!-- Add to cart button -->
+              <a href="/orders/start{{ $product->id }}">
+              <button type="button" class="btn btn-primary--reverse-transition">Iniciar Orden de Compra</button>
+              </a>
+            @else
+              <!-- Add to cart button -->
+              <a href="/products/update/{{ $product->id }}">
+                <button type="button" class="btn btn-primary--transition">Editar</button>
+              </a>
+            @endif
           @else
-            <!-- Add to cart button -->
-            <a href="/products/update/{{ $product->id }}">
-              <button type="button" class="btn btn-primary--transition">Editar</button>
-            </a>
+            <h4><a href="/login">Loguate</a> para poder comprar este producto.</h4>
           @endif
+
           <br><br><br>
           <!-- Social banners -->
           <div class="row">
