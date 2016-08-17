@@ -82,7 +82,8 @@ class ProductsController extends Controller {
 	}
 
 	public function detail(Product $product) {
-		return view('products.detail', compact('product'));
+		$principalImage = $product->images()->where('active', 1)->first()->path;
+		return view('products.detail', compact('product', 'principalImage'));
 	}
 
 	public function update(Product $product) {

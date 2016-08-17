@@ -95,12 +95,19 @@
 
         <div class="row  js--isotope-container">
             @foreach($products as $product)
-              <div class="col-xs-6 col-sm-3  js--isotope-target  section_{{ $product->section_id }}
+              <div class="col-xs-6 col-sm-4  js--isotope-target  section_{{ $product->section_id }}
               city_{{ $product->user->city_id }}" data-price="{{ $product->price }}" data-rating="">
               <div class="products__single">
                 <figure class="products__image">
                   <a href="/{{ $product->image }}">
-                    <img alt="#" class="product__image" width="263" height="334" src="/{{ $product->images()->where('active', 1)->first()->path }}">
+                    <img alt="#" class="product__image" width="263" height="334"
+
+                      @if($product->images()->where('active', 1)->first()->path == 'images/products/default.jpg')
+                          src="/{{ $product->images()->where('active', 1)->first()->path }}" />
+                      @else
+                          src="{{ route('product.image', ['name' => $product->images()->where('active', 1)->first()->path]) }}" />
+                      @endif
+
                   </a>
                   <div class="product-overlay">
                     <a class="product-overlay__more" href="/products/detail/{{ $product->id }}">

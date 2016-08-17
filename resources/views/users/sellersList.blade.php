@@ -82,28 +82,32 @@
 							</div>
 							<div class="profile-usertitle-job">
 								{{ $user->city->name }}
-						@if(!Auth::guest())
+
 							<p>Seguidores: <span class="followers_{{ $user->id }}">{{ $user->followers->count() }}</span></p>
 							</div>
 						</div>
-						<div class="profile-userbuttons">
-								<a class="btn unFollowButton btn-danger btn-sm
-									@if(!$following->contains($user->id))
-										button-hidden
-									@endif
-								" onclick="unfollow({{ $user->id }})">
-									No seguir
-								</a>
-								<a class="btn followButton btn-success btn-sm
-									@if($following->contains($user->id))
-										button-hidden
-									@endif"
-									onclick="follow({{ $user->id }})">
-										Seguir
-								</a>
-						@endif
-							<a class="btn btn-info btn-sm" href="/users/profile/{{ $user->id }}">Ver Perfil</a>
-						</div>
+
+
+							<div class="profile-userbuttons">
+								@if(!Auth::guest())
+									<a class="btn unFollowButton btn-danger btn-sm
+										@if(!$following->contains($user->id))
+											button-hidden
+										@endif
+									" onclick="unfollow({{ $user->id }})">
+										No seguir
+									</a>
+									<a class="btn followButton btn-success btn-sm
+										@if($following->contains($user->id))
+											button-hidden
+										@endif"
+										onclick="follow({{ $user->id }})">
+											Seguir
+									</a>
+								@endif
+
+								<a class="btn btn-info btn-sm" href="/users/profile/{{ $user->id }}">Ver Perfil</a>
+							</div>
 					</div>
 				  </div>
 				</div>

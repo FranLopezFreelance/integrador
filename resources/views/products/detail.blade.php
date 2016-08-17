@@ -33,25 +33,30 @@
       <div class="col-xs-12 col-sm-4">
         <div class="product-preview">
           <div class="push-down-20">
+            <img class="js--product-preview" alt="Single product image"
 
-          <!--@foreach($product->images()->where('active', 1)->get() as $image)
-                <div class="product-preview__thumbs  clearfix">
-                  <div class="product-preview__thumb  active  js--preview-thumbs">
-                    <a href=".js--product-preview" data-src="/{{ $image->path }}">
-                      <img src="/{{ $image->path }}" width="20" />
-                    </a>
-                  </div>
-                </div>
-            @endforeach-->
 
-            <img class="js--product-preview" alt="Single product image" src="/{{ $product->images()->where('active', 1)->first()->path }}" width="360" height="458">
+            @if($principalImage == 'images/products/default.jpg')
+                src="/{{ $principalImage }}" width="150"
+            @else
+                src="{{ route('product.image', ['name' => $principalImage]) }}"
+
+            @endif
+
+            width="150" />
           </div>
           <div class="product-preview__thumbs  clearfix">
 
             @foreach($product->images()->where('active', 1)->get() as $image)
                   <div class="product-preview__thumb  active  js--preview-thumbs">
                     <a href=".js--product-preview" data-src="/{{ $image->path }}">
-                      <img src="/{{ $image->path }}" width="20" />
+                      @if($image->path == 'images/products/default.jpg')
+                          <img class="image-drag-drop" src="/{{ $image->path }}" width="150" >
+                      @else
+                          <img class="image-drag-drop"
+                          src="{{ route('product.image', ['name' => $image->path]) }}"
+                          width="150" >
+                      @endif
                     </a>
                   </div>
             @endforeach
@@ -181,11 +186,24 @@
   <div class="tab-pane  fade" id="tabManufacturer">
   <div class="row">
       <div class="col-xs-12  col-sm-6">
-    <p class="tab-text">@if(!Auth::guest())
+    <p class="tab-text">
+      @if(!Auth::guest())
           @if($product->user->id == Auth::user()->id)
             Tú</p>
           @else
-            <img class="img-circle user-image-nav" width="50" src="/{{ $product->user->avatar }}" />
+            <br />
+
+            @if($product->user->avatar == 'images/users/default.png')
+
+                <img class="img-circle" width="100" src="/{{ $product->user->avatar }}" />
+
+            @else
+
+                <img class="img-circle" width="100"
+                            src="{{ route('user.image', ['name' => $product->user->avatar]) }}" />
+
+             @endif
+
             <h4><a href="/users/profile/{{ $product->user_id }}">{{ $product->user->name }} {{ $product->user->lastname }}</a> </p></h4>
           @endif
           @if($product->user->id == Auth::user()->id)
@@ -194,7 +212,9 @@
             <!-- <p><a class="btn btn-success" href="/products/buy/{{ $product->id }}">Comprar</a></p> -->
           @endif
         @else
-          <a href="/users/profile/{{ $product->user_id }}">{{ $product->user->name }}</a> </p>
+          <h4><a href="/users/profile/{{ $product->user_id }}">
+            {{ $product->user->name }} {{ $product->user->lastname }}
+          </a></h4>
           <!-- <p><a class="btn btn-success" href="/products/buy/{{ $product->id }}">Comprar</a></p> -->
         @endif</p>
         Ventas: {{ $product->sales()->count() }}
