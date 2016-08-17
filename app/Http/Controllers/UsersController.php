@@ -164,4 +164,14 @@ class UsersController extends Controller {
 		return redirect('/logout');
 	}
 
+	public function getApiUsers(User $user) {
+		$users = User::all()->each(function ($user) {
+				$user->products;
+			});
+
+		return response()->json([
+				'users' => $users
+			]);
+	}
+
 }

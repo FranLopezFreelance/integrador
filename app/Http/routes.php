@@ -43,6 +43,10 @@ Route::group(['prefix' => 'users'], function () {
 		Route::post('imageChange/', 'UsersController@imageChange');
 	});
 
+Route::group(['prefix' => 'api'], function () {
+		Route::get('users', 'UsersController@getApiUsers');
+	});
+
 Route::group(['prefix' => 'products'], function () {
 		//GET METHOD
 		Route::get('create', 'ProductsController@store');
