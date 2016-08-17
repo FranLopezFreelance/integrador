@@ -18,8 +18,6 @@
                 <div class="row">
                     <div class="col-md-6 col-md-offset-1">
 
-                  <h3>  {{ $user->avatar }} </h3>
-
                         @if($user->avatar == 'images/users/default.png')
 
                             <img class="img-circle" width="120" src="/{{ $user->avatar }}" />
