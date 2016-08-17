@@ -9,6 +9,11 @@ class Qualifycustomer extends Model {
 	public function user() {
 		return $this->belongsTo(User::class );
 	}
+
+	public function quality() {
+		return $this->belongsTo(Qualitycustomer::class );
+	}
+
 	public function setUserId($id) {
 		$this->user_id = $id;
 	}
