@@ -61,17 +61,17 @@
 						<div class="profile-sidebar">
 						<!-- SIDEBAR USERPIC -->
 						<div class="profile-userpic">
-							@if($user->avatar == 'images/users/default.png')
-
-		                        <img class="img-responsive" width="120" src="/{{ $user->avatar }}" />
-
-		                     @else
+							@if(Auth::user()->avatar == 'images/users/default.png')
 
 		                        <img class="img-responsive" width="120"
-		                          src="{{ route('user.image', ['name' => $user->avatar]) }}"
-		                        />
+			                        @if(Auth::user()->avatar == 'images/users/default.png')
 
-		                     @endif
+		                            	src="/{{ Auth::user()->avatar }}" />
+
+			                        @else
+			                            src="{{ route('user.image', ['name' => Auth::user()->avatar]) }}" />
+
+			                        @endif
 						</div>
 						<!-- END SIDEBAR USERPIC -->
 

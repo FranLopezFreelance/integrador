@@ -12,7 +12,16 @@
 			@forelse($users as $user)
 				@if($user->id != Auth::user()->id)
 					<div class="col-md-3">
-						<img width="100" class="img-circle" src="/{{ $user->avatar }}" />
+						<img width="100" class="img-circle"
+							@if($user->avatar == 'images/users/default.png')
+
+                            	src="/{{ $user->avatar }}" />
+
+	                        @else
+	                            src="{{ route('user.image', ['name' => $user->avatar]) }}" />
+
+	                        @endif
+
 						<h4><a href="/users/profile/{{ $user->id }}">{{ $user->name }}</a></h4>
 						<p>Localidad: {{ $user->city->name }} </p>
 						<hr />
