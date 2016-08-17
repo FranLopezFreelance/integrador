@@ -70,7 +70,7 @@ Home
      <div class="jcarousel-wrapper">
       <div class="jcarousel">
         <ul>
-        @foreach ($productsDestacados as $product)
+        @foreach ($productsUltimosPublicados as $product)
           <li>
             <div class="col-md-12">
               <div class="products__single">
@@ -221,7 +221,7 @@ Home
   <div class="col-xs-12 col-sm-4">
     <div class="widgets__navigation">
       <div class="widgets__heading--line">
-        <h4 class="widgets__heading">Mejor Puntuados</h4>
+        <h4 class="widgets__heading">De Usuarios que sigues</h4>
       </div>
       @foreach ($productsMejorPuntuados as $products)
   <div class="push-down-20  clearfix">

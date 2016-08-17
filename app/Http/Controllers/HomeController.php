@@ -26,7 +26,8 @@ class HomeController extends Controller {
 	public function index() {
 		$usersFollowing = Auth::user()->following;
 		$products       = Product::orderBy('id', 'DESC')->limit(8)->offset(0)->get();
-		return view('home', compact('usersFollowing', 'products'));
+		$products2      = Product::orderBy('id', 'ASC')->limit(8)->offset(0)->get();
+		return view('home', compact('usersFollowing', 'products', 'products2'));
 	}
 
 	public function welcome() {

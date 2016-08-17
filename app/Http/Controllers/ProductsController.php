@@ -78,7 +78,7 @@ class ProductsController extends Controller {
 		$sections = Section::all();
 		$cities   = City::all();
 
-		return view('products.list', compact('products', 'sections', 'cities'));
+		return view('products.listByUser', compact('products', 'sections', 'cities', 'user'));
 	}
 
 	public function detail(Product $product) {

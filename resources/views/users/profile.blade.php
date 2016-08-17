@@ -31,7 +31,7 @@
                   <p class="p-profile"><b>E-Mail:</b> {{ $user->email }}</p>
                   <p class="p-profile"><b>Barrio:</b> {{ $user->city->name }}</p>
                   <p class="p-profile"><b>Perfil:</b> {{ $user->type->name }}</p>
-                  <p class="p-profile"><b><a href="/products/{{ $user->id }}">Productos Publicados:</b></a> {{ $user->products()->count() }}</p>
+                  <p class="p-profile"><b><a href="/products/list/user/{{ $user->id }}">Productos Publicados:</b></a> {{ $user->products()->count() }}</p>
                   <p class="p-profile"><b>Productos Vendidos:</b> {{ $user->sales()->count() }}</p>
                 </div>
 
